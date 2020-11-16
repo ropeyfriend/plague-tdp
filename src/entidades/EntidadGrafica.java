@@ -1,25 +1,25 @@
 package entidades;
 
-import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class EntidadGrafica {
-    protected ImageIcon icono;
+    protected JLabel icono;
     protected int x;
     protected int y;
 
     public EntidadGrafica() {
-        icono = new ImageIcon();
+        icono = new JLabel();
     }
 
     public EntidadGrafica(String path) {
-        icono = new ImageIcon(path);
+        icono = new JLabel(path);
     }
 
     public void update() {
 
     }
 
-    public ImageIcon getIcon() {
+    public JLabel getIcon() {
         return icono;
     }
 
