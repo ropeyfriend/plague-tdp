@@ -8,7 +8,6 @@ public class Juego {
     protected Mapa mapa;
     
     public Juego() {
-    	System.out.println("Prueba");
         run();
     } 
 
