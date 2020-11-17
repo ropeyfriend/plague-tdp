@@ -1,5 +1,11 @@
 package entidades.premios;
 
-public abstract class Premio {
+import entidades.Entidad;
+
+public abstract class Premio extends Entidad{
+
+	public Premio(String path) {
+		super(path);
+	}
     
 }
