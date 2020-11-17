@@ -16,14 +16,6 @@ public abstract class Entidad {
 	public Entidad(){
 	}
     
-	public void cambiarDibujo(String rutaDibujo) {
-		grafico.updateImagen(rutaDibujo);
-	}
-	
-	public void flushDibujo(String rutaDibujo) {
-		grafico.flushDibujo(rutaDibujo);
-	}
-    
     public abstract void accept(Visitor v);
 
 }
