@@ -7,8 +7,8 @@ public abstract class Infectado extends Personaje{
 	protected float cargaViral;
 	protected boolean infectado;
 
-	public Infectado(String path, int vel, int r) {
-		super(path);
+	public Infectado(int vel, int r) {
+		super();
 		cargaViral = 100;
 		velocidad = vel;
 		rango = r;

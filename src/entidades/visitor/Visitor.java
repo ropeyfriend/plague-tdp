@@ -1,19 +1,26 @@
 package entidades.visitor;
+import entidades.Entidad;
 import entidades.personajes.*;
 import entidades.proyectiles.*;
 import entidades.premios.*;
 
-public interface Visitor {
+public abstract class Visitor {
+	
+		protected Entidad obj;
+	
+		public Visitor(Entidad o) {
+			obj = o;		
+		}
 
-		public void visitarInfectadoAlpha(InfectadoAlpha ea);
+		public abstract void visitarInfectadoAlpha(InfectadoAlpha ea);
 		
-		public void visitarInfectadoBeta(InfectadoBeta eb);
+		public abstract void visitarInfectadoBeta(InfectadoBeta eb);
 		
-		public void visitarJugador(Jugador J);
+		public abstract void visitarJugador(Jugador J);
 		
-		public void visitarProyectil(Proyectil p);
+		public abstract void visitarProyectil(Proyectil p);
 		
-		public void visitarPrecio(Premio gift);
+		public abstract void visitarPremio(Premio gift);
 	
 }
 
