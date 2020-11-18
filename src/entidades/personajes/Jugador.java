@@ -8,28 +8,28 @@ public class Jugador extends Personaje{
 	//Atributes
 	/*Arma para desinfectar a los infectados*/
 	protected ProyectilJugador armaSanitaria;
-	/*Indica si el juagador esta vivo o muerto*/
-	protected boolean vivo;
-	/*Representa la parte grafica del jugador*/
-	private EntidadGrafica entidadGrafica;
+	/*Indica si el jugador esta vivo o muerto*/
+	protected boolean muerto;
 
 	public Jugador(ProyectilJugador p, int vel) {
 		super();
 		cargaViral = 0;
 		velocidad = vel;
 		armaSanitaria = p;
-		vivo = true;
+		muerto = false;
 		visitor = new JugadorVisitor(this);
+		entidadGrafica = new EntidadGrafica();
 		/*ruta_dibujo_moviendose = "img/enemigos/Jugador.gif";
 		ruta_dibujo_ataque = "img/enemigos/Jugador_ataque.gif";*/
 	}
 
+	//Methods
 	public void atacarInfectadoAlpha(InfectadoAlpha a) {
-		a.recibirDanio();	
+		armaSanitaria.desinfectarAlpha(a);
 	}
 	
 	public void atacarInfectadoBeta(InfectadoBeta b) {
-		b.recibirDanio();
+		armaSanitaria.desinfectarBeta(b);
 	}
 	
 	public void recibirDanio(int danio){
@@ -37,10 +37,9 @@ public class Jugador extends Personaje{
 			cargaViral += danio;
 			
 			if(cargaViral == 100) {
-				vivo = false;
+				muerto = true;
 			}
 		}
-	
 	}
 	
 	public void updateImagenAtaque() {
@@ -53,5 +52,23 @@ public class Jugador extends Personaje{
 	
 	public void accept(Visitor v){
 		v.visitarJugador(this);
-	} 
+	}
+	
+	//Setters
+	public void setMuerto(boolean m) {
+		muerto = m;
+	}
+	
+	public void setArmaSanitaria(ProyectilJugador a) {
+		armaSanitaria = a;
+	}
+	
+	//Getters
+	public boolean getMuerto() {
+		return muerto;
+	}
+	
+	public ProyectilJugador getArmaSanitaria() {
+		return armaSanitaria;
+	}
 }

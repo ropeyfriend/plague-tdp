@@ -5,29 +5,24 @@ import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
 
 public class InfectadoAlpha extends Infectado{
-	/*Cantidad de danio que le hace al jugador*/
-	protected int cantDanioJugador;
-	/*Cantidad de danio que recibe al ser golpeado por el jugador*/
-	protected float danio_a_recibir;
-	/*Representa la parte grafica del infectado Alpha*/
-	private EntidadGrafica entidadGrafica;
 	
 	public InfectadoAlpha(int vel,int r){
 		super(vel, r);
 		cantDanioJugador = 20;
 		danio_a_recibir = 12.5F;
-		this.entidadGrafica = new EntidadGrafica();
 		visitor = new InfectadoVisitor(this);
+		entidadGrafica = new EntidadGrafica();
 		/*ruta_dibujo_moviendose = "img/enemigos/InfectadoAlpha.gif";
 		ruta_dibujo_ataque = "img/enemigos/InfectadoAlpha_ataque.gif";*/
 	}
 	
+	//Methods
 	public void recibirDanio(){	//(Como le resto de a 12.5 entonces se muere en 8 golpes)
 		if(cargaViral >= danio_a_recibir) {//Si la cargaViral es cero, no sigo desinfectandolo
 			cargaViral -= danio_a_recibir;
 			
 			if(cargaViral == 0) {
-				infectado = false;
+				estaInfectado = false;
 				//Lo tengo q eliminar del juego
 			}
 			
@@ -50,7 +45,7 @@ public class InfectadoAlpha extends Infectado{
 	}
 
 	public void accept(Visitor v){
-		v.visitarInfectadoAlpha(this);
+		v.visitarInfectado(this);
 	} 
 
 }

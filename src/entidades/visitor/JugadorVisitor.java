@@ -1,8 +1,7 @@
 package entidades.visitor;
 
 import entidades.Entidad;
-import entidades.personajes.InfectadoAlpha;
-import entidades.personajes.InfectadoBeta;
+import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
@@ -15,13 +14,7 @@ public class JugadorVisitor extends Visitor {
 	}
 
 	@Override
-	public void visitarInfectadoAlpha(InfectadoAlpha ea) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visitarInfectadoBeta(InfectadoBeta eb) {
+	public void visitarInfectado(Infectado i) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -43,5 +36,7 @@ public class JugadorVisitor extends Visitor {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
