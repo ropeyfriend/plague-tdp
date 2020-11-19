@@ -1,7 +1,6 @@
 package entidades.proyectiles;
 
-import entidades.personajes.InfectadoAlpha;
-import entidades.personajes.InfectadoBeta;
+import entidades.personajes.Infectado;
 import entidades.visitor.Visitor;
 
 public class ProyectilJugador extends Proyectil{
@@ -10,18 +9,14 @@ public class ProyectilJugador extends Proyectil{
 	protected int capacidadDesinfeccion;
 	
 	public ProyectilJugador() {
-		super();
-		direccion = 1; //Va hacia ARRIBA
-		velocidad = 5;
+		super(5,1);//Va hacia arriba (1)
 		capacidadDesinfeccion = 10;
+		/*ruta_dibujo_moviendose = "img/enemigos/ProyectilJugador.gif";
+		ruta_dibujo_ataque = "img/enemigos/ProyectilJugador_ataque.gif";*/
 	}
 	
 	//Methods
-	public void desinfectarAlpha(InfectadoAlpha i) {
-		i.recibirDanio();
-	}
-	
-	public void desinfectarBeta(InfectadoBeta i) {
+	public void desinfectar(Infectado i) {
 		i.recibirDanio();
 	}
 	
@@ -29,16 +24,18 @@ public class ProyectilJugador extends Proyectil{
 		v.visitarProyectil(this);	
 	}
 	
-	/*
-	public void efectoSuper() {//----------------------------------------------------------------------Preguntar
-		capacidadDesinfeccion =capacidadDesinfeccion * 2;
-	}*/
+	public void efectoSuper(int valor) {
+		capacidadDesinfeccion = capacidadDesinfeccion * valor;
+	}
+	
+	public void mover() {}
 	
 	//Getters
 	public int getCapacidadDesinfeccion() {
 		return capacidadDesinfeccion;
 	}
 	
+	//Setters
 	public void setCapacidadDesinfeccion(int c) {
 		capacidadDesinfeccion = c;
 	}

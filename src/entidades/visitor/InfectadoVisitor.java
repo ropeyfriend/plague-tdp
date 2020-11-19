@@ -1,15 +1,16 @@
 package entidades.visitor;
 
-import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
 
 public class InfectadoVisitor extends Visitor{
+	
+	private Infectado inf;
 
-	public InfectadoVisitor(Entidad o) {
-		super(o);
+	public InfectadoVisitor(Infectado i) {
+		inf = i;
 	}
 
 	@Override
@@ -19,12 +20,11 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarJugador(Jugador j) {
-		
+		inf.atacar(j);
 	}
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
-		//((InfectadoAlpha) obj).recibirDanio();
 	}
 
 	@Override

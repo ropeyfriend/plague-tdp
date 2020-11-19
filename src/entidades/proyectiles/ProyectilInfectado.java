@@ -8,9 +8,14 @@ public class ProyectilInfectado extends Proyectil{
 	protected int rango;
 	
 	public ProyectilInfectado() {
-		direccion = -1; //Va hacia ABAJO
-		velocidad = 3;
-		rango = 5;	
+		super(3,-1); //Va hacia abajo (-1)
+		rango = 5;
+		/*ruta_dibujo_moviendose = "img/enemigos/ProyectilInfectado.gif";
+		ruta_dibujo_ataque = "img/enemigos/ProyectilInfectado_ataque.gif";*/
+	}
+	
+	public void mover() {
+		
 	}
 	
 	public int getRango() {

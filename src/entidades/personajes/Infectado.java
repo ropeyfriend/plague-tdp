@@ -1,5 +1,6 @@
 package entidades.personajes;
 
+
 public abstract class Infectado extends Personaje{
 	//Atributes
 	/*Representa el rango donde se exparcen las particulas del infectado*/
@@ -18,6 +19,10 @@ public abstract class Infectado extends Personaje{
 		rango = r;
 		estaInfectado = true;
 	}
+	
+	 public abstract void recibirDanio();
+	 
+	 public abstract void atacar(Jugador j);
 	
 	//Getters
 	public int getRango() {

@@ -1,16 +1,16 @@
 package entidades.visitor;
 
-import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
 
 public class JugadorVisitor extends Visitor {
+	
+	private Jugador j;
 
-	public JugadorVisitor(Entidad o) {
-		super(o);
-		// TODO Auto-generated constructor stub
+	public JugadorVisitor(Jugador j) {
+		this.j = j;
 	}
 
 	@Override

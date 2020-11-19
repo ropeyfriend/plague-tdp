@@ -24,13 +24,10 @@ public class Jugador extends Personaje{
 	}
 
 	//Methods
-	public void atacarInfectadoAlpha(InfectadoAlpha a) {
-		armaSanitaria.desinfectarAlpha(a);
+	public void atacarInfectadoAlpha(Infectado i) {
+		armaSanitaria.desinfectar(i);
 	}
 	
-	public void atacarInfectadoBeta(InfectadoBeta b) {
-		armaSanitaria.desinfectarBeta(b);
-	}
 	
 	public void recibirDanio(int danio){
 		if(cargaViral+danio < 100) {
