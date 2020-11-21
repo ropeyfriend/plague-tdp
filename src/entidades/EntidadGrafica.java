@@ -3,16 +3,16 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import entidades.visitor.Visitor;
-
-public class EntidadGrafica extends Entidad{
+public class EntidadGrafica{
 
 	protected JLabel icono;
     protected int x;
     protected int y;
+    protected JLabel dibujo;
+	protected int ancho; 
+	protected int largo; 
     
     public EntidadGrafica() {
-		super();
 	}
     
 	public void updateImagen(String rutaDibujo) {
@@ -23,7 +23,7 @@ public class EntidadGrafica extends Entidad{
 	}
 	
 	public void flushImagen(String rutaDibujo) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getClassLoader().getResource(ruta_dibujo_ataque));
+		ImageIcon imagen = new ImageIcon(this.getClass().getClassLoader().getResource(rutaDibujo));
 		imagen.getImage().flush();  // el flush() vuelve a iniciar el gif
 		dibujo.setIcon(imagen);	
 	}
@@ -40,9 +40,4 @@ public class EntidadGrafica extends Entidad{
         return x;
     }
 
-	@Override
-	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
-		
-	}
 }

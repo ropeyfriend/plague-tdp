@@ -8,10 +8,6 @@ public abstract class Personaje extends Entidad{
 	/*Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
 	
-	public Personaje() {
-		super();
-	}
-	
 	//Getters
 	public float getCargaViral() {
 		return cargaViral;

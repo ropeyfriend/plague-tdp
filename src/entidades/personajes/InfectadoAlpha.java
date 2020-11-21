@@ -12,8 +12,8 @@ public class InfectadoAlpha extends Infectado{
 		danio_a_recibir = 12.5F;
 		visitor = new InfectadoVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "img/enemigos/InfectadoAlpha.gif";
-		ruta_dibujo_ataque = "img/enemigos/InfectadoAlpha_ataque.gif";*/
+		/*ruta_dibujo_moviendose = "img/InfectadoAlpha.gif";
+		ruta_dibujo_ataque = "img/InfectadoAlpha_ataque.gif";*/
 	}
 	
 	//Methods

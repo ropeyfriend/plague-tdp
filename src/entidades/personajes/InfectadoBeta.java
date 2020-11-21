@@ -12,8 +12,8 @@ public class InfectadoBeta extends Infectado{
 		danio_a_recibir = 10;
 		visitor = new InfectadoVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "img/enemigos/InfectadoBeta.gif";
-		ruta_dibujo_ataque = "img/enemigos/InfectadoBeta_ataque.gif";*/
+		/*ruta_dibujo_moviendose = "img/InfectadoBeta.gif";
+		ruta_dibujo_ataque = "img/InfectadoBeta_ataque.gif";*/
 	}
 	
 	//Methods

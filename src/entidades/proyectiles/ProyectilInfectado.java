@@ -14,20 +14,23 @@ public class ProyectilInfectado extends Proyectil{
 		ruta_dibujo_ataque = "img/enemigos/ProyectilInfectado_ataque.gif";*/
 	}
 	
+	//Methods
 	public void mover() {
 		
 	}
 	
+	public void accept(Visitor v) {
+		v.visitarProyectil(this);	
+	}
+	
+	//Getters
 	public int getRango() {
 		return rango;
 	}
 	
+	//Setters
 	public void setRango(int r) {
 		rango = r;
-	}
-	
-	public void accept(Visitor v) {
-		v.visitarProyectil(this);	
 	}
 
 }

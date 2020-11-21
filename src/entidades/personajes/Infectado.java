@@ -13,7 +13,6 @@ public abstract class Infectado extends Personaje{
 	protected boolean estaInfectado;
 
 	public Infectado(int vel, int r) {
-		super();
 		cargaViral = 100;
 		velocidad = vel;
 		rango = r;

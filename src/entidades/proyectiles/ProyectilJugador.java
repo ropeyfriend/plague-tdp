@@ -11,8 +11,8 @@ public class ProyectilJugador extends Proyectil{
 	public ProyectilJugador() {
 		super(5,1);//Va hacia arriba (1)
 		capacidadDesinfeccion = 10;
-		/*ruta_dibujo_moviendose = "img/enemigos/ProyectilJugador.gif";
-		ruta_dibujo_ataque = "img/enemigos/ProyectilJugador_ataque.gif";*/
+		/*ruta_dibujo_moviendose = "img/ProyectilJugador.gif";
+		ruta_dibujo_ataque = "img/ProyectilJugador_ataque.gif";*/
 	}
 	
 	//Methods

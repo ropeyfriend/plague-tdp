@@ -12,22 +12,20 @@ public class Jugador extends Personaje{
 	protected boolean muerto;
 
 	public Jugador(ProyectilJugador p, int vel) {
-		super();
 		cargaViral = 0;
 		velocidad = vel;
 		armaSanitaria = p;
 		muerto = false;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "img/enemigos/Jugador.gif";
-		ruta_dibujo_ataque = "img/enemigos/Jugador_ataque.gif";*/
+		/*ruta_dibujo_moviendose = "img/Jugador.gif";
+		ruta_dibujo_ataque = "img/Jugador_ataque.gif";*/
 	}
 
 	//Methods
-	public void atacarInfectadoAlpha(Infectado i) {
+	public void atacarInfectado(Infectado i) {
 		armaSanitaria.desinfectar(i);
 	}
-	
 	
 	public void recibirDanio(int danio){
 		if(cargaViral+danio < 100) {
