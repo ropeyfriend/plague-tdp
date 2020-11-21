@@ -3,6 +3,8 @@ import entidades.personajes.*;
 import entidades.proyectiles.*;
 import entidades.premios.*;
 
+/**Clase que modela a un vistor*/
+
 public abstract class Visitor {
 
 		public abstract void visitarInfectado(Infectado i);

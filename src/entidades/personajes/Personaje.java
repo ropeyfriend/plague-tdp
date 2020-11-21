@@ -8,32 +8,47 @@ public abstract class Personaje extends Entidad{
 	/*Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
 	
-	public Personaje() {
-		super();
-	}
-	
 	//Getters
+	/**Retorna la carga viral del personaje
+	 * @return carga viral
+	 * */
 	public float getCargaViral() {
 		return cargaViral;
 	}
 	
+	/**Retorna la velocidad del personaje
+	 * @return velocidad.
+	 * */
 	public int getVelocidad() {
 		return velocidad;
 	}
 	
-	//Setters
-	public void setCargaViral(int c) {
-		cargaViral = c;
-	}
-	
-	public void setVelocidad(int v) {
-		velocidad = v;
-	}
-	
+	/**Retorna la entidad grafica del personaje
+	 * @return entidad grafica.
+	 * */
 	public EntidadGrafica getEntidadGrafica() {
 		return entidadGrafica;
 	}
 	
+	
+	//Setters
+	/**Modifica el valor de la carga viral por el pasado por parametro
+	 * @param c, carga viral a modificar
+	 * */
+	public void setCargaViral(int c) {
+		cargaViral = c;
+	}
+	
+	/**Modifica el valor de la velocidad por el pasado por parametro
+	 * @param v, velocidad a modificar
+	 * */
+	public void setVelocidad(int v) {
+		velocidad = v;
+	}
+	
+	/**Modifica el valor de la la entidad grafica por el pasado por parametro
+	 * @param e, entidad grafica a modificar.
+	 * */
 	public void setEntidadGrafica(EntidadGrafica e) {
 		entidadGrafica = e;
 	}
