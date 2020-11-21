@@ -5,8 +5,10 @@ import entidades.personajes.Jugador;
 import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
 
+/**Clase que modela al visitor de un infectado*/
+
 public class InfectadoVisitor extends Visitor{
-	
+	/**Representa a un infectado*/
 	private Infectado inf;
 
 	public InfectadoVisitor(Infectado i) {

@@ -4,6 +4,8 @@ import entidades.EntidadGrafica;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
 
+/**Clase que modela a un infectado Alpha del juego*/
+
 public class InfectadoAlpha extends Infectado{
 	
 	public InfectadoAlpha(int vel,int r){
@@ -12,8 +14,8 @@ public class InfectadoAlpha extends Infectado{
 		danio_a_recibir = 12.5F;
 		visitor = new InfectadoVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "img/InfectadoAlpha.gif";
-		ruta_dibujo_ataque = "img/InfectadoAlpha_ataque.gif";*/
+		/*ruta_dibujo_moviendose = "recursos/Infectados/InfectadoAlpha_caminar.gif";
+		ruta_dibujo_ataque = "recursos/Infectados/InfectadoAlpha_ataque.gif";*/
 	}
 	
 	//Methods
