@@ -1,0 +1,35 @@
+package entidades.visitor;
+
+import entidades.personajes.Infectado;
+import entidades.personajes.Jugador;
+import entidades.premios.Premio;
+import entidades.proyectiles.Proyectil;
+
+public class InfectadoVisitor extends Visitor{
+	
+	private Infectado inf;
+
+	public InfectadoVisitor(Infectado i) {
+		inf = i;
+	}
+
+	@Override
+	public void visitarInfectado(Infectado i) {
+		
+	}
+
+	@Override
+	public void visitarJugador(Jugador j) {
+		inf.atacar(j);
+	}
+
+	@Override
+	public void visitarProyectil(Proyectil p) {
+	}
+
+	@Override
+	public void visitarPremio(Premio gift) {
+		
+	}
+	
+}
