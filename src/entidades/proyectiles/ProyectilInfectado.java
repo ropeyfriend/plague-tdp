@@ -13,8 +13,8 @@ public class ProyectilInfectado extends Proyectil{
 	public ProyectilInfectado() {
 		super(3,-1); //Va hacia abajo (-1)
 		rango = 5;
-		/*ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
-		ruta_dibujo_ataque = "recursos/Proyectiles/ProyectilInfectado_ataque.gif";*/
+		activo = true;
+		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
 	}
 	
 	//Methods
@@ -26,7 +26,7 @@ public class ProyectilInfectado extends Proyectil{
 		v.visitarProyectil(this);	
 	}
 	
-	//Getters
+	//Getter
 	/**Retorna el rango del proyectil
 	 * @return rango
 	 * */
@@ -34,7 +34,7 @@ public class ProyectilInfectado extends Proyectil{
 		return rango;
 	}
 	
-	//Setters
+	//Setter
 	/**Modifica el rango del proyectil por el pasado por parametro
 	 * @param r, rango a modificar
 	 * */

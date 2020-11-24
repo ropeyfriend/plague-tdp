@@ -12,10 +12,11 @@ public class InfectadoAlpha extends Infectado{
 		super(vel, r);
 		cantDanioJugador = 20;
 		danio_a_recibir = 12.5F;
+		muerto = false;
 		visitor = new InfectadoVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "recursos/Infectados/InfectadoAlpha_caminar.gif";
-		ruta_dibujo_ataque = "recursos/Infectados/InfectadoAlpha_ataque.gif";*/
+		ruta_dibujo_moviendose = "recursos/Infectados/InfectadoAlpha_caminar.gif";
+		ruta_dibujo_ataque = "recursos/Infectados/InfectadoAlpha_ataque.gif";
 	}
 	
 	//Methods
@@ -24,7 +25,7 @@ public class InfectadoAlpha extends Infectado{
 			cargaViral -= danio_a_recibir;
 			
 			if(cargaViral == 0) {
-				estaInfectado = false;
+				muerto = true;
 				//Lo tengo q eliminar del juego
 			}
 			
