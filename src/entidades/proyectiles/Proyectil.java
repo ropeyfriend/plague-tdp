@@ -10,6 +10,8 @@ public abstract class Proyectil extends Entidad{
     protected int velocidad;
     /*Representa la direccion a la cual se mueve el proyectil*/
     protected int direccion;
+    /**Indica si el proyectil esta activo o no*/
+    protected boolean activo;
     
     /**Crea un nuevo proyectil
      * @param v, velocidad del proyectil
@@ -35,6 +37,13 @@ public abstract class Proyectil extends Entidad{
      * */
     public int getDireccion() {
     	return direccion;
+    }
+    
+    /**Retorna si el proyectil esta o no activo
+     * @return activo
+     * */
+    public boolean getActivo() {
+    	return activo;
     }
 
     /**Retorna la entidad grafica del proyectil
@@ -64,6 +73,13 @@ public abstract class Proyectil extends Entidad{
 	 * */
 	public void setDireccion(int d) {
 		direccion = d;
+	}
+	
+	/**Modifica la variable activo por la pasada por parametro
+	 * @param a, variable a modificar
+	 * */
+	public void setActivo(boolean a) {
+		activo = a;
 	}
     
 }

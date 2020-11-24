@@ -13,6 +13,7 @@ public class ProyectilInfectado extends Proyectil{
 	public ProyectilInfectado() {
 		super(3,-1); //Va hacia abajo (-1)
 		rango = 5;
+		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
 	}
 	

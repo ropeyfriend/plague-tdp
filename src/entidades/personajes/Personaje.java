@@ -7,6 +7,8 @@ public abstract class Personaje extends Entidad{
 	protected float cargaViral;
 	/*Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
+	/**Indica si es personaje esta muerto*/
+	protected boolean muerto;
 	
 	//Getters
 	/**Retorna la carga viral del personaje
@@ -30,6 +32,12 @@ public abstract class Personaje extends Entidad{
 		return entidadGrafica;
 	}
 	
+	/**Retorna si el personaje esta o no muerto
+	 * @return muerto
+	 * */
+	public boolean getMuerto() {
+		return muerto;
+	}
 	
 	//Setters
 	/**Modifica el valor de la carga viral por el pasado por parametro
@@ -51,6 +59,13 @@ public abstract class Personaje extends Entidad{
 	 * */
 	public void setEntidadGrafica(EntidadGrafica e) {
 		entidadGrafica = e;
+	}
+	
+	/**Modifica el valor de la variable muerto por la pasada por parametro
+	 * @param m, variable a modificar
+	 * */
+	public void setMuerto(boolean m) {
+		muerto = m;
 	}
 
 }

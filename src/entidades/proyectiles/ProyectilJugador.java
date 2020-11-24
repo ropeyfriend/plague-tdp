@@ -14,6 +14,7 @@ public class ProyectilJugador extends Proyectil{
 	public ProyectilJugador() {
 		super(5,1);//Va hacia arriba (1)
 		capacidadDesinfeccion = 10;
+		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilJugador.gif";
 	}
 	

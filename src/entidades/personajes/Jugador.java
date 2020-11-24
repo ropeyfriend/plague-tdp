@@ -17,6 +17,7 @@ public class Jugador extends Personaje{
 		cargaViral = 0;
 		velocidad = vel;
 		armaSanitaria = p;
+		muerto = false;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica();
 		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
@@ -40,6 +41,7 @@ public class Jugador extends Personaje{
 			
 			if(cargaViral == 100) {
 				//Lo tengo q eliminar del juego
+				muerto = true;
 			}
 		}
 	}
