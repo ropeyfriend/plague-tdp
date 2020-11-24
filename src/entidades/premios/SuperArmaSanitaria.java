@@ -1,30 +1,47 @@
 package entidades.premios;
 
+import entidades.EntidadGrafica;
+import entidades.visitor.Visitor;
+
+/**Clase que modela a un super arma sanitaria*/
+
 public class SuperArmaSanitaria extends EfectoTemporal {
 	
-	private double dañoExtra;
-	private int duracion;
+	/**Danio extra del arma sanitaria*/
+	private double danioExtra;
 	
-	public SuperArmaSanitaria(String path, int dañoExtra, int duracion) {
-		super(path);
-		this.dañoExtra = dañoExtra;
-		this.duracion = duracion;
+	/**Crea una super arma sanitaria nueva*/
+	public SuperArmaSanitaria(int danioExtra, int duracion) {
+		super(duracion);
+		this.danioExtra = danioExtra;
+		entidadGrafica = new EntidadGrafica();
+		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_super.gif";
 	}
 	
-	public double getDañoExtra() {
-		return dañoExtra;
+	//Methods
+	@Override
+	public void accept(Visitor v) {
+		v.visitarPremio(this);
 	}
 	
-	public void setDañoExtra(double d) {
-		dañoExtra = d;
+	public void updateImagen() {
+		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 	}
 	
-	public int getDuracion() {
-		return duracion;
+	//Getter
+	/**Obtiene el valor del danio extra
+	 * @return danio extra del arma
+	 * */
+	public double getDanioExtra() {
+		return danioExtra;
 	}
 	
-	public void setDuracion(int d) {
-		duracion = d;
+	//Setter
+	/**Modidica el valor del danio extra por el pasado por parametro
+	 * @param d, danio extra a modificar
+	 * */
+	public void setDanioExtra(double d) {
+		danioExtra = d;
 	}
 
 }

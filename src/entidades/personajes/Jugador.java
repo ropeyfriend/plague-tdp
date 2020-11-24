@@ -8,8 +8,6 @@ public class Jugador extends Personaje{
 	//Atributes
 	/*Arma para desinfectar a los infectados*/
 	protected ProyectilJugador armaSanitaria;
-	/*Indica si el jugador esta vivo o muerto*/
-	protected boolean muerto;
 	
 	/**Crea un nuevo jugador
 	 * @param p, proyectil del jugador
@@ -19,11 +17,10 @@ public class Jugador extends Personaje{
 		cargaViral = 0;
 		velocidad = vel;
 		armaSanitaria = p;
-		muerto = false;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica();
-		/*ruta_dibujo_moviendose = "img/Jugador.gif";
-		ruta_dibujo_ataque = "img/Jugador_ataque.gif";*/
+		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
+		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
 	}
 
 	//Methods
@@ -42,7 +39,21 @@ public class Jugador extends Personaje{
 			cargaViral += danio;
 			
 			if(cargaViral == 100) {
-				muerto = true;
+				//Lo tengo q eliminar del juego
+			}
+		}
+	}
+	
+	/**Cura al jugador restando el valor pasado por parametro a la carga viral
+	 * @param vida, valor a restar a la carga viral
+	 * */
+	public void curar(int vida) {
+		if(cargaViral != 100) {//Si no esta muerto
+			if(cargaViral - vida >= 0) {
+				cargaViral -= vida;
+			}
+			else {
+				cargaViral = 0;
 			}
 		}
 	}
@@ -60,13 +71,6 @@ public class Jugador extends Personaje{
 	}
 	
 	//Setters
-	/*Modifica el valor de si el jugador esta muerto por el pasado por parametro
-	 * @param m, indica si el jugador esta vivo o no.
-	 * */
-	public void setMuerto(boolean m) {
-		muerto = m;
-	}
-	
 	/**Modifica al arma sanitaria por la pasada por parametro
 	 * @param a, arma sanitaria a modificar.
 	 * */
@@ -75,13 +79,6 @@ public class Jugador extends Personaje{
 	}
 	
 	//Getters
-	/**Retorna si el jugador esta vivo o muerto
-	 * @return true si esta muerto
-	 * */
-	public boolean getMuerto() {
-		return muerto;
-	}
-	
 	/**Retorna el arma sanitaria del jugador
 	 * @return arma sanitaria
 	 * */

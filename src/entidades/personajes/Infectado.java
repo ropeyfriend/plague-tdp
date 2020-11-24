@@ -10,14 +10,11 @@ public abstract class Infectado extends Personaje{
 	protected int cantDanioJugador;
 	/**Cantidad de danio que recibe al ser golpeado por el jugador*/
 	protected float danio_a_recibir;
-	/**Indica si el personaje esta infectado o no*/
-	protected boolean estaInfectado;
 
 	public Infectado(int vel, int r) {
 		cargaViral = 100;
 		velocidad = vel;
 		rango = r;
-		estaInfectado = true;
 	}
 	
 	/**Disminuye la carga viral del infectado*/
@@ -40,13 +37,6 @@ public abstract class Infectado extends Personaje{
 	  * */
 	public int getRango() {
 		return rango;
-	}
-	
-	/**Retorna si el personaje esta o no infectado
-	 * @return si esta infectado
-	 * */
-	public boolean getEstaInfectado() {
-		return estaInfectado;
 	}
 	
 	/**Retorna la cantidad de danio que recibe el infectado
@@ -83,13 +73,6 @@ public abstract class Infectado extends Personaje{
 	 * */
 	public void setCantDanioJugador(int d) {
 		cantDanioJugador = d;
-	}
-	
-	/**Actualiza el valor de si el infectado esta infectado o no por el pasado por parametro
-	 * @param i, variable a actualizar.
-	 * */
-	public void setEstaInfectado(boolean i) {
-		estaInfectado = i;
 	}
     
 }

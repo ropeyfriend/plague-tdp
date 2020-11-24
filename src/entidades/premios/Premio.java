@@ -2,10 +2,11 @@ package entidades.premios;
 
 import entidades.Entidad;
 
-public abstract class Premio extends Entidad{
+/**Clase que modela a un premio del juego*/
 
-	public Premio(String path) {
-		super(path);
+public abstract class Premio extends Entidad{
+	/**Crea un nuevo premio*/
+	public Premio() {
 	}
     
 }
