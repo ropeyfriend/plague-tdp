@@ -12,8 +12,8 @@ public class Pocion extends ObjetoPrecioso {
 	public Pocion() {
 		super();
 		cantCuracion = 25;
-		entidadGrafica = new EntidadGrafica();
 		ruta_dibujo_moviendose = "recursos/Premios/ObjetosPreciosos/pocionVida.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods

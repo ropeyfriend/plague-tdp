@@ -19,4 +19,8 @@ public abstract class Entidad {
 	 * @param v, visitor a aceptar*/
     public abstract void accept(Visitor v);
 
+    public EntidadGrafica getGrafica() {
+    	return entidadGrafica;
+    }
+    
 }

@@ -10,13 +10,13 @@ public class InfectadoBeta extends Infectado{
 	
 	public InfectadoBeta(int vel, int r) {
 		super(vel, r);
+		ruta_dibujo_moviendose = "recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "recursos/Infectados/InfectadoBeta_ataque.gif";
 		cantDanioJugador = 10;
 		danio_a_recibir = 10;
 		muerto = false;
 		visitor = new InfectadoVisitor(this);
-		entidadGrafica = new EntidadGrafica();
-		ruta_dibujo_moviendose = "recursos/Infectados/InfectadoBeta_caminar.gif";
-		ruta_dibujo_ataque = "recursos/Infectados/InfectadoBeta_ataque.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods

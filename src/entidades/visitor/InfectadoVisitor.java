@@ -33,5 +33,4 @@ public class InfectadoVisitor extends Visitor{
 	public void visitarPremio(Premio gift) {
 		
 	}
-	
 }

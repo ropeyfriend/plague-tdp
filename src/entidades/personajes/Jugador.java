@@ -14,14 +14,14 @@ public class Jugador extends Personaje{
 	 * @param vel, velocidad del jugador
 	 * */
 	public Jugador(ProyectilJugador p, int vel) {
+		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
+		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
 		cargaViral = 0;
 		velocidad = vel;
 		armaSanitaria = p;
 		muerto = false;
 		visitor = new JugadorVisitor(this);
-		entidadGrafica = new EntidadGrafica();
-		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
-		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 
 	//Methods

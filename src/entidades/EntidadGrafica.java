@@ -1,5 +1,7 @@
 package entidades;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 /**Clase encargada de la parte grafica de la entidad*/
@@ -8,7 +10,7 @@ import javax.swing.JLabel;
 
 /**Clase que modela la parte grafica de una entidad*/
 
-public class EntidadGrafica{
+public class EntidadGrafica {
 	/**Coordenada x donde se ubica la entidad*/
     protected int x;
     /**Coordenada y donde se ubica la entidad*/
@@ -21,7 +23,15 @@ public class EntidadGrafica{
 	protected int largo; 
     
 	/**Crea una nueva entidad grafica*/
-    public EntidadGrafica() {
+    public EntidadGrafica(String rutaDibujo) {
+    	x = 100;
+    	y = 55;
+    	ancho = 40;
+    	largo = 60;
+    	ImageIcon original = new ImageIcon(rutaDibujo);
+    	dibujo = new JLabel(original);
+    	dibujo.setBounds(x, y, original.getIconWidth()/2, original.getIconHeight()/2);
+    	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
 	}
     
     /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro
@@ -63,5 +73,10 @@ public class EntidadGrafica{
     public int geyX() {
         return x;
     }
+    
+    public JLabel getLabel() {
+    	return dibujo;
+    }
+    
 
 }
