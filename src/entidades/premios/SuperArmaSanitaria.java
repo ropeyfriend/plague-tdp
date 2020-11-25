@@ -15,8 +15,8 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	public SuperArmaSanitaria(int danioExtra, int duracion) {
 		super(duracion);
 		this.danioExtra = danioExtra;
-		entidadGrafica = new EntidadGrafica();
 		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_super.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods

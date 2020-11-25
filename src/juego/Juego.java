@@ -1,7 +1,7 @@
 package juego;
 
-import Mapa.Mapa;
 import entidades.Entidad;
+import mapa.Mapa;
 
 public class Juego {
     protected Entidad entidades [];
@@ -12,6 +12,6 @@ public class Juego {
     } 
 
     public void run() {
-
+    	
     }
 }

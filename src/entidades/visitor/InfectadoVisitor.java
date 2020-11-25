@@ -36,5 +36,4 @@ public class InfectadoVisitor extends Visitor{
 		// TODO Auto-generated method stub
 		
 	}
-	
 }
