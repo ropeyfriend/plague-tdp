@@ -30,5 +30,7 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 	}
 	
+	public void startEffect() {}
+	
 
 }

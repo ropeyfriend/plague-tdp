@@ -22,15 +22,18 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarJugador(Jugador j) {
+		inf.updateImagenAtaque();
 		inf.atacar(j);
 	}
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
+		inf.recibirDanio(); 
 	}
 
 	@Override
-	public void visitarPremio(Premio gift) {
+	public void visitarPremio(Premio p) {
+		// TODO Auto-generated method stub
 		
 	}
 	

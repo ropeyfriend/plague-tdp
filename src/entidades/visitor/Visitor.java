@@ -12,8 +12,7 @@ public abstract class Visitor {
 		public abstract void visitarJugador(Jugador j);
 		
 		public abstract void visitarProyectil(Proyectil p);
-		
-		public abstract void visitarPremio(Premio gift);
 	
+		public abstract void visitarPremio(Premio p);
 }
 

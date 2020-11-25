@@ -1,5 +1,6 @@
 package entidades.proyectiles;
 
+import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 
 /**Clase que modela al proyectil de un infectado*/
@@ -24,6 +25,10 @@ public class ProyectilInfectado extends Proyectil{
 	
 	public void accept(Visitor v) {
 		v.visitarProyectil(this);	
+	}
+	
+	public void disparar(Jugador j, int d) {
+		j.recibirDanio(d);
 	}
 	
 	//Getter

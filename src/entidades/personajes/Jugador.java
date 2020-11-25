@@ -46,6 +46,13 @@ public class Jugador extends Personaje{
 		}
 	}
 	
+	/**Le otorga mayor capacidad de desinfeccion al arma del jugador
+	 * @param valor a multiplicar a la capacidad de desinfeccion.
+	 * */
+	public void efectoSuper(double cant) {
+		armaSanitaria.efectoSuper(cant);
+	}
+	
 	/**Cura al jugador restando el valor pasado por parametro a la carga viral
 	 * @param vida, valor a restar a la carga viral
 	 * */

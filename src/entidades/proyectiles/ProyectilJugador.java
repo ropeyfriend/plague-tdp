@@ -8,7 +8,7 @@ import entidades.visitor.Visitor;
 public class ProyectilJugador extends Proyectil{
 	//Atributes
 	/*Representa la capacidad de desinfeccion del virus del proyectil del jugador*/
-	protected int capacidadDesinfeccion;
+	protected double capacidadDesinfeccion;
 	
 	/**Crea un nuevo proyectil del jugador*/
 	public ProyectilJugador() {
@@ -33,7 +33,7 @@ public class ProyectilJugador extends Proyectil{
 	/**Multiplica la capacidad de desinfeccion por la pasada por parametro
 	 * @param valor a multiplicar
 	 * */
-	public void efectoSuper(int valor) {
+	public void efectoSuper(double valor) {
 		capacidadDesinfeccion = capacidadDesinfeccion * valor;
 	}
 	
@@ -43,7 +43,7 @@ public class ProyectilJugador extends Proyectil{
 	/**Retorna la capacidad de desinfeccion del proyectil
 	 * @return capacidad de desinfeccion
 	 * */
-	public int getCapacidadDesinfeccion() {
+	public double getCapacidadDesinfeccion() {
 		return capacidadDesinfeccion;
 	}
 	

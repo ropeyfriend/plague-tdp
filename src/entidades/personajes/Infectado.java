@@ -1,5 +1,7 @@
 package entidades.personajes;
 
+import entidades.proyectiles.ProyectilInfectado;
+
 /**Clase que modela a un infectado del juego*/
 
 public abstract class Infectado extends Personaje{
@@ -10,10 +12,13 @@ public abstract class Infectado extends Personaje{
 	protected int cantDanioJugador;
 	/**Cantidad de danio que recibe al ser golpeado por el jugador*/
 	protected float danio_a_recibir;
+	/**	Proyectil del infectado*/
+	protected ProyectilInfectado p;
 
 	public Infectado(int vel, int r) {
 		cargaViral = 100;
 		velocidad = vel;
+		p = new ProyectilInfectado();
 		rango = r;
 	}
 	

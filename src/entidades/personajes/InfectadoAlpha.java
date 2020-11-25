@@ -36,7 +36,7 @@ public class InfectadoAlpha extends Infectado{
 	}
 	
 	public void atacar(Jugador j) {
-		j.recibirDanio(cantDanioJugador);
+		p.disparar(j,cantDanioJugador);
 	}
 	
 	public void updateImagenAtaque() {

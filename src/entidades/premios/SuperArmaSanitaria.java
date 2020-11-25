@@ -1,6 +1,7 @@
 package entidades.premios;
 
 import entidades.EntidadGrafica;
+import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 
 /**Clase que modela a un super arma sanitaria*/
@@ -21,11 +22,17 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	//Methods
 	@Override
 	public void accept(Visitor v) {
-		v.visitarPremio(this);
-	}
+		v.visitarPremio(this);	}
 	
 	public void updateImagen() {
 		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
+	}
+	
+	/**Activa el efecto de super arma sanitaria al jugador
+	 * @param j, jugador
+	 * */
+	public void startEffect(Jugador j) {
+		j.efectoSuper(danioExtra);
 	}
 	
 	//Getter
