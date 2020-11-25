@@ -24,13 +24,13 @@ public class EntidadGrafica {
     
 	/**Crea una nueva entidad grafica*/
     public EntidadGrafica(String rutaDibujo) {
-    	x = 100;
-    	y = 55;
+    	x =0;
+    	y = 0;
     	ancho = 40;
     	largo = 60;
     	ImageIcon original = new ImageIcon(rutaDibujo);
     	dibujo = new JLabel(original);
-    	dibujo.setBounds(x, y, original.getIconWidth()/2, original.getIconHeight()/2);
+    	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
     	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
 	}
     
