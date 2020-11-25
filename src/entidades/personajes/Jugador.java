@@ -16,6 +16,7 @@ public class Jugador extends Personaje{
 	public Jugador(ProyectilJugador p, int vel) {
 		cargaViral = 0;
 		velocidad = vel;
+		danio = 15;
 		armaSanitaria = p;
 		muerto = false;
 		visitor = new JugadorVisitor(this);
@@ -49,7 +50,7 @@ public class Jugador extends Personaje{
 	/**Le otorga mayor capacidad de desinfeccion al arma del jugador
 	 * @param valor a multiplicar a la capacidad de desinfeccion.
 	 * */
-	public void efectoSuper(double cant) {
+	public void efectoSuper(int cant) {
 		armaSanitaria.efectoSuper(cant);
 	}
 	

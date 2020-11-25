@@ -31,10 +31,8 @@ public class JugadorVisitor extends Visitor {
 	@Override
 	public void visitarProyectil(Proyectil p) {
 		if(p instanceof ProyectilInfectado) {
-			//p.disparar(j,p.get)
-			
+			((ProyectilInfectado)p).disparar(j);
 		}
-		
 	}
 
 	@Override

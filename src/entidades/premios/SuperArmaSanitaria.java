@@ -9,7 +9,7 @@ import entidades.visitor.Visitor;
 public class SuperArmaSanitaria extends EfectoTemporal {
 	
 	/**Danio extra del arma sanitaria*/
-	private double danioExtra;
+	private int danioExtra;
 	
 	/**Crea una super arma sanitaria nueva*/
 	public SuperArmaSanitaria(int danioExtra, int duracion) {
@@ -47,7 +47,7 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	/**Modidica el valor del danio extra por el pasado por parametro
 	 * @param d, danio extra a modificar
 	 * */
-	public void setDanioExtra(double d) {
+	public void setDanioExtra(int d) {
 		danioExtra = d;
 	}
 

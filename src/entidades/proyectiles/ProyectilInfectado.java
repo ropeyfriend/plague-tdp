@@ -10,6 +10,7 @@ public class ProyectilInfectado extends Proyectil{
 	/*Representa el rango de las particulas exparcidas por los infectados*/
 	protected int rango;
 	
+	
 	/**Crea un nuevo proyectil infectado*/
 	public ProyectilInfectado() {
 		super(3,-1); //Va hacia abajo (-1)
@@ -27,8 +28,8 @@ public class ProyectilInfectado extends Proyectil{
 		v.visitarProyectil(this);	
 	}
 	
-	public void disparar(Jugador j, int d) {
-		j.recibirDanio(d);
+	public void disparar(Jugador j) {
+		j.recibirDanio(danio);
 	}
 	
 	//Getter

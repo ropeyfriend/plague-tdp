@@ -8,12 +8,8 @@ public abstract class Infectado extends Personaje{
 	//Atributes
 	/**Representa el rango donde se exparcen las particulas del infectado*/
 	protected int rango;
-	/**Cantidad de danio que le hace al jugador*/
-	protected int cantDanioJugador;
 	/**Cantidad de danio que recibe al ser golpeado por el jugador*/
 	protected float danio_a_recibir;
-	/**	Proyectil del infectado*/
-	protected ProyectilInfectado p;
 
 	public Infectado(int vel, int r) {
 		cargaViral = 100;
@@ -51,12 +47,6 @@ public abstract class Infectado extends Personaje{
 		return danio_a_recibir;
 	}
 	
-	/**Retorna la cantidad de danio que el infectado le hace al jugador
-	 * @return danio hacia el jugador
-	 * */
-	public int getCantDanioJugador() {
-		return cantDanioJugador;
-	}
 	
 	//Setters
 	/**Actualiza el valor del rango por el pasado por parametro
@@ -73,11 +63,5 @@ public abstract class Infectado extends Personaje{
 		danio_a_recibir = d;
 	}
 	
-	/**Actualiza el valor del danio que recibe el jugador por el pasado por parametro
-	 * @param d, danio a actualizar.
-	 * */
-	public void setCantDanioJugador(int d) {
-		cantDanioJugador = d;
-	}
     
 }

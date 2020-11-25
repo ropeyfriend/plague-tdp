@@ -10,7 +10,7 @@ public class InfectadoAlpha extends Infectado{
 	
 	public InfectadoAlpha(int vel,int r){
 		super(vel, r);
-		cantDanioJugador = 20;
+		danio = 20;
 		danio_a_recibir = 12.5F;
 		muerto = false;
 		visitor = new InfectadoVisitor(this);
@@ -36,7 +36,7 @@ public class InfectadoAlpha extends Infectado{
 	}
 	
 	public void atacar(Jugador j) {
-		p.disparar(j,cantDanioJugador);
+		p.disparar(j);
 	}
 	
 	public void updateImagenAtaque() {

@@ -1,5 +1,6 @@
 package entidades.personajes;
 import entidades.*;
+import entidades.proyectiles.Proyectil;
 
 public abstract class Personaje extends Entidad{
 	//Atributes
@@ -9,6 +10,10 @@ public abstract class Personaje extends Entidad{
 	protected int velocidad;
 	/**Indica si es personaje esta muerto*/
 	protected boolean muerto;
+	
+	protected int danio;
+	
+	 protected Proyectil p;
 	
 	//Getters
 	/**Retorna la carga viral del personaje

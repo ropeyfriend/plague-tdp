@@ -2,6 +2,7 @@ package entidades.proyectiles;
 
 import entidades.Entidad;
 import entidades.EntidadGrafica;
+import entidades.personajes.Jugador;
 
 /**Clase que modela a un proyectil*/
 
@@ -12,6 +13,8 @@ public abstract class Proyectil extends Entidad{
     protected int direccion;
     /**Indica si el proyectil esta activo o no*/
     protected boolean activo;
+    
+	protected int danio;
     
     /**Crea un nuevo proyectil
      * @param v, velocidad del proyectil
@@ -51,6 +54,10 @@ public abstract class Proyectil extends Entidad{
      * */
 	public EntidadGrafica getEntidadGrafica() {
 		return entidadGrafica;
+	}
+	
+	public void disparar(Jugador j) {
+		j.recibirDanio(danio);
 	}
 	
 	//Setters

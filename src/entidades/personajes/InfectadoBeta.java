@@ -10,7 +10,7 @@ public class InfectadoBeta extends Infectado{
 	
 	public InfectadoBeta(int vel, int r) {
 		super(vel, r);
-		cantDanioJugador = 10;
+		danio = 10;//Danio q le hace al jugador
 		danio_a_recibir = 10;
 		muerto = false;
 		visitor = new InfectadoVisitor(this);
@@ -40,7 +40,7 @@ public class InfectadoBeta extends Infectado{
 	}
 	
 	public void atacar(Jugador j) {
-		p.disparar(j,cantDanioJugador);
+		p.disparar(j);
 	}
 	
 	public void accept(Visitor v){
