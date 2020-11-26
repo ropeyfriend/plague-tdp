@@ -24,9 +24,6 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	public void accept(Visitor v) {
 		v.visitarPremio(this);	}
 	
-	public void updateImagen() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-	}
 	
 	/**Activa el efecto de super arma sanitaria al jugador
 	 * @param j, jugador

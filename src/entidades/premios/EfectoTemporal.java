@@ -12,6 +12,7 @@ public abstract class EfectoTemporal extends Premio {
 		duracion = d;
 	}
 	
+	
 	//Getter
 	/**Obtiene la duracion del efecto temporal
 	 * @return duracion del efecto

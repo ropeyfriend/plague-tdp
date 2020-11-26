@@ -46,7 +46,7 @@ public class GUI extends JFrame {
 		Mapa panel_mapa = new Mapa();
 		getContentPane().add(panel_mapa);
 		
-		Infectado alpha = new InfectadoAlpha(5, 50);
+		Infectado alpha = new InfectadoBeta(5, 50);
 		JLabel dibujo_alpha = alpha.getGrafica().getLabel();
 		dibujo_alpha.setBorder(new LineBorder(Color.black));
 		

@@ -29,8 +29,9 @@ public class Jugador extends Personaje{
 	/**Ataca al infectado pasado por parametro
 	 * @param i, infectado a atacar
 	 * */
-	public void atacarInfectado(Infectado i) {
-		armaSanitaria.desinfectar(i);
+	public void atacar(Infectado i) {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		armaSanitaria.disparar(i);
 	}
 	
 	/**Suma la carga viral del jugador con la pasada por parametro. 
@@ -67,15 +68,7 @@ public class Jugador extends Personaje{
 			}
 		}
 	}
-	
-	public void updateImagenAtaque() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-	}
-	
-	public void updateImagenCaminar() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-	}
-	
+
 	public void accept(Visitor v){
 		v.visitarJugador(this);
 	}

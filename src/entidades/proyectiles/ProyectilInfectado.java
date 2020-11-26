@@ -1,5 +1,6 @@
 package entidades.proyectiles;
 
+import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 
@@ -17,6 +18,7 @@ public class ProyectilInfectado extends Proyectil{
 		rango = 5;
 		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods

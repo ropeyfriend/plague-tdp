@@ -31,15 +31,8 @@ public class InfectadoBeta extends Infectado{
 		}
 	}
 	
-	public void updateImagenAtaque() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-	}
-	
-	public void updateImagenCaminar() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-	}
-	
 	public void atacar(Jugador j) {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
 		p.disparar(j);
 	}
 	
@@ -47,5 +40,4 @@ public class InfectadoBeta extends Infectado{
 		v.visitarInfectado(this);
 	}
 	
-
 }

@@ -1,5 +1,6 @@
 package entidades.proyectiles;
 
+import entidades.EntidadGrafica;
 import entidades.personajes.Infectado;
 import entidades.visitor.Visitor;
 
@@ -13,13 +14,14 @@ public class ProyectilJugador extends Proyectil{
 		danio = 10;
 		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilJugador.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods
 	/**Desinfecta a un infectado
 	 * @param i, infectado a desinfectar
 	 * */
-	public void desinfectar(Infectado i) {
+	public void disparar(Infectado i) {
 		i.recibirDanio();
 	}
 	

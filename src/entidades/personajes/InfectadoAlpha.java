@@ -16,7 +16,7 @@ public class InfectadoAlpha extends Infectado{
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoAlpha_caminar.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);;
 	}
 	
 	//Methods
@@ -36,17 +36,10 @@ public class InfectadoAlpha extends Infectado{
 	}
 	
 	public void atacar(Jugador j) {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
 		p.disparar(j);
 	}
 	
-	public void updateImagenAtaque() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-	}
-	
-	public void updateImagenCaminar() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-	}
-
 	public void accept(Visitor v){
 		v.visitarInfectado(this);
 	} 

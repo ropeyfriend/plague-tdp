@@ -2,12 +2,8 @@ package entidades.visitor;
 
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
-import entidades.premios.CuarentenaObligatoria;
-import entidades.premios.Pocion;
 import entidades.premios.Premio;
-import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
-import entidades.proyectiles.ProyectilInfectado;
 
 public class JugadorVisitor extends Visitor {
 	
@@ -20,7 +16,6 @@ public class JugadorVisitor extends Visitor {
 	@Override
 	public void visitarInfectado(Infectado i) {
 		i.atacar(j);
-		i.updateImagenAtaque();
 	}
 
 	@Override
@@ -29,25 +24,13 @@ public class JugadorVisitor extends Visitor {
 	}
 
 	@Override
-	public void visitarProyectil(Proyectil p) {
-		if(p instanceof ProyectilInfectado) {
-			((ProyectilInfectado)p).disparar(j);
-		}
+	public void visitarProyectil(Proyectil p) { //el proyectil inf necesita un infectado x parametro y el proyectil jugador necesita un jugador x parametro
+		//p.disparar(j);
 	}
 
 	@Override
 	public void visitarPremio(Premio p) {
-		if(p instanceof Pocion ) {
-			((Pocion) p).curar(j);
-		}
-		else {
-			if(p instanceof SuperArmaSanitaria) {
-				((SuperArmaSanitaria) p).startEffect(j);
-			}
-			else {
-				((CuarentenaObligatoria) p).startEffect();
-			}
-		}
+		p.startEffect(j);
 	}
 
 

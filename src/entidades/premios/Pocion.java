@@ -20,12 +20,8 @@ public class Pocion extends ObjetoPrecioso {
 	/**Cura al jugador pasado por parametro
 	 * @param j, jugador a curar
 	 * */
-	public void curar(Jugador j) {
+	public void startEffect(Jugador j) {
 		j.curar(cantCuracion);
-	}
-	
-	public void updateImagen() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 	}
 	
 	//Getter

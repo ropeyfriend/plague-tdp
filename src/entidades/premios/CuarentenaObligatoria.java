@@ -1,6 +1,7 @@
 package entidades.premios;
 
 import entidades.EntidadGrafica;
+import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 
 public class CuarentenaObligatoria extends EfectoTemporal {
@@ -26,11 +27,7 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 		v.visitarPremio(this);	
 	}
 	
-	public void updateImagen() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-	}
-	
-	public void startEffect() {}
+	public void startEffect(Jugador j) {}
 	
 
 }

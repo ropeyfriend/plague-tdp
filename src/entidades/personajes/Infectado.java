@@ -25,12 +25,6 @@ public abstract class Infectado extends Personaje{
 	 * @param j, jugador a atacar
 	 * */
 	 public abstract void atacar(Jugador j);
-	
-	 /**Actualiza la imagen del infectado por la de caminar*/
-	 public abstract void updateImagenCaminar();
-	 
-	 /**Actualiza la imagen del infectado por la de ataque*/
-	 public abstract void updateImagenAtaque();
 	 
 	//Getters
 	 /**Retorna el rango del infectado

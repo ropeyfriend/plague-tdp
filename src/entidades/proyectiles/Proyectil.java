@@ -13,7 +13,7 @@ public abstract class Proyectil extends Entidad{
     protected int direccion;
     /**Indica si el proyectil esta activo o no*/
     protected boolean activo;
-    
+    /**Indica la cantidad de danio que genera el proyectil*/
 	protected int danio;
     
     /**Crea un nuevo proyectil
