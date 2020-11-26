@@ -25,6 +25,13 @@ public abstract class Proyectil extends Entidad{
     	direccion = d;
     }
     
+    /**Dispara al jugador pasado por parametro
+     * @param j, jugador al cual disparar
+     * */
+	public void disparar(Jugador j) {
+		j.recibirDanio(danio);
+	}
+    
     public abstract void mover();
     
     //Getters
@@ -48,26 +55,19 @@ public abstract class Proyectil extends Entidad{
     public boolean getActivo() {
     	return activo;
     }
-
+    
+    public int getDanio() {
+    	return danio;
+    }
+	
     /**Retorna la entidad grafica del proyectil
      * @return entidad grafica
      * */
 	public EntidadGrafica getEntidadGrafica() {
 		return entidadGrafica;
 	}
-	
-	public void disparar(Jugador j) {
-		j.recibirDanio(danio);
-	}
-	
+    
 	//Setters
-	/**Modifica la entidad grafica del proyectil por la pasada por parametro
-	 * @param entidad a modificar
-	 * */
-	public void setEntidadGrafica(EntidadGrafica e) {
-		entidadGrafica = e;
-	}
-	
 	/**Modifica la velocidad del proyectil por la pasada por parametro
 	 * @param velocidad a modificar
 	 * */
@@ -87,6 +87,20 @@ public abstract class Proyectil extends Entidad{
 	 * */
 	public void setActivo(boolean a) {
 		activo = a;
+	}
+	
+	/**Modifica el danio por el pasado por parametro
+	 * @param d, danio a modificar
+	 * */
+    public void setDanio(int d) {
+    	danio = d;
+    }
+    
+	/**Modifica la entidad grafica del proyectil por la pasada por parametro
+	 * @param entidad a modificar
+	 * */
+	public void setEntidadGrafica(EntidadGrafica e) {
+		entidadGrafica = e;
 	}
     
 }

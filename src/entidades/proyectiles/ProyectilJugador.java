@@ -22,7 +22,7 @@ public class ProyectilJugador extends Proyectil{
 	 * @param i, infectado a desinfectar
 	 * */
 	public void disparar(Infectado i) {
-		i.recibirDanio();
+		i.recibirDanio(danio);
 	}
 	
 	public void accept(Visitor v) {

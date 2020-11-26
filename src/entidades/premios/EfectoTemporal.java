@@ -10,8 +10,7 @@ public abstract class EfectoTemporal extends Premio {
 	public EfectoTemporal(int d) {
 		super();
 		duracion = d;
-	}
-	
+	}	
 	
 	//Getter
 	/**Obtiene la duracion del efecto temporal

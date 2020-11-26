@@ -24,15 +24,13 @@ public class JugadorVisitor extends Visitor {
 	}
 
 	@Override
-	public void visitarProyectil(Proyectil p) { //el proyectil inf necesita un infectado x parametro y el proyectil jugador necesita un jugador x parametro
-		//p.disparar(j);
+	public void visitarProyectil(Proyectil p) {
+		j.recibirDanio(p.getDanio());
 	}
 
 	@Override
 	public void visitarPremio(Premio p) {
 		p.startEffect(j);
 	}
-
-
 	
 }

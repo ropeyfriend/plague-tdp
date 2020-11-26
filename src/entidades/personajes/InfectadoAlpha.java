@@ -11,7 +11,7 @@ public class InfectadoAlpha extends Infectado{
 	public InfectadoAlpha(int vel,int r){
 		super(vel, r);
 		danio = 20;
-		danio_a_recibir = 12.5F;
+		//danio_a_recibir = 12.5F;
 		muerto = false;
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
@@ -20,7 +20,7 @@ public class InfectadoAlpha extends Infectado{
 	}
 	
 	//Methods
-	public void recibirDanio(){	//(Como le resto de a 12.5 entonces se muere en 8 golpes)
+	public void recibirDanio(int danio_a_recibir){	//(Como le resto de a 12.5 entonces se muere en 8 golpes)
 		if(cargaViral >= danio_a_recibir) {//Si la cargaViral es cero, no sigo desinfectandolo
 			cargaViral -= danio_a_recibir;
 			

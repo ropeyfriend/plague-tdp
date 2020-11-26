@@ -15,12 +15,11 @@ public abstract class Entidad {
 	/**Ruta de el gif que contiene al dibujo de la entidad atacando*/
 	protected String ruta_dibujo_ataque;
     
+	public Entidad() {
+	}
+	
 	/**Se encarga de aceptar al visitor pasado por parametro
 	 * @param v, visitor a aceptar*/
     public abstract void accept(Visitor v);
-
-    public EntidadGrafica getGrafica() {
-    	return entidadGrafica;
-    }
     
 }

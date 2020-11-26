@@ -1,7 +1,5 @@
 package entidades;
 
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
 
 /**Clase encargada de la parte grafica de la entidad*/

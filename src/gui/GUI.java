@@ -47,7 +47,7 @@ public class GUI extends JFrame {
 		getContentPane().add(panel_mapa);
 		
 		Infectado alpha = new InfectadoBeta(5, 50);
-		JLabel dibujo_alpha = alpha.getGrafica().getLabel();
+		JLabel dibujo_alpha = alpha.getEntidadGrafica().getLabel();
 		dibujo_alpha.setBorder(new LineBorder(Color.black));
 		
 		panel_mapa.agregarEntidad(dibujo_alpha);	

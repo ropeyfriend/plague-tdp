@@ -27,7 +27,7 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
-		inf.recibirDanio(); 
+		inf.recibirDanio(p.getDanio()); 
 	}
 
 	@Override

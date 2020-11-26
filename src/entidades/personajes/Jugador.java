@@ -6,7 +6,7 @@ import entidades.visitor.*;
 public class Jugador extends Personaje{
 	
 	//Atributes
-	/*Arma para desinfectar a los infectados*/
+	/*Arma del jugador para desinfectar a los infectados*/
 	protected ProyectilJugador armaSanitaria;
 	
 	/**Crea un nuevo jugador

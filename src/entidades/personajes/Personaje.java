@@ -10,10 +10,14 @@ public abstract class Personaje extends Entidad{
 	protected int velocidad;
 	/**Indica si es personaje esta muerto*/
 	protected boolean muerto;
-	
+	/**Representa el danio que ejerce el personaje*/
 	protected int danio;
-	
+	/**Representa al proyectil del personaje*/
 	 protected Proyectil p;
+	 
+	 
+	/**Disminuye la carga viral del infectado*/
+	 public abstract void recibirDanio(int d);
 	
 	//Getters
 	/**Retorna la carga viral del personaje
@@ -23,6 +27,13 @@ public abstract class Personaje extends Entidad{
 		return cargaViral;
 	}
 	
+	/**Retorna el danio del personaje
+	 * @return danio
+	 * */
+    public int getDanio() {
+    	return danio;
+    }
+    
 	/**Retorna la velocidad del personaje
 	 * @return velocidad.
 	 * */
@@ -51,6 +62,14 @@ public abstract class Personaje extends Entidad{
 	public void setCargaViral(int c) {
 		cargaViral = c;
 	}
+	
+	/**Modifica el valor del danio por el pasado por parametro
+	 * @param d, danio viral a modificar
+	 * */
+    public void setDanio(int d) {
+    	danio = d;
+    }
+	
 	
 	/**Modifica el valor de la velocidad por el pasado por parametro
 	 * @param v, velocidad a modificar
