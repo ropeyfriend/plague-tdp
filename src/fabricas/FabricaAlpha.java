@@ -13,7 +13,7 @@ public class FabricaAlpha extends Fabrica{
 		Infectado inf;
 		
 		for(int i = 0; i<n; i++) {
-			inf = new InfectadoAlpha(5,5);
+			inf = new InfectadoAlpha(5,5,0,0);
 			array[i] = inf;
 		}
 		

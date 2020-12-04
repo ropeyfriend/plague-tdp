@@ -9,12 +9,12 @@ import entidades.visitor.Visitor;
 public class ProyectilJugador extends Proyectil{
 	
 	/**Crea un nuevo proyectil del jugador*/
-	public ProyectilJugador() {
+	public ProyectilJugador(int x, int y) {
 		super(5,1);//Va hacia arriba (1)
 		danio = 10;
 		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilJugador.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 	}
 	
 	//Methods

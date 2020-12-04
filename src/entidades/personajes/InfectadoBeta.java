@@ -8,7 +8,7 @@ import entidades.visitor.Visitor;
 
 public class InfectadoBeta extends Infectado{
 	
-	public InfectadoBeta(int vel, int r) {
+	public InfectadoBeta(int vel, int r, int x, int y) {
 		super(vel, r);
 		danio = 10;//Danio q le hace al jugador
 		//danio_a_recibir = 10;
@@ -16,7 +16,7 @@ public class InfectadoBeta extends Infectado{
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
 	//Methods
@@ -33,7 +33,7 @@ public class InfectadoBeta extends Infectado{
 	
 	public void atacar(Jugador j) {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		p.disparar(j);
+		//p.disparar(j);
 		//j.recibirDanio(danio);
 	}
 	

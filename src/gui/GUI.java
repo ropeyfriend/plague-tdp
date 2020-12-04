@@ -3,17 +3,17 @@ package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 
 import javax.swing.border.LineBorder;
 
-import entidades.personajes.*;
+import juego.Juego;
 import mapa.Mapa;
 
 public class GUI extends JFrame {
-
+	protected Juego juego;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -38,18 +38,15 @@ public class GUI extends JFrame {
 		setBounds(100, 100, 800, 600);
 		getContentPane().setLayout(null);
 		
+		juego = new Juego();
+		
 		JPanel panel_informacion = new JPanel();
 		panel_informacion.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel_informacion.setBounds(0, 0, 786, 60);
 		getContentPane().add(panel_informacion);
 		
-		Mapa panel_mapa = new Mapa();
+		Mapa panel_mapa = juego.getMapa();
 		getContentPane().add(panel_mapa);
 		
-		Infectado alpha = new InfectadoBeta(5, 50);
-		JLabel dibujo_alpha = alpha.getEntidadGrafica().getLabel();
-		dibujo_alpha.setBorder(new LineBorder(Color.black));
-		
-		panel_mapa.agregarEntidad(dibujo_alpha);	
 	}
 }

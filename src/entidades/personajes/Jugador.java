@@ -5,24 +5,15 @@ import entidades.visitor.*;
 
 public class Jugador extends Personaje{
 	
-	//Atributes
-	/*Arma del jugador para desinfectar a los infectados*/
-	protected ProyectilJugador armaSanitaria;
-	
-	/**Crea un nuevo jugador
-	 * @param p, proyectil del jugador
-	 * @param vel, velocidad del jugador
-	 * */
-	public Jugador(ProyectilJugador p, int vel) {
-		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
-		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
+	public Jugador(int x, int y) {
+		ruta_dibujo_moviendose = "src/recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
+		ruta_dibujo_ataque = "src/recursos/Jugador/JugadorQuieto.png";
 		cargaViral = 0;
-		velocidad = vel;
+		velocidad = 10;
 		danio = 15;
-		armaSanitaria = p;
 		muerto = false;
 		visitor = new JugadorVisitor(this);
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
 	}
 
 	//Methods
@@ -31,7 +22,6 @@ public class Jugador extends Personaje{
 	 * */
 	public void atacar(Infectado i) {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		armaSanitaria.disparar(i);
 	}
 	
 	/**Suma la carga viral del jugador con la pasada por parametro. 
@@ -52,7 +42,7 @@ public class Jugador extends Personaje{
 	 * @param valor a multiplicar a la capacidad de desinfeccion.
 	 * */
 	public void efectoSuper(int cant) {
-		armaSanitaria.efectoSuper(cant);
+		//armaSanitaria.efectoSuper(cant);
 	}
 	
 	/**Cura al jugador restando el valor pasado por parametro a la carga viral
@@ -69,23 +59,19 @@ public class Jugador extends Personaje{
 		}
 	}
 
+	/**
+	 * Alterna entre el dibujo ataque y dibujo moviendose
+	 */
+	public void cambiarDibujo() {
+		if(ruta_dibujo_moviendose.equals(entidadGrafica.getRuta()))
+			entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		else
+			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
+
+	}
+	
 	public void accept(Visitor v){
 		v.visitarJugador(this);
 	}
-	
-	//Setters
-	/**Modifica al arma sanitaria por la pasada por parametro
-	 * @param a, arma sanitaria a modificar.
-	 * */
-	public void setArmaSanitaria(ProyectilJugador a) {
-		armaSanitaria = a;
-	}
-	
-	//Getters
-	/**Retorna el arma sanitaria del jugador
-	 * @return arma sanitaria
-	 * */
-	public ProyectilJugador getArmaSanitaria() {
-		return armaSanitaria;
-	}
+
 }

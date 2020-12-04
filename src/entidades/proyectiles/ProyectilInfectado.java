@@ -13,12 +13,12 @@ public class ProyectilInfectado extends Proyectil{
 	
 	
 	/**Crea un nuevo proyectil infectado*/
-	public ProyectilInfectado() {
+	public ProyectilInfectado(int x, int y) {
 		super(3,-1); //Va hacia abajo (-1)
 		rango = 5;
 		activo = true;
 		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 	}
 	
 	//Methods

@@ -9,11 +9,11 @@ public class Pocion extends ObjetoPrecioso {
 	private int cantCuracion;
 	
 	/**Crea una nueva pocion*/
-	public Pocion() {
+	public Pocion(int x, int y) {
 		super();
 		cantCuracion = 25;
 		ruta_dibujo_moviendose = "recursos/Premios/ObjetosPreciosos/pocionVida.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
 	//Methods
