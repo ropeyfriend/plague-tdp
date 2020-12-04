@@ -3,13 +3,14 @@ package entidades.personajes;
 import entidades.EntidadGrafica;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 /**Clase que modela a un infectado Alpha del juego*/
 
 public class InfectadoAlpha extends Infectado{
 	
-	public InfectadoAlpha(int vel,int r){
-		super(vel, r);
+	public InfectadoAlpha(int vel,int r, Juego g){
+		super(vel, r, g);
 		danio = 20;
 		//danio_a_recibir = 12.5F;
 		muerto = false;

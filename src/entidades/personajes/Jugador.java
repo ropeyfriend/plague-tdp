@@ -2,6 +2,7 @@ package entidades.personajes;
 import entidades.EntidadGrafica;
 import entidades.proyectiles.*;
 import entidades.visitor.*;
+import juego.Juego;
 
 public class Jugador extends Personaje{
 	
@@ -13,7 +14,8 @@ public class Jugador extends Personaje{
 	 * @param p, proyectil del jugador
 	 * @param vel, velocidad del jugador
 	 * */
-	public Jugador(ProyectilJugador p, int vel) {
+	public Jugador(ProyectilJugador p, int vel, Juego g) {
+		game = g;
 		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
 		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
 		cargaViral = 0;

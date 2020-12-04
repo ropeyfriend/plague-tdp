@@ -1,11 +1,14 @@
 package entidades;
 
 import entidades.visitor.*;
+import juego.Juego;
 
 /**Clase que modela una entidad del juego.
  * */
 
 public abstract class Entidad {
+	/**Representa el jeugo de la entidad*/
+	protected Juego game;
 	/**Representa la parte grafica de la entidad*/
     protected EntidadGrafica entidadGrafica;
     /**Representa al visitor de la entidad*/
@@ -21,5 +24,7 @@ public abstract class Entidad {
 	/**Se encarga de aceptar al visitor pasado por parametro
 	 * @param v, visitor a aceptar*/
     public abstract void accept(Visitor v);
+    
+    public abstract boolean getMuerto();
     
 }

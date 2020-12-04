@@ -10,9 +10,12 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import entidades.personajes.*;
+import juego.Juego;
 import mapa.Mapa;
 
 public class GUI extends JFrame {
+	
+	private Juego game;
 
 	/**
 	 * Launch the application.
@@ -46,7 +49,7 @@ public class GUI extends JFrame {
 		Mapa panel_mapa = new Mapa();
 		getContentPane().add(panel_mapa);
 		
-		Infectado alpha = new InfectadoBeta(5, 50);
+		Infectado alpha = new InfectadoBeta(5, 50, game);
 		JLabel dibujo_alpha = alpha.getEntidadGrafica().getLabel();
 		dibujo_alpha.setBorder(new LineBorder(Color.black));
 		

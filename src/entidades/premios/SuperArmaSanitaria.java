@@ -48,4 +48,10 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 		danioExtra = d;
 	}
 
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

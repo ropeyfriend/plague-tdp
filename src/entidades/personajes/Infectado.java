@@ -1,6 +1,7 @@
 package entidades.personajes;
 
 import entidades.proyectiles.ProyectilInfectado;
+import juego.Juego;
 
 /**Clase que modela a un infectado del juego*/
 
@@ -15,9 +16,10 @@ public abstract class Infectado extends Personaje{
 	 * @param vel, velocidad del infectado
 	 * @param r, rango del infectado
 	 * */
-	public Infectado(int vel, int r) {
+	public Infectado(int vel, int r, Juego g) {
 		cargaViral = 100;
 		velocidad = vel;
+		game = g;
 		p = new ProyectilInfectado();
 		rango = r;
 	}

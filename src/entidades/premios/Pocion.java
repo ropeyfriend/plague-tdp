@@ -44,4 +44,10 @@ public class Pocion extends ObjetoPrecioso {
 	public void accept(Visitor v) {
 		v.visitarPremio(this);
 	}
+
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

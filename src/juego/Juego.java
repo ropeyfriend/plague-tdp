@@ -14,4 +14,9 @@ public class Juego {
     public void run() {
     	
     }
+
+	public void agregarArreglo(Entidad[] getarreglo) {
+		// TODO Auto-generated method stub
+		
+	}
 }
