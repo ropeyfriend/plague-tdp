@@ -21,6 +21,20 @@ public abstract class Entidad {
 	public Entidad() {
 	}
 	
+	/**Retorna la entidad grafica del personaje
+	 * @return entidad grafica.
+	 * */
+	public EntidadGrafica getEntidadGrafica() {
+		return entidadGrafica;
+	}
+	
+	/**Modifica el valor de la la entidad grafica por el pasado por parametro
+	 * @param e, entidad grafica a modificar.
+	 * */
+	public void setEntidadGrafica(EntidadGrafica e) {
+		entidadGrafica = e;
+	}
+	
 	/**Se encarga de aceptar al visitor pasado por parametro
 	 * @param v, visitor a aceptar*/
     public abstract void accept(Visitor v);

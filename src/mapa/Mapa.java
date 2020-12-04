@@ -1,13 +1,10 @@
 package mapa;
 
-import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import entidades.Entidad;
 
@@ -27,8 +24,9 @@ public class Mapa extends JLayeredPane {
 		this.add(fondo);
 	}
 
-	public void agregarEntidad(JLabel e) {
-		this.add(e,0);
+
+	public void agregarEntidad(Entidad e) {
+		this.add(e.getEntidadGrafica().getLabel(), 0);
 		this.repaint();
 	}
 

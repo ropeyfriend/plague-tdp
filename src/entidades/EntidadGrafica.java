@@ -19,14 +19,17 @@ public class EntidadGrafica {
 	protected int ancho; 
 	/**Largo de la imagen*/
 	protected int largo; 
-    
+	/**Ruta del diubjo */ 
+    protected String ruta;
+	
 	/**Crea una nueva entidad grafica*/
-    public EntidadGrafica(String rutaDibujo) {
-    	x =0;
-    	y = 0;
+    public EntidadGrafica(String ruta, int x, int y) {
+    	this.x = x;
+    	this.y = y;
     	ancho = 40;
     	largo = 60;
-    	ImageIcon original = new ImageIcon(rutaDibujo);
+    	this.ruta = ruta;
+    	ImageIcon original = new ImageIcon(ruta);
     	dibujo = new JLabel(original);
     	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
     	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
@@ -35,46 +38,119 @@ public class EntidadGrafica {
     /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro
      * @param rutaDibujo, ruta del gif.
      * */
-	public void updateImagen(String rutaDibujo) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getClassLoader().getResource(rutaDibujo));
-		dibujo = new JLabel(imagen);
-		ancho = imagen.getIconWidth();
-		largo = imagen.getIconHeight();
+	public void updateImagen(String ruta) {
+		dibujo.setI
+		ancho = dibujo.getWidth();
+		largo = dibujo.getHeight();
+		dibujo.repaint();
+		System.out.println(ruta);
+	}
+       
+    /**Retorna la coordenada X donde se ubica la entidad
+     * @return coordenada X
+     * */
+	public int getX() {
+		return x;
 	}
 	
-    /**Vuleve a iniciar la imagen de la entidad por la que esta en la ruta pasada por parametro
-     * @param rutaDibujo, ruta del gif.
-     * */
-	public void flushImagen(String rutaDibujo) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getClassLoader().getResource(rutaDibujo));
-		imagen.getImage().flush();  // el flush() vuelve a iniciar el gif
-		dibujo.setIcon(imagen);	
+	/**
+	 * Inserta un nuevo valor de x
+	 * @param x el valor anterior de x
+	 */
+	public int setX(int x) {
+		int toret = this.x;
+		this.x = x;
+		return toret;
 	}
-   
-	/**Retorna el icono de la entidad
-	 * @return icono de la entidad
-	 * */
-    public JLabel getIcon() {
-        return dibujo;
-    }
-    
-    /**Retorna la coordenada Y donde se ubica la entidad
+	
+	/**Retorna la coordenada Y donde se ubica la entidad
      * @return coordenada Y
      * */
     public int getY() {
         return y;
     }
     
-    /**Retorna la coordenada X donde se ubica la entidad
-     * @return coordenada X
-     * */
-    public int geyX() {
-        return x;
-    }
-    
-    public JLabel getLabel() {
-    	return dibujo;
-    }
+    /**
+	 * Inserta un nuevo valor de y
+	 * @param x el valor anterior de y
+	 */
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	/**Retorna el icono de la entidad
+	 * @return icono de la entidad
+	 * */
+	public JLabel getLabel() {
+		return dibujo;
+	}
+	
+	/**
+	 * Inserta un nuevo dibujo
+	 * @param dibujo el nuevo dibujo a insertar
+	 * @return retorna el dibujo anterior
+	 */
+	public JLabel setLabel(JLabel dibujo) {
+		JLabel toret = this.dibujo;
+		this.dibujo = dibujo;
+		return toret;
+	}
+	
+	/**
+	 * Devuelve el ancho del dibujo de la entidad
+	 * @return la anchura de la entidad
+	 */
+	public int getAncho() {
+		return ancho;
+	}
+	
+	/**
+	 * Modifica el ancho del dibujo
+	 * @param ancho el nuevo ancho
+	 * @return retorna el valor de la anchura anterior
+	 */
+	public int setAncho(int ancho) {
+		int toret = this.ancho;
+		this.ancho = ancho;
+		return toret;
+	}
+
+	/**
+	 * Devuelve el largo del dibujo de la entidad
+	 * @return el valor anterior del largo de la entidad
+	 */
+	public int getLargo() {
+		return largo;
+	}
+
+	/**
+	 * Modifica el largo del dibujo
+	 * @param largo el nuevo largo
+	 * @return retorna el valor del largo anterior
+	 */
+	public void setLargo(int largo) {
+		this.largo = largo;
+	}
+	
+	/**
+	 * Devuelve la ruta de la imagen de la entidad
+	 * @return Devuelve la ruta
+	 */
+	public String getRuta() {
+		return ruta;
+	}
+	
+	/**
+	 * Modifica la ruta de la imagen de la entidad
+	 * @param ruta La nueva ruta de la imagen
+	 * @return La ruta anterior
+	 */
+	public String setRuta(String ruta) {
+		String toret = this.ruta;
+		this.ruta = ruta;
+		return toret;
+	}
+  
     
 
 }

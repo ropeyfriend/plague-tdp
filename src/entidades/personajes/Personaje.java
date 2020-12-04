@@ -12,8 +12,6 @@ public abstract class Personaje extends Entidad{
 	protected boolean muerto;
 	/**Representa el danio que ejerce el personaje*/
 	protected int danio;
-	/**Representa al proyectil del personaje*/
-	 protected Proyectil p;
 	 
 	 
 	/**Disminuye la carga viral del infectado*/
@@ -41,12 +39,6 @@ public abstract class Personaje extends Entidad{
 		return velocidad;
 	}
 	
-	/**Retorna la entidad grafica del personaje
-	 * @return entidad grafica.
-	 * */
-	public EntidadGrafica getEntidadGrafica() {
-		return entidadGrafica;
-	}
 	
 	/**Retorna si el personaje esta o no muerto
 	 * @return muerto
@@ -76,13 +68,6 @@ public abstract class Personaje extends Entidad{
 	 * */
 	public void setVelocidad(int v) {
 		velocidad = v;
-	}
-	
-	/**Modifica el valor de la la entidad grafica por el pasado por parametro
-	 * @param e, entidad grafica a modificar.
-	 * */
-	public void setEntidadGrafica(EntidadGrafica e) {
-		entidadGrafica = e;
 	}
 	
 	/**Modifica el valor de la variable muerto por la pasada por parametro
