@@ -13,7 +13,7 @@ public class Juego {
     
     public Juego() {
         mapa = new Mapa();
-        jugador = new Jugador(393,440);
+        jugador = new Jugador(393,300);
         entidades = new LinkedList<Entidad>();
         
         mapa.agregarEntidad(jugador);
@@ -22,6 +22,7 @@ public class Juego {
     }
 
     public void run() {
+    	
     }
     
     public Jugador getJugador() {

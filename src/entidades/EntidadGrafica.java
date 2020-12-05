@@ -39,7 +39,7 @@ public class EntidadGrafica {
      * @param rutaDibujo, ruta del gif.
      * */
 	public void updateImagen(String ruta) {
-		dibujo.setI
+		dibujo.setIcon(new ImageIcon(ruta));
 		ancho = dibujo.getWidth();
 		largo = dibujo.getHeight();
 		dibujo.repaint();
