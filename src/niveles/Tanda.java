@@ -58,14 +58,13 @@ public abstract class Tanda {
 	private void comprimir() {
 		int i = 0;
 		int aux=0;
-		boolean termino=false;
 		boolean found=false;
 		
-		for (i=0; i<this.array.length && !termino; i++) {
+		for (i=0; i<this.array.length && found; i++) {
 			if (array[i] == null) {
 				aux = i+1;
 				found = false;
-				while (aux < this.array.length && !found) {
+				while (aux < array.length && !found) {
 					if (array[aux] != null) {
 						array[i] = array[aux];
 						array[aux] = null;
@@ -73,7 +72,6 @@ public abstract class Tanda {
 					}
 					aux++;
 				}
-				termino=!found;
 			}
 		}
 	}
