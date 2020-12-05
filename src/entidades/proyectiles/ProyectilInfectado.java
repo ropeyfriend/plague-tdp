@@ -50,4 +50,10 @@ public class ProyectilInfectado extends Proyectil{
 		rango = r;
 	}
 
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

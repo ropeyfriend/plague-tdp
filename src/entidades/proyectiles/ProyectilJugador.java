@@ -53,6 +53,12 @@ public class ProyectilJugador extends Proyectil{
 	public void setdanio(int c) {
 		danio = c;
 	}
+
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

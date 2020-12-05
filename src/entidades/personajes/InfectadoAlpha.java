@@ -3,13 +3,15 @@ package entidades.personajes;
 import entidades.EntidadGrafica;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 /**Clase que modela a un infectado Alpha del juego*/
 
 public class InfectadoAlpha extends Infectado{
 	
-	public InfectadoAlpha(int vel,int r, int x, int y){
-		super(vel, r);
+	/**Crea un nuevo infectado Alpha*/
+	public InfectadoAlpha(int vel, int r, int x, int y, Juego g){
+		super(vel, r, g);
 		danio = 20;
 		//danio_a_recibir = 12.5F;
 		muerto = false;
@@ -17,6 +19,17 @@ public class InfectadoAlpha extends Infectado{
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoAlpha_caminar.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
+	}
+	
+	public InfectadoAlpha(int vel, int r, Juego g) {
+		super(vel,r,g);
+		muerto = false;
+		danio = 20;
+		visitor = new InfectadoVisitor(this);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods
