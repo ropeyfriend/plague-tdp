@@ -20,7 +20,7 @@ public abstract class Infectado extends Personaje{
 		cargaViral = 100;
 		velocidad = vel;
 		game = g;
-		p = new ProyectilInfectado();
+		//p = new ProyectilInfectado();
 		rango = r;
 	}
 	 

@@ -9,7 +9,8 @@ import juego.Juego;
 
 public class InfectadoAlpha extends Infectado{
 	
-	public InfectadoAlpha(int vel,int r, Juego g){
+	/**Crea un nuevo infectado Alpha*/
+	public InfectadoAlpha(int vel, int r, int x, int y, Juego g){
 		super(vel, r, g);
 		danio = 20;
 		//danio_a_recibir = 12.5F;
@@ -17,7 +18,18 @@ public class InfectadoAlpha extends Infectado{
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoAlpha_caminar.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);;
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
+	}
+	
+	public InfectadoAlpha(int vel, int r, Juego g) {
+		super(vel,r,g);
+		muerto = false;
+		danio = 20;
+		visitor = new InfectadoVisitor(this);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	
 	//Methods
@@ -38,7 +50,7 @@ public class InfectadoAlpha extends Infectado{
 	
 	public void atacar(Jugador j) {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		p.disparar(j);
+		//p.disparar(j);
 	}
 	
 	public void accept(Visitor v){

@@ -8,5 +8,5 @@ public class Tanda1 extends Tanda {
 		
 		init(nivel.getfabricas(),0);
 	}
-	//Metodos
+
 }

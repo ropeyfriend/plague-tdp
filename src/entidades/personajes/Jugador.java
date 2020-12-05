@@ -14,17 +14,16 @@ public class Jugador extends Personaje{
 	 * @param p, proyectil del jugador
 	 * @param vel, velocidad del jugador
 	 * */
-	public Jugador(ProyectilJugador p, int vel, Juego g) {
+	public Jugador(int x, int y, Juego g) {
 		game = g;
-		ruta_dibujo_moviendose = "recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
-		ruta_dibujo_ataque = "recursos/Jugador/JugadorQuieto.png";
+		ruta_dibujo_moviendose = "src/recursos/Jugador/JugadorCaminandoDerecha.gif"; //*** HAY Q FIJARSE SI VA PARA LA DERECHA O IZQUIERDA ***
+		ruta_dibujo_ataque = "src/recursos/Jugador/JugadorQuieto.png";
 		cargaViral = 0;
-		velocidad = vel;
+		velocidad = 10;
 		danio = 15;
-		armaSanitaria = p;
 		muerto = false;
 		visitor = new JugadorVisitor(this);
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
 	}
 
 	//Methods
@@ -73,6 +72,14 @@ public class Jugador extends Personaje{
 
 	public void accept(Visitor v){
 		v.visitarJugador(this);
+	}
+	
+	public void cambiarDibujo() {
+		if(ruta_dibujo_moviendose.equals(entidadGrafica.getRuta()))
+			entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		else
+			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
+
 	}
 	
 	//Setters

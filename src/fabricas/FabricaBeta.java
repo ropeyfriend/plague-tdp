@@ -16,13 +16,15 @@ public class FabricaBeta extends Fabrica{
 	}
 
 	@Override
-	public Infectado crearInfectado(int n) {
-		Infectado inf=new InfectadoBeta(5,5,game);
+	public Infectado crearInfectado() {
+		Infectado inf = new InfectadoBeta(5,5,game);	
 		
-		//Random rnd=new Random();
-		//int x = rnd.nextInt(this.game..getanchomapa()-inf.getancho());
-		//inf.getEntidadGrafica().getLabel().setLocation(x,0);
-		
+		Random rnd=new Random();
+		int x = rnd.nextInt(this.game.getanchomapa()-inf.getEntidadGrafica().getAncho());
+		int y = 0;
+		inf.getEntidadGrafica().setX(x);
+		inf.getEntidadGrafica().setY(y);
+
 		return inf;
 	}
 

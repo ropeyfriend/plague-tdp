@@ -35,12 +35,14 @@ public abstract class Nivel {
 	}
 	
 	//Getters
+	
+	public abstract Nivel getSiguiente();
+	
+	/**Obtiene la tanda del nivel
+	 * @return tanda
+	 * */
 	public Tanda getTanda() { 
 		return this.tanda;
-	}
-	
-	public Nivel getsiguiente() { 
-		return siguiente;
 	}
 	
 	//Setters
