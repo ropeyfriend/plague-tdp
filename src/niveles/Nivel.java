@@ -1,23 +1,22 @@
 package niveles;
 
-import fabricas.Fabrica;
 import juego.Juego;
-
 
 public abstract class Nivel {
 	//Atributos
 	/**Representa la tanda del nivel*/
 	protected Tanda tanda;
-	/**Representa al game donde esta la tanda*/
+	/**Representa al juego donde esta el nivel*/
 	protected Juego game;
 	/**Representa al nivel siguiente*/
 	protected Nivel siguiente;
-	/**Fabricas de infectados*/
-	protected Fabrica[] fabricas;
+	/**Indica si el jugador gano el nivel*/
+	protected boolean gane;
 	
 	/**Crea un nuevo nivel*/
 	public Nivel(Juego g) {
 		game = g;
+		gane = false;
 	}
 	
 	//Methods
@@ -26,35 +25,53 @@ public abstract class Nivel {
 		
 		tanda.delete();//elimina los infectados que estan muertos
 		
-		if (getTanda()!=null && getTanda().isEmpty()) {//Si todos los infectados de la tanda fueron eliminados
+		if (tanda!=null && tanda.isEmpty()) {//Si todos los infectados de la tanda fueron eliminados
 			tanda = tanda.getNext();
-			if (tanda != null) {
+			if (tanda != null) {//Segunda tanda
 				game.agregarArreglo(tanda.getArray());
+			}
+			else {//Si elimino la primer y segunda tanda entonces gana el nivel
+				gane = true;
 			}
 		}
 	}
 	
 	//Getters
-	
+	/**Retorna el nivel siguiente al actual, si no hay nivel siguiente retorna NULL
+	 * @return nivel siguiente
+	 **/
 	public abstract Nivel getSiguiente();
 	
 	/**Obtiene la tanda del nivel
 	 * @return tanda
 	 * */
 	public Tanda getTanda() { 
-		return this.tanda;
+		return tanda;
 	}
 	
-	//Setters
-	public Fabrica[] getfabricas() { 
-		return fabricas;
+	/**Indica si el jugador gano el nivel
+	 * @return true si gano el nivel
+	 * */
+	public boolean getGane() {
+		return gane;
 	}
-	
-	public void setfabricas(Fabrica[] f) {
-		fabricas = f; 
+
+	//Setters	
+	/**Modifica la variable gane por la pasada por parametro
+	 * @param g, variable a modificar
+	 * */
+	public void setGane(boolean g) {
+		gane = g;
 	}
 
 	public void setTanda(Tanda t) {
 		tanda = t;
+	}
+	
+	/**Modifica el nivel siguiente por el pasado por parametro
+	 * @param n, nivel siguiente
+	 * */
+	public void setSiguiente(Nivel n) {
+		siguiente = n;
 	}
 }

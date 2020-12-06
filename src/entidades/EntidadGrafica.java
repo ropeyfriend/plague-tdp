@@ -157,8 +157,6 @@ public class EntidadGrafica {
 		String toret = this.ruta;
 		this.ruta = ruta;
 		return toret;
-	}
-  
-    
+	}   
 
 }

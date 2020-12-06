@@ -6,7 +6,7 @@ public class Tanda1 extends Tanda {
 		super(nivel,n);
 		next = new Tanda2(nivel,n);
 		
-		init(nivel.getfabricas(),0);
+		init();
 	}
 
 }

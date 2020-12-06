@@ -1,9 +1,9 @@
 package niveles;
 
-import fabricas.Fabrica;
-import fabricas.FabricaAlpha;
-import fabricas.FabricaBeta;
 import juego.Juego;
+
+
+/**Clase que representa el nivel 2 del juego*/
 
 public class Nivel2 extends Nivel{
 	//Atributos
@@ -14,19 +14,11 @@ public class Nivel2 extends Nivel{
 		super(j);
 		siguiente = null;	
 		cant = 16;//16 infectados
-		
-		fabricas = new Fabrica[2];
-		fabricas[0] = new FabricaAlpha(game);
-		fabricas[1] = new FabricaBeta(game);
-		
 		setTanda(new Tanda1(this, cant/2));
 		setTanda(new Tanda2(this, cant/2));
 	}
 
 	@Override
-	/**Retorna nulo ya que no hay nivel siguiente
-	 * @return nivel siguiente
-	 * */
 	public Nivel getSiguiente() {
 		return null;
 	}

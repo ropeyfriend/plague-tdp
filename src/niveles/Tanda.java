@@ -1,7 +1,12 @@
 package niveles;
 
+import java.util.Random;
+
 import entidades.personajes.Infectado;
 import fabricas.Fabrica;
+import fabricas.FabricaAlpha;
+import fabricas.FabricaBeta;
+import juego.Juego;
 
 public abstract class Tanda {
 	//Atributes
@@ -13,12 +18,18 @@ public abstract class Tanda {
 	protected Infectado[] array;
 	/**Tanda siguiente*/
 	protected Tanda next;
+	/**Representa al juego donde esta la tanda*/
+	protected Juego game;
+	/**Fabricas de infectados*/
+	protected Fabrica[] fabricas;
 	
 	/**Crea una nueva tanda de infectados*/
 	public Tanda(Nivel nivel, int n) {
 		level = nivel;
 		cant = 0;
 		array = new Infectado[n];
+		fabricas[0] = new FabricaAlpha(game);
+		fabricas[1] = new FabricaBeta(game);
 	}
 	
 	//Methods
@@ -26,25 +37,25 @@ public abstract class Tanda {
 	 * @param fabricas, fabricas de infectados
 	 * @param f, tipo de fabrica de infectados (fabrica Alpha o Beta)
 	 * */
-	public void init(Fabrica[] fabricas, int f) {
-
-		for (int i=0; i<array.length; i++) { //Lleno la tanda con infectados
-			array[i] = fabricas[f].crearInfectado();
+	public void init() {
+		int fabricaRnd;
+		
+		for (int i = 0; i < array.length; i++) { //Lleno la tanda con infectados
+			Random aleatorio = new Random();
+			fabricaRnd = aleatorio.nextInt(2);
+			
+			array[i] = fabricas[fabricaRnd].crearInfectado();//Creo infectados aleatorios (Alpha o Beta)
 			cant++;
 		}
 		
 		if (next!=null) {//Si hay tanda siguiente
-			if (f+1 < fabricas.length) {//Si estoy en la fabrica 0 (Alpha)
-				next.init(fabricas, f+1);
-			}
-			else {
-				next.init(fabricas, f);
-			}
+			next.init();
 		}
 	}
 	
 	/**Elimina los infectados muertos de la tanda*/
 	public void delete() {
+			
 		for(int i = 0; i<array.length; i++) {
 			if (array[i].getMuerto() == true) {
 				array[i] = null;

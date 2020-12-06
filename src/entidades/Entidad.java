@@ -7,7 +7,7 @@ import juego.Juego;
  * */
 
 public abstract class Entidad {
-	/**Representa el jeugo de la entidad*/
+	/**Representa el juego de la entidad*/
 	protected Juego game;
 	/**Representa la parte grafica de la entidad*/
     protected EntidadGrafica entidadGrafica;
@@ -39,6 +39,9 @@ public abstract class Entidad {
 	 * @param v, visitor a aceptar*/
     public abstract void accept(Visitor v);
     
+    /**Verifica si la entidad fue eliminada del juego
+     * @return true si la entidad fue eliminada
+     * */
     public abstract boolean getMuerto();
     
 }
