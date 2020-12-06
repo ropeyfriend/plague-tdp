@@ -15,9 +15,8 @@ public abstract class Fabrica {
 		game = g;
 	}
 	
-	/**Crea un nuevo arreglo de infectados
-	 * @param n, cantidad de infectados a crear
-	 * @return arreglo de infectados
+	/**Crea un nuevo infectado
+	 * @return infectado creado
 	 * */
 	public abstract Infectado crearInfectado();
 }

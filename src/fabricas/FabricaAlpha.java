@@ -1,5 +1,7 @@
 package fabricas;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 import entidades.personajes.Infectado;
@@ -19,13 +21,16 @@ public class FabricaAlpha extends Fabrica{
 	@Override
 	public Infectado crearInfectado() {
 		Infectado inf = new InfectadoAlpha(5,5,game);	
-		int [] xPositions = new int[100];
+		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
+		
 		Random rnd = new Random();
 		int x = rnd.nextInt(this.game.getanchomapa()-inf.getEntidadGrafica().getAncho());
 		
-		while(repetido(x,xPositions)) {
-			x = rnd.nextInt(this.game.getanchomapa()-inf.getEntidadGrafica().getAncho());
+		while(repetido(x,ubicacionX)) {
+			x = rnd.nextInt(this.game.getanchomapa() - inf.getEntidadGrafica().getAncho());
 		}
+		
+		ubicacionX.add(x);
 		
 		int y = 0;
 		inf.getEntidadGrafica().setX(x);
@@ -34,14 +39,23 @@ public class FabricaAlpha extends Fabrica{
 		return inf;
 	}
 	
-	private boolean repetido(int x, int [] xPositions) {
+	/**Verifica si el entero pasado por parametro este repetido en la lista con el fin de que no haya colisiones
+	 * @param x, entero a verificar
+	 * @param list, lista donde se guardan las posiciones de la variable x
+	 * @return true si x se encuentra en la lista
+	 * */
+	private boolean repetido(int x, ArrayList<Integer> list) {
+		int i = 0;
 		boolean found = false;
-		for(int i = 0; i<xPositions.length && !found; i++) {
-			if(xPositions[i] == x) {
+		
+		while(!found) {
+			if(list.get(i) == x) {
 				found = true;
 			}
+			i++;
 		}
 		return found;
 	}
+	
 
 }
