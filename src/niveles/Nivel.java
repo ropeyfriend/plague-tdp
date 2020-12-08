@@ -4,7 +4,7 @@ import juego.Juego;
 
 /**Clase que represemta los niveles de un juego*/
 
-public abstract class Nivel {
+public class Nivel {
 	//Atributos
 	/**Representa la tanda del nivel*/
 	protected Tanda tanda;
@@ -14,11 +14,24 @@ public abstract class Nivel {
 	protected Nivel siguiente;
 	/**Indica si el jugador gano el nivel*/
 	protected boolean gane;
+	/**Representa la cantidad de infectados del nivel*/
+	protected int cant;
+	/**Entero que representa el nivel actual*/
+	protected int nivel;
+	
+	/**Crea un nuevo nivel*/
+	public Nivel(Juego g, int cant, int n) {
+		game = g;
+		gane = false;
+		nivel = n;
+		this.cant = cant;
+	}
 	
 	/**Crea un nuevo nivel*/
 	public Nivel(Juego g) {
 		game = g;
 		gane = false;
+		cant = 0;
 	}
 	
 	//Methods
@@ -42,7 +55,9 @@ public abstract class Nivel {
 	/**Retorna el nivel siguiente al actual, si no hay nivel siguiente retorna NULL
 	 * @return nivel siguiente
 	 **/
-	public abstract Nivel getSiguiente();
+	public Nivel getSiguiente() {
+		return siguiente;
+	}
 	
 	/**Obtiene la tanda del nivel
 	 * @return tanda
@@ -66,6 +81,9 @@ public abstract class Nivel {
 		gane = g;
 	}
 
+	/**Modifica la tanda del nivel por la pasada por parametro
+	 * @param t, tanda a modificar
+	 * */
 	public void setTanda(Tanda t) {
 		tanda = t;
 	}
@@ -75,5 +93,12 @@ public abstract class Nivel {
 	 * */
 	public void setSiguiente(Nivel n) {
 		siguiente = n;
+	}
+	
+	/**Retorna un entero que representa el nivel actual
+	 * @return nivel actual
+	 * */
+	public int getNivel() {
+		return nivel;
 	}
 }
