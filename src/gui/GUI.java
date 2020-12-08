@@ -29,12 +29,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import entidades.premios.Pocion;
+import entidades.premios.Premio;
+
 import javax.swing.JTextPane;
+import java.awt.SystemColor;
 
 public class GUI extends JFrame {
 	
 	protected Juego juego;
 	protected MovimientoJugador mv;
+	protected Premio pociones[];
+	protected int cantPociones;
+	protected JButton pocion1;
+	protected JButton pocion2;
+	protected JButton pocion3;
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,6 +73,12 @@ public class GUI extends JFrame {
 		getContentPane().add(panel_mapa);
 		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
 		
+		//pociones
+		pociones = new Premio[3];
+		
+		//cantidad de pociones
+		cantPociones = 0;
+		
 	}
 	
 	public void setVentana() {
@@ -74,15 +91,15 @@ public class GUI extends JFrame {
 	public void setPanelInformacion() {
 		//Panel de informacion de jugador
 				JPanel panel_informacion = new JPanel();
-				panel_informacion.setBackground(Color.BLACK);
+				panel_informacion.setBackground(SystemColor.activeCaptionBorder);
 				panel_informacion.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-				panel_informacion.setBounds(0, 0, 786, 60);
+				panel_informacion.setBounds(0, 0, 786, 51);
 				getContentPane().add(panel_informacion);
 				panel_informacion.setLayout(null);
 				
 				//Barra de carga viral
 				JProgressBar progressBar = new JProgressBar();
-				progressBar.setBounds(145, 24, 207, 25);
+				progressBar.setBounds(135, 16, 207, 25);
 				progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 				progressBar.setForeground(Color.GREEN);
 				progressBar.setValue(50);
@@ -91,8 +108,8 @@ public class GUI extends JFrame {
 				
 				//Pocion1
 				JButton pocion1 = new JButton(" ");
-				pocion1.setBounds(464, 11, 57, 38);
-				pocion1.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+				pocion1.setBounds(466, 11, 43, 38);
+				pocion1.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
 				pocion1.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						juego.getJugador().curar(25);
@@ -102,10 +119,26 @@ public class GUI extends JFrame {
 				pocion1.setEnabled(true);
 				panel_informacion.add(pocion1);
 				
+				//LISTENER POCION VIDA
+				pocion1.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
+					public void actionPerformed(ActionEvent arg) {
+						
+						if(cantPociones != 0) {
+							cantPociones--;//Consumo una de las pociones
+							pociones[0].startEffect(juego.getJugador());
+							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+						}
+						
+						pocion1.setEnabled(false);
+						
+					}
+				});
+				
 				//Pocion2
-				JButton pocion2 = new JButton(" ");
-				pocion2.setBounds(531, 11, 57, 38);
-				pocion2.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+				pocion2 = new JButton(" ");
+				pocion2.setBounds(572, 11, 43, 38);
+				ImageIcon icon2 = new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png");
+				pocion2.setIcon(icon2);
 				pocion2.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						juego.getJugador().curar(25);
@@ -115,10 +148,24 @@ public class GUI extends JFrame {
 				pocion2.setEnabled(true);
 				panel_informacion.add(pocion2);
 				
+				pocion2.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
+					public void actionPerformed(ActionEvent arg) {
+						
+						if(cantPociones != 0) {
+							cantPociones--;//Consumo una de las pociones
+							pociones[0].startEffect(juego.getJugador());
+							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+						}
+						
+						pocion2.setEnabled(false);
+						
+					}
+				});
+				
 				//Pocion3
-				JButton pocion3 = new JButton(" ");
-				pocion3.setBounds(598, 11, 57, 38);
-				pocion3.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+				pocion3 = new JButton(" ");
+				pocion3.setBounds(519, 11, 43, 38);
+				pocion3.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
 				pocion3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						juego.getJugador().curar(25);
@@ -128,27 +175,41 @@ public class GUI extends JFrame {
 				pocion3.setEnabled(true);
 				panel_informacion.add(pocion3);
 				
+				pocion3.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
+					public void actionPerformed(ActionEvent arg) {
+						
+						if(cantPociones != 0) {
+							cantPociones--;//Consumo una de las pociones
+							pociones[0].startEffect(juego.getJugador());
+							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+						}
+						
+						pocion3.setEnabled(false);	
+					}
+				});
+				
 				JLabel labelCargaViral = new JLabel("CARGA VIRAL:");
 				labelCargaViral.setForeground(Color.WHITE);
 				labelCargaViral.setFont(new Font("Tahoma", Font.PLAIN, 16));
-				labelCargaViral.setBounds(21, 23, 115, 26);
+				labelCargaViral.setBounds(10, 15, 115, 26);
 				panel_informacion.add(labelCargaViral);
 				
 				JLabel labelPremios = new JLabel("PREMIOS:");
 				labelPremios.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				labelPremios.setForeground(Color.WHITE);
-				labelPremios.setBounds(377, 24, 77, 25);
+				labelPremios.setBounds(379, 16, 77, 25);
 				panel_informacion.add(labelPremios);
 				
 				JLabel labelNivel = new JLabel("NIVEL:");
 				labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
 				labelNivel.setForeground(Color.WHITE);
 				labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-				labelNivel.setBounds(677, 24, 69, 25);
+				labelNivel.setBounds(696, 16, 69, 25);
 				panel_informacion.add(labelNivel);
 				//Hay que setear oyente cuando cambia de nivel
 	}
 
+	
 	private class Adapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -156,4 +217,28 @@ public class GUI extends JFrame {
             mv.keyPressed(e);
         }
 	}
+	
+	public void agregarPocion(Pocion p) {
+		if(cantPociones < 3) {//Si no esta lleno de pociones (hasta 3)
+			for(int i = 0; i< pociones.length; i++) {
+				if(pociones[i] == null) {
+					pociones[i] = p;
+					
+					if(i == 0) {
+						pocion1.setEnabled(true);
+					}
+					else {
+						if(i == 2) {
+							pocion2.setEnabled(true);
+						}
+						else {
+							pocion3.setEnabled(true);
+						}
+					}
+					cantPociones++;
+				}
+			}
+		}
+	}
+	
 }
