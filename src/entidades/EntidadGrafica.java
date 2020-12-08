@@ -51,7 +51,6 @@ public class EntidadGrafica {
 		ancho = dibujo.getWidth();
 		largo = dibujo.getHeight();
 		dibujo.repaint();
-		System.out.println(ruta);
 	}
        
     /**Retorna la coordenada X donde se ubica la entidad
@@ -68,6 +67,7 @@ public class EntidadGrafica {
 	public int setX(int x) {
 		int toret = this.x;
 		this.x = x;
+		dibujo.setLocation(this.x, this.y);
 		return toret;
 	}
 	
@@ -82,8 +82,11 @@ public class EntidadGrafica {
 	 * Inserta un nuevo valor de y
 	 * @param x el valor anterior de y
 	 */
-	public void setY(int y) {
+	public int setY(int y) {
+		int toret = this.y;
 		this.y = y;
+		dibujo.setLocation(this.x, this.y);
+		return toret;
 	}
 	
 	/**Retorna el icono de la entidad

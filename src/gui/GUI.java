@@ -29,21 +29,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
-import entidades.premios.Pocion;
-import entidades.premios.Premio;
-
 import javax.swing.JTextPane;
-import javax.swing.UIManager;
-import java.awt.SystemColor;
 
 public class GUI extends JFrame {
 	
 	protected Juego juego;
-	protected int vida;
-	protected JButton pocionVida;
-
-
+	protected MovimientoJugador mv;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,11 +57,10 @@ public class GUI extends JFrame {
 		getContentPane().setLayout(null);
 		
 		juego = new Juego();
-		vida = 0;
 		
 		//Panel de informacion de jugador
 		JPanel panel_informacion = new JPanel();
-		panel_informacion.setBackground(SystemColor.controlShadow);
+		panel_informacion.setBackground(Color.BLACK);
 		panel_informacion.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel_informacion.setBounds(0, 0, 786, 60);
 		getContentPane().add(panel_informacion);
@@ -80,71 +71,48 @@ public class GUI extends JFrame {
 		progressBar.setBounds(145, 24, 207, 25);
 		progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		progressBar.setForeground(Color.GREEN);
-		progressBar.setValue(0);
+		progressBar.setValue(50);
 		panel_informacion.add(progressBar);
 		// Hay que setearle oyente cuando lo ataquen nomas
 		
-		
-		//Pocion vida
-		pocionVida = new JButton(" ");
-		pocionVida.setBounds(464, 11, 49, 38);
-		pocionVida.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
-		pocionVida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg) {
-				juego.getJugador().curar(25);
-				pocionVida.setEnabled(false);
-			}
-		});
-		pocionVida.setEnabled(true);
-		panel_informacion.add(pocionVida);
-		
-		//LISTENER POCION VIDA
-		pocionVida.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
-			public void actionPerformed(ActionEvent arg) {
-				
-				if(vida != 0) {
-					vida--;//Consumo una de las pociones
-					juego.getJugador().curar(25);//NO PUEDO USAR POCION PORQUE NO HAY NINGUNA CREADA
-					progressBar.setValue((int)(juego.getJugador().getCargaViral()));
-				}
-				else {
-					pocionVida.setEnabled(false);
-				}
-				
-			}
-		});
-		
-		
-		//Pocion cuarentena
-		JButton pocionCuarentena = new JButton(" ");
-		pocionCuarentena.setBounds(531, 11, 49, 38);
-		pocionCuarentena.setIcon(new ImageIcon("src/recursos/Premios/EfectosTemporales/efecto_cuarentena.png"));
-		pocionCuarentena.addActionListener(new ActionListener() {
+		//Pocion1
+		JButton pocion1 = new JButton(" ");
+		pocion1.setBounds(464, 11, 57, 38);
+		pocion1.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+		pocion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				
-				
+				juego.getJugador().curar(25);
+				pocion1.setEnabled(false);
 			}
 		});
-		pocionCuarentena.setEnabled(true);
-		panel_informacion.add(pocionCuarentena);
+		//pocion1.setEnabled(true);
+		panel_informacion.add(pocion1);
 		
-		//Pocion super
-		JButton pocionSuper = new JButton("");
-		pocionSuper.setBounds(598, 11, 49, 38);
-		pocionSuper.setIcon(new ImageIcon("src/recursos/Premios/EfectosTemporales/efecto_super.png"));
-		
-		//LISTENER POCION SUPER
-		pocionSuper.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg) {
-				
-				
-				
-				
+		//Pocion2
+		JButton pocion2 = new JButton(" ");
+		pocion2.setBounds(531, 11, 57, 38);
+		pocion2.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+		pocion2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				juego.getJugador().curar(25);
+				pocion2.setEnabled(false);
 			}
 		});
-		pocionSuper.setEnabled(true);
-		panel_informacion.add(pocionSuper);
+		//pocion2.setEnabled(true);
+		panel_informacion.add(pocion2);
+		
+		//Pocion3
+		JButton pocion3 = new JButton(" ");
+		pocion3.setBounds(598, 11, 57, 38);
+		pocion3.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
+		pocion3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				juego.getJugador().curar(25);
+				pocion3.setEnabled(false);
+			}
+		});
+		//pocion3.setEnabled(true);
+		panel_informacion.add(pocion3);
 		
 		JLabel labelCargaViral = new JLabel("CARGA VIRAL:");
 		labelCargaViral.setForeground(Color.WHITE);
@@ -164,21 +132,20 @@ public class GUI extends JFrame {
 		labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		labelNivel.setBounds(677, 24, 69, 25);
 		panel_informacion.add(labelNivel);
-		
-		labelNivel.setText("NIVEL: "+juego.getNivel());//No puedo agregar actionlistener a una label
-		
-		
+		//Hay que setear oyente cuando cambia de nivel
 		
 		Mapa panel_mapa = juego.getMapa();
 		getContentPane().add(panel_mapa);
 		
+		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
+		
 	}
 	
-	public void sumarPocionVida() {
-		if(vida != 3) {
-			vida++;
-			pocionVida.setEnabled(true);
-		}
+	private class Adapter extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+        	System.out.println("key pressed 1");
+            mv.keyPressed(e);
+        }
 	}
-	
 }
