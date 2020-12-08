@@ -5,8 +5,8 @@ import entidades.EntidadGrafica;
 
 public class MovimientoVertical extends EstrategiaMovimiento {
 	
-	public static final int ARRIBA = 1;
-	public static final int ABAJO = -1;
+	public static final int ARRIBA = -1;
+	public static final int ABAJO = 1;
 
 	public MovimientoVertical(Entidad entidad, int direccion) {
 		super(entidad, direccion);
@@ -14,7 +14,7 @@ public class MovimientoVertical extends EstrategiaMovimiento {
 	
 	public void mover() {
 		EntidadGrafica g = e.getEntidadGrafica();
-		g.setX(g.getX() + d * e.getVelocidad());
+		g.setY(g.getY() + d * e.getVelocidad());
 	}
 
 }

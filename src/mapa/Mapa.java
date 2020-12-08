@@ -31,7 +31,8 @@ public class Mapa extends JLayeredPane {
 	}
 
 	public void eliminarEntidad(Entidad e) {
-
+		this.remove(e.getEntidadGrafica().getLabel());
+		this.repaint();
 	}
 
 	public void setFondo(String ruta) {

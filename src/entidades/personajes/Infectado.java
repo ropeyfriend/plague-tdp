@@ -1,7 +1,6 @@
 package entidades.personajes;
 
 import entidades.movimiento.MovimientoVertical;
-import entidades.proyectiles.ProyectilInfectado;
 import juego.Juego;
 
 /**Clase que modela a un infectado del juego*/

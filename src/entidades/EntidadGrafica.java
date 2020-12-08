@@ -1,10 +1,13 @@
 package entidades;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 
 /**Clase encargada de la parte grafica de la entidad*/
 
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
 /**Clase que modela la parte grafica de una entidad*/
 
@@ -32,6 +35,10 @@ public class EntidadGrafica {
     	ImageIcon original = new ImageIcon(ruta);
     	dibujo = new JLabel(original);
     	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
+    	
+    	//borde a los labels
+    	dibujo.setBorder(new LineBorder(Color.BLACK));
+    	
     	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
 	}
     

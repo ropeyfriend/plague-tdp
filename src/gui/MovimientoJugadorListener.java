@@ -21,7 +21,7 @@ public class MovimientoJugadorListener implements KeyListener {
 			if(e.getKeyCode() == KeyEvent.VK_LEFT && !fueraDelMapa(jugador.getEntidadGrafica().getX() - jugador.getVelocidad())) {
 				System.out.println("key pressed LEFT");
 				jugador.mover(-1);
-			}
+			} 
 	}
 
 	@Override

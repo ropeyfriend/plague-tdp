@@ -31,7 +31,7 @@ public class Jugador extends Personaje {
 		muerto = false;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
-		mh = new MovimientoHorizontal(this, 1);
+		mh = new MovimientoHorizontal(this, MovimientoHorizontal.DERECHA);
 	}
 	
 	public Juego getJuego() {
@@ -141,4 +141,5 @@ public class Jugador extends Personaje {
 		}
 	}
 
+	
 }

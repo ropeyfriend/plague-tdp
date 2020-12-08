@@ -1,20 +1,23 @@
 package entidades.proyectiles;
 
 import entidades.EntidadGrafica;
+import entidades.movimiento.MovimientoVertical;
 import entidades.personajes.Infectado;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 /**Clase que modela al proyectil del jugador*/
 
 public class ProyectilJugador extends Proyectil{
 	
 	/**Crea un nuevo proyectil del jugador*/
-	public ProyectilJugador(int x, int y) {
-		super(5,1);//Va hacia arriba (1)
+	public ProyectilJugador(Juego g ,int x, int y) {
+		super(g, 10 ,MovimientoVertical.ARRIBA); //Va hacia arriba (-1)
 		danio = 10;
 		activo = true;
-		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilJugador.gif";
+		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilJugador.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
+		mv = new MovimientoVertical(this, this.direccion);
 	}
 	
 	//Methods
@@ -35,10 +38,9 @@ public class ProyectilJugador extends Proyectil{
 	public void efectoSuper(int valor) {
 		danio = danio * valor;
 	}
-	
-	public void mover() {}
-	
+
 	//Getters
+	
 	/**Retorna la capacidad de desinfeccion del proyectil
 	 * @return capacidad de desinfeccion
 	 * */
@@ -46,7 +48,14 @@ public class ProyectilJugador extends Proyectil{
 		return danio;
 	}
 	
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	//Setters
+	
 	/**Modifica la capacidad de desinfeccion del protectil por el pasado por parametro
 	 * @param c, capacidad de decinfeccion a modificar
 	 * */
@@ -54,11 +63,7 @@ public class ProyectilJugador extends Proyectil{
 		danio = c;
 	}
 
-	@Override
-	public boolean getMuerto() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 
 }

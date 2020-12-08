@@ -72,6 +72,8 @@ public class GUI extends JFrame {
 		//cantidad de pociones
 		cantPociones = 0;
 		
+		Thread hilo = new Thread(juego);
+		hilo.start();
 	}
 	
 	public void setVentana() {
