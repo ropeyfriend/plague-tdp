@@ -22,10 +22,10 @@ public class FabricaBeta extends Fabrica{
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
 		Random rnd = new Random();
-		int x = rnd.nextInt(this.game.getanchomapa() - inf.getEntidadGrafica().getAncho());
+		int x = rnd.nextInt(game.getMapa().getHeight() - inf.getEntidadGrafica().getAncho());
 		
 		while(repetido(x,ubicacionX)) {
-			x = rnd.nextInt(this.game.getanchomapa() - inf.getEntidadGrafica().getAncho());
+			x = rnd.nextInt(game.getMapa().getHeight()  - inf.getEntidadGrafica().getAncho());
 		}
 		
 		ubicacionX.add(x);//Si no esta repetido guardo a x en la lista
