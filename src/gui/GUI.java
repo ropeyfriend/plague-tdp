@@ -52,13 +52,14 @@ public class GUI extends JFrame {
 	}
 
 	public GUI() {
-		//ventana y panel info
-		setVentana();
-		setPanelInformacion();
-		
 		//juego y mapa
 		juego = new Juego();
 		Mapa panel_mapa = juego.getMapa();
+		
+		
+		//ventana y panel info
+		setVentana();
+		setPanelInformacion();
 		
 		//movimiento
 		this.setFocusable(true);
@@ -95,7 +96,7 @@ public class GUI extends JFrame {
 				progressBar.setBounds(135, 16, 207, 25);
 				progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 				progressBar.setForeground(Color.GREEN);
-				progressBar.setValue((int) juego.getJugador().getCargaViral());
+				progressBar.setValue((int) juego.getJugador().getCargaViral() );
 				panel_informacion.add(progressBar);
 				// Hay que setearle oyente cuando lo ataquen nomas
 				

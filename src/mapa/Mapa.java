@@ -9,9 +9,12 @@ import javax.swing.JLayeredPane;
 import entidades.Entidad;
 
 public class Mapa extends JLayeredPane {
+	/**Fondo del mapa*/
 	protected JLabel fondo;
+	/**Ruta donde se ubica el fondo del mapa*/
 	protected String ruta_fondo = "src\\recursos\\Mapa\\mapa.png";
 
+	/**Crea un nuevo mapa*/
 	public Mapa() {
 		super();
 		this.setBounds(0, 49, 786, 514);
@@ -24,16 +27,24 @@ public class Mapa extends JLayeredPane {
 		this.add(fondo);
 	}
 
-
+	/**Agrega una entidad al mapa
+	 * @param e, entidad a agregar
+	 * */
 	public void agregarEntidad(Entidad e) {
 		this.add(e.getEntidadGrafica().getLabel(), 0);
 		this.repaint();
 	}
-
+	
+	/**Elimina una entidad del mapa
+	 * @param e, entidad a eliminar
+	 * */
 	public void eliminarEntidad(Entidad e) {
 
 	}
-
+	
+	/**Modifica el fondo del mapa por el pasado por parametro
+	 * @param ruta, String que representa la ruta donde se guarda el nuevo fondo
+	 * */
 	public void setFondo(String ruta) {
 		ruta_fondo = ruta;
 		ImageIcon original = new ImageIcon(ruta_fondo);
