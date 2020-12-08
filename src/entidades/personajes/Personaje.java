@@ -4,9 +4,9 @@ import entidades.proyectiles.Proyectil;
 
 public abstract class Personaje extends Entidad{
 	//Atributes
-	/*Representa la carga viral personaje*/
+	/**Representa la carga viral personaje*/
 	protected float cargaViral;
-	/*Representa la velocidad a la que se mueve el personaje*/
+	/**Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
 	/**Indica si es personaje esta muerto*/
 	protected boolean muerto;

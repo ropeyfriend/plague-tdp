@@ -8,7 +8,6 @@ import juego.Juego;
 public abstract class Fabrica {
 	/**Representa el juego de la fabrica*/
 	protected Juego game;
-	/**Representa la posicion x donde se ubicara al infectado*/
 	
 	/**Crea una nueva fabrica*/
 	public Fabrica(Juego g) {

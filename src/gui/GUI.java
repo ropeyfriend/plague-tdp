@@ -63,17 +63,11 @@ public class GUI extends JFrame {
 		panel_informacion.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel_informacion.setBounds(0, 0, 786, 60);
 		getContentPane().add(panel_informacion);
-		panel_informacion.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
-		
-		// texto "CARGA VIRAL:"
-		JTextPane txtpnCargaViral = new JTextPane();
-		txtpnCargaViral.setForeground(Color.WHITE);
-		txtpnCargaViral.setText("CARGA VIRAL  :");
-		txtpnCargaViral.setBackground(Color.BLACK);
-		panel_informacion.add(txtpnCargaViral);
+		panel_informacion.setLayout(null);
 		
 		//Barra de carga viral
 		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(145, 24, 207, 25);
 		progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		progressBar.setForeground(Color.GREEN);
 		progressBar.setValue(50);
@@ -82,6 +76,7 @@ public class GUI extends JFrame {
 		
 		//Pocion1
 		JButton pocion1 = new JButton(" ");
+		pocion1.setBounds(464, 11, 57, 38);
 		pocion1.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
 		pocion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -89,18 +84,12 @@ public class GUI extends JFrame {
 				pocion1.setEnabled(false);
 			}
 		});
-		
-		//Texto "POCIONES:"
-		JTextPane txtpnPociones = new JTextPane();
-		txtpnPociones.setText("POCIONES :");
-		txtpnPociones.setBackground(Color.BLACK);
-		txtpnPociones.setForeground(Color.WHITE);
-		panel_informacion.add(txtpnPociones);
 		pocion1.setEnabled(true);
 		panel_informacion.add(pocion1);
 		
 		//Pocion2
 		JButton pocion2 = new JButton(" ");
+		pocion2.setBounds(531, 11, 57, 38);
 		pocion2.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
 		pocion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -113,6 +102,7 @@ public class GUI extends JFrame {
 		
 		//Pocion3
 		JButton pocion3 = new JButton(" ");
+		pocion3.setBounds(598, 11, 57, 38);
 		pocion3.setIcon(new ImageIcon("D:\\TDP\\plague-tdp\\src\\recursos\\Premios\\ObjetosPreciosos\\PocionVida.png"));
 		pocion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -123,13 +113,24 @@ public class GUI extends JFrame {
 		pocion3.setEnabled(true);
 		panel_informacion.add(pocion3);
 		
-		//Texto "NIVEL : X"
-		JTextPane nivel = new JTextPane();
-		nivel.setForeground(Color.WHITE);
-		nivel.setBackground(Color.BLACK);
-		nivel.setText("NIVEL: X");
-		nivel.setFont(new Font("Verdana", Font.PLAIN, 14));
-		panel_informacion.add(nivel);
+		JLabel labelCargaViral = new JLabel("CARGA VIRAL:");
+		labelCargaViral.setForeground(Color.WHITE);
+		labelCargaViral.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		labelCargaViral.setBounds(21, 23, 115, 26);
+		panel_informacion.add(labelCargaViral);
+		
+		JLabel labelPremios = new JLabel("PREMIOS:");
+		labelPremios.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		labelPremios.setForeground(Color.WHITE);
+		labelPremios.setBounds(377, 24, 77, 25);
+		panel_informacion.add(labelPremios);
+		
+		JLabel labelNivel = new JLabel("NIVEL:");
+		labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelNivel.setForeground(Color.WHITE);
+		labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		labelNivel.setBounds(677, 24, 69, 25);
+		panel_informacion.add(labelNivel);
 		//Hay que setear oyente cuando cambia de nivel
 		
 		Mapa panel_mapa = juego.getMapa();

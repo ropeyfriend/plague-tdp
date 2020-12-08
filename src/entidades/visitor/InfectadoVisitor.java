@@ -8,9 +8,10 @@ import entidades.proyectiles.Proyectil;
 /**Clase que modela al visitor de un infectado*/
 
 public class InfectadoVisitor extends Visitor{
-	/**Representa a un infectado*/
+	/**Infectado del visitor*/
 	private Infectado inf;
-
+	
+	/**Crea un nuevo visitor del infectado*/
 	public InfectadoVisitor(Infectado i) {
 		inf = i;
 	}

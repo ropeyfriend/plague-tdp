@@ -32,8 +32,8 @@ public abstract class Infectado extends Personaje{
 	 
 	//Getters
 	 /**Retorna el rango del infectado
-	  * @return rango del infectado
-	  * */
+	 * @return rango del infectado
+	 * */
 	public int getRango() {
 		return rango;
 	}

@@ -25,13 +25,6 @@ public abstract class Proyectil extends Entidad{
     	direccion = d;
     }
     
-    /**Dispara al jugador pasado por parametro
-     * @param j, jugador al cual disparar
-     * */
-	public void disparar(Jugador j) {
-		j.recibirDanio(danio);
-	}
-    
     public abstract void mover();
     
     //Getters
@@ -56,6 +49,7 @@ public abstract class Proyectil extends Entidad{
     	return activo;
     }
     
+    /**Retorna el danio generado por el proyectil*/
     public int getDanio() {
     	return danio;
     }

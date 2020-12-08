@@ -18,6 +18,7 @@ public abstract class Entidad {
 	/**Ruta de el gif que contiene al dibujo de la entidad atacando*/
 	protected String ruta_dibujo_ataque;
     
+	/**Crea una nueva entidad*/
 	public Entidad() {
 	}
 	
