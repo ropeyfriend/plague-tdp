@@ -200,7 +200,7 @@ public class GUI extends JFrame {
 				labelPremios.setBounds(379, 16, 77, 25);
 				panel_informacion.add(labelPremios);
 				
-				JLabel labelNivel = new JLabel("NIVEL:");
+				JLabel labelNivel = new JLabel("NIVEL:"/*+juego.getNivel()*/);
 				labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
 				labelNivel.setForeground(Color.WHITE);
 				labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
