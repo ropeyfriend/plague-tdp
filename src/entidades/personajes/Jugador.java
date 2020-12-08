@@ -128,9 +128,13 @@ public class Jugador extends Personaje {
 		return armaSanitaria;
 	}
 
+	/**
+	 * Dado el parametro i cambia el dibujo del jugador dependiendo si se mueve para la izquierda, derecha o no tiene movimiento (-1, 1 y 0)
+	 * Luego indica la direccion y se mueve
+	 * @param i Indica la dirección del movimiento realizado
+	 */
 	public void mover(int i) {
 		cambiarDibujo(i);
-		
 		if (i == 1 || i == -1) {
 			this.mh.setDireccion(i);
 			this.mh.mover();
