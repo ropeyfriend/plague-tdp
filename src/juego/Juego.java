@@ -50,8 +50,5 @@ public class Juego {
 		
 	}
 
-	public int getanchomapa() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 }
