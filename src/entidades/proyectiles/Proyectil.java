@@ -2,6 +2,7 @@ package entidades.proyectiles;
 
 import entidades.Entidad;
 import entidades.EntidadGrafica;
+import entidades.movimiento.EstrategiaMovimiento;
 import entidades.personajes.Jugador;
 
 /**Clase que modela a un proyectil*/
@@ -15,6 +16,7 @@ public abstract class Proyectil extends Entidad{
     protected boolean activo;
     /**Indica la cantidad de danio que genera el proyectil*/
 	protected int danio;
+	protected EstrategiaMovimiento mv;
     
     /**Crea un nuevo proyectil
      * @param v, velocidad del proyectil
@@ -25,7 +27,14 @@ public abstract class Proyectil extends Entidad{
     	direccion = d;
     }
     
-    public abstract void mover();
+    public void mover() {
+		this.mv.mover();
+	}
+	
+	public void setDireccion(int i) {
+		if (i == 1 || i == -1)
+			this.mv.setDireccion(i);
+	}
     
     //Getters
     /**Retorna la velocidad del proyectil
@@ -67,13 +76,6 @@ public abstract class Proyectil extends Entidad{
 	 * */
 	public void setVelocidad(int v) {
 		velocidad = v;
-	}
-	
-	/**Modifica la direccion del proyectil por la pasada por parametro
-	 * @param direccion a modificar
-	 * */
-	public void setDireccion(int d) {
-		direccion = d;
 	}
 	
 	/**Modifica la variable activo por la pasada por parametro

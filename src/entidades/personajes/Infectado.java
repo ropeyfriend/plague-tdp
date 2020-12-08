@@ -40,6 +40,15 @@ public abstract class Infectado extends Personaje{
 		return rango;
 	}
 	
+	public void mover() {
+		this.mv.mover();
+	}
+	
+	public void setDireccion(int i) {
+		if (i == 1 || i == -1)
+			this.mv.setDireccion(i);
+	}
+	
 	/*/**Retorna la cantidad de danio que recibe el infectado
 	 * @return danio que recibe el infectado
 	 * */
