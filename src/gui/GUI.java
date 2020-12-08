@@ -74,7 +74,7 @@ public class GUI extends JFrame {
 		//movimiento
 		this.setFocusable(true);
 		getContentPane().add(panel_mapa);
-		mv = new MovimientoJugadorListener(juego.getJugador().getEntidadGrafica());
+		mv = new MovimientoJugadorListener(juego.getJugador());
 		this.addKeyListener(new Adapter());
 		
 		//pociones
@@ -224,6 +224,9 @@ public class GUI extends JFrame {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			mv.keyPressed(e);
+		}
+		public void keyReleased(KeyEvent e) {
+			mv.keyReleased(e);
 		}
 	}
 	

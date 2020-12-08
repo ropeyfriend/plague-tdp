@@ -20,7 +20,6 @@ public class Juego {
         entidades = new LinkedList<Entidad>();
         
         mapa.agregarEntidad(jugador);
-        jugador.cambiarDibujo();
         mapa.repaint();
     }
 
