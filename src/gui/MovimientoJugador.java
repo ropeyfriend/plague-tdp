@@ -14,10 +14,12 @@ public class MovimientoJugador implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		System.out.println("key pressed");
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			jugadorGrafico.setX(jugadorGrafico.getX() + 2);
+			System.out.println("key pressed RIGHT");
+			jugadorGrafico.setX(jugadorGrafico.getX() + 10);
 		} else
 			if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-				jugadorGrafico.setX(jugadorGrafico.getX() - 2);
+				System.out.println("key pressed LEFT");
+				jugadorGrafico.setX(jugadorGrafico.getX() - 10);
 			}
 	}
 
