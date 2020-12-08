@@ -1,7 +1,6 @@
 package entidades.personajes;
 
 import entidades.movimiento.MovimientoVertical;
-import entidades.proyectiles.ProyectilInfectado;
 import juego.Juego;
 
 /**Clase que modela a un infectado del juego*/
@@ -38,6 +37,15 @@ public abstract class Infectado extends Personaje{
 	 * */
 	public int getRango() {
 		return rango;
+	}
+	
+	public void mover() {
+		this.mv.mover();
+	}
+	
+	public void setDireccion(int i) {
+		if (i == 1 || i == -1)
+			this.mv.setDireccion(i);
 	}
 	
 	/*/**Retorna la cantidad de danio que recibe el infectado

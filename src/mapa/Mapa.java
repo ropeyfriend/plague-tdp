@@ -39,7 +39,8 @@ public class Mapa extends JLayeredPane {
 	 * @param e, entidad a eliminar
 	 * */
 	public void eliminarEntidad(Entidad e) {
-
+		this.remove(e.getEntidadGrafica().getLabel());
+		this.repaint();
 	}
 	
 	/**Modifica el fondo del mapa por el pasado por parametro

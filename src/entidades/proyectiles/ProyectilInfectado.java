@@ -1,8 +1,10 @@
 package entidades.proyectiles;
 
 import entidades.EntidadGrafica;
+import entidades.movimiento.MovimientoVertical;
 import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 /**Clase que modela al proyectil de un infectado*/
 
@@ -12,17 +14,13 @@ public class ProyectilInfectado extends Proyectil{
 	protected int rango;
 		
 	/**Crea un nuevo proyectil infectado*/
-	public ProyectilInfectado(int x, int y) {
-		super(3,-1); //Va hacia abajo (-1)
+	public ProyectilInfectado(Juego g ,int x, int y) {
+		super(g, 10, MovimientoVertical.ABAJO); //Va hacia abajo (1)
 		rango = 5;
 		activo = true;
-		ruta_dibujo_moviendose = "recursos/Proyectiles/ProyectilInfectado.gif";
+		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilInfectado.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
-	}
-	
-	//Methods
-	public void mover() {
-		
+		mv = new MovimientoVertical(this, this.direccion);
 	}
 	
 	public void accept(Visitor v) {
@@ -36,7 +34,6 @@ public class ProyectilInfectado extends Proyectil{
 		j.recibirDanio(danio);
 	}
 	
-	//Getter
 	/**Retorna el rango del proyectil
 	 * @return rango
 	 * */
@@ -44,7 +41,12 @@ public class ProyectilInfectado extends Proyectil{
 		return rango;
 	}
 	
-	//Setter
+	@Override
+	public boolean getMuerto() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	/**Modifica el rango del proyectil por el pasado por parametro
 	 * @param r, rango a modificar
 	 * */
@@ -52,10 +54,6 @@ public class ProyectilInfectado extends Proyectil{
 		rango = r;
 	}
 
-	@Override
-	public boolean getMuerto() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }
