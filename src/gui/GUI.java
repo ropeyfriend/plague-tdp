@@ -29,13 +29,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import entidades.movimiento.MovimientoHorizontal;
+
 import javax.swing.JTextPane;
 
 public class GUI extends JFrame {
 
 	protected Juego juego;
-	protected MovimientoJugador mv;
-
+	protected MovimientoHorizontal mv;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -154,7 +157,13 @@ public class GUI extends JFrame {
 		labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		labelNivel.setBounds(677, 24, 69, 25);
 		panel_informacion.add(labelNivel);
-		// Hay que setear oyente cuando cambia de nivel
+		//Hay que setear oyente cuando cambia de nivel
+		
+		Mapa panel_mapa = juego.getMapa();
+		getContentPane().add(panel_mapa);
+		
+		mv = new MovimientoHorizontal(juego.getJugador().getEntidadGrafica());
+		
 	}
 
 	private class Adapter extends KeyAdapter {

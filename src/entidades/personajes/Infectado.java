@@ -1,5 +1,6 @@
 package entidades.personajes;
 
+import entidades.movimiento.MovimientoVertical;
 import entidades.proyectiles.ProyectilInfectado;
 import juego.Juego;
 
@@ -11,6 +12,7 @@ public abstract class Infectado extends Personaje{
 	protected int rango;
 	/**Cantidad de danio que recibe al ser golpeado por el jugador*/
 	protected float danio_a_recibir;
+	protected MovimientoVertical mv;
 
 	/**Crea un nuevo infectado
 	 * @param vel, velocidad del infectado
