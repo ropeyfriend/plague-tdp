@@ -76,5 +76,4 @@ public abstract class Personaje extends Entidad{
 	public void setMuerto(boolean m) {
 		muerto = m;
 	}
-
 }

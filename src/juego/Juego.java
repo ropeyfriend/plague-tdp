@@ -3,6 +3,7 @@ package juego;
 import java.util.LinkedList;
 
 import entidades.Entidad;
+import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import mapa.Mapa;
 
@@ -13,7 +14,7 @@ public class Juego {
     
     public Juego() {
         mapa = new Mapa();
-        jugador = new Jugador(393,300);
+        jugador = new Jugador(393,300,this);
         entidades = new LinkedList<Entidad>();
         
         mapa.agregarEntidad(jugador);
@@ -32,4 +33,13 @@ public class Juego {
     public Mapa getMapa() {
     	return mapa;
     }
+
+	public void agregarArreglo(Infectado[] array) {
+	
+	}
+
+	public int getanchomapa() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
