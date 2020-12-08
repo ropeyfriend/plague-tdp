@@ -6,11 +6,13 @@ import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import mapa.Mapa;
+import niveles.Nivel;
 
 public class Juego {
     protected LinkedList <Entidad> entidades;
     protected Mapa mapa;
     protected Jugador jugador;
+    protected Nivel nivel;
     
     public Juego() {
         mapa = new Mapa();
@@ -26,6 +28,14 @@ public class Juego {
     	
     }
     
+    public Nivel getNivel() {
+    	return nivel;
+    }
+    
+    public void setNivel(Nivel n) {
+    	nivel = n;
+    }
+    
     public Jugador getJugador() {
     	return jugador;
     }
@@ -39,8 +49,5 @@ public class Juego {
 		
 	}
 
-	public int getanchomapa() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 }
