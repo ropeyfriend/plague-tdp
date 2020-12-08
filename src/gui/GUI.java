@@ -110,6 +110,9 @@ public class GUI extends JFrame {
 				panel_informacion.add(progressBar);
 				// Hay que setearle oyente cuando lo ataquen nomas
 				
+				
+				
+				
 				//Pocion1
 				JButton pocion1 = new JButton(" ");
 				pocion1.setBounds(466, 11, 43, 38);
@@ -185,7 +188,7 @@ public class GUI extends JFrame {
 				pocion3.setMargin(new Insets(0, 0, 0, 0));
 				panel_informacion.add(pocion3);
 				
-				pocion3.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
+				pocion3.addActionListener(new ActionListener() { 
 					public void actionPerformed(ActionEvent arg) {
 						
 						if(cantPociones != 0) {
@@ -210,13 +213,14 @@ public class GUI extends JFrame {
 				labelPremios.setBounds(379, 16, 77, 25);
 				panel_informacion.add(labelPremios);
 				
-				JLabel labelNivel = new JLabel("NIVEL:"/*+juego.getNivel()*/);
+				JLabel labelNivel = new JLabel("NIVEL: "/*+juego.getNivel()*/);
 				labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
 				labelNivel.setForeground(Color.WHITE);
 				labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				labelNivel.setBounds(696, 16, 69, 25);
 				panel_informacion.add(labelNivel);
 				//Hay que setear oyente cuando cambia de nivel
+				
 	}
 
 	
