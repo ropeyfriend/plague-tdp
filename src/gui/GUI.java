@@ -29,12 +29,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import entidades.movimiento.MovimientoHorizontal;
+
 import javax.swing.JTextPane;
 
 public class GUI extends JFrame {
 	
 	protected Juego juego;
-	protected MovimientoJugador mv;
+	protected MovimientoHorizontal mv;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -137,7 +140,7 @@ public class GUI extends JFrame {
 		Mapa panel_mapa = juego.getMapa();
 		getContentPane().add(panel_mapa);
 		
-		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
+		mv = new MovimientoHorizontal(juego.getJugador().getEntidadGrafica());
 		
 	}
 	
