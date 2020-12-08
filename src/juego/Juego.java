@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
-import gui.MovimientoJugador;
 import mapa.Mapa;
 import niveles.Nivel;
 import niveles.Tanda1;
@@ -19,7 +18,7 @@ public class Juego {
     
     public Juego() {
         mapa = new Mapa();
-        jugador = new Jugador(393,300,this);
+        jugador = new Jugador(393,440,this);
         entidades = new LinkedList<Entidad>();
         
         mapa.agregarEntidad(jugador);
@@ -76,8 +75,5 @@ public class Juego {
 
 	public void agregarArreglo(Infectado[] array) {
 		// TODO Auto-generated method stub
-		
 	}
-
-
 }

@@ -1,5 +1,6 @@
 package entidades.personajes;
 import entidades.EntidadGrafica;
+import entidades.movimiento.MovimientoHorizontal;
 import entidades.proyectiles.*;
 import entidades.visitor.*;
 import juego.Juego;
@@ -9,6 +10,7 @@ public class Jugador extends Personaje{
 	//Atributes
 	/*Arma del jugador para desinfectar a los infectados*/
 	protected ProyectilJugador armaSanitaria;
+	protected MovimientoHorizontal mh;
 	
 	/**Crea un nuevo jugador
 	 * @param p, proyectil del jugador

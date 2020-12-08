@@ -17,6 +17,8 @@ public abstract class Entidad {
 	protected String ruta_dibujo_moviendose;
 	/**Ruta de el gif que contiene al dibujo de la entidad atacando*/
 	protected String ruta_dibujo_ataque;
+	/**Representa la velocidad a la que se mueve el personaje*/
+	protected int velocidad;
     
 	/**Crea una nueva entidad*/
 	public Entidad() {
@@ -34,6 +36,20 @@ public abstract class Entidad {
 	 * */
 	public void setEntidadGrafica(EntidadGrafica e) {
 		entidadGrafica = e;
+	}
+	
+	/**Retorna la velocidad del personaje
+	 * @return velocidad.
+	 * */
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	/**Modifica el valor de la velocidad por el pasado por parametro
+	 * @param v, velocidad a modificar
+	 * */
+	public void setVelocidad(int v) {
+		velocidad = v;
 	}
 	
 	/**Se encarga de aceptar al visitor pasado por parametro
