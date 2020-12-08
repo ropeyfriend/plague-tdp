@@ -10,8 +10,8 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 	 * @param duracion, duracion dele efecto
 	 * @param g, juego donde aplica el efecto
 	 * */
-	public CuarentenaObligatoria(int duracion, int x, int y) {
-		super(duracion);
+	public CuarentenaObligatoria(int duracion,Juego g, int x, int y) {
+		super(duracion,g);
 		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_cuarentena.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x ,y);
 	}

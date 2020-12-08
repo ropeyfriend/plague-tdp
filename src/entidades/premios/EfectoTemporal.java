@@ -1,5 +1,7 @@
 package entidades.premios;
 
+import juego.Juego;
+
 public abstract class EfectoTemporal extends Premio {
 	/**Representa el tiempo de duracion del efecto temporal*/
 	protected int duracion;
@@ -7,8 +9,8 @@ public abstract class EfectoTemporal extends Premio {
 	/**Crea un nuevo efecto temporal
 	 * @param d, duracion del efecto
 	 * */
-	public EfectoTemporal(int d) {
-		super();
+	public EfectoTemporal(int d, Juego g) {
+		super(g);
 		duracion = d;
 	}	
 	

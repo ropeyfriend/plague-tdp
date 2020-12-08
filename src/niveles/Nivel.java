@@ -2,6 +2,8 @@ package niveles;
 
 import juego.Juego;
 
+/**Clase que represemta los niveles de un juego*/
+
 public abstract class Nivel {
 	//Atributos
 	/**Representa la tanda del nivel*/

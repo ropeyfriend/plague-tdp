@@ -28,7 +28,7 @@ public class FabricaBeta extends Fabrica{
 			x = rnd.nextInt(this.game.getanchomapa() - inf.getEntidadGrafica().getAncho());
 		}
 		
-		ubicacionX.add(x);
+		ubicacionX.add(x);//Si no esta repetido guardo a x en la lista
 		
 		int y = 0;//Poner el numero donde aparecen los infectados al principio
 		inf.getEntidadGrafica().setX(x);
@@ -37,7 +37,7 @@ public class FabricaBeta extends Fabrica{
 		return inf;
 	}
 	
-	/**Verifica si el entero pasado por parametro este repetido en la lista con el fin de que no haya colisiones
+	/**Verifica si el entero pasado por parametro esta en la lista, con el fin de evitar colisiones
 	 * @param x, entero a verificar
 	 * @param list, lista donde se guardan las posiciones de la variable x
 	 * @return true si x se encuentra en la lista

@@ -1,4 +1,5 @@
 package entidades.visitor;
+
 import entidades.personajes.*;
 import entidades.proyectiles.*;
 import entidades.premios.*;

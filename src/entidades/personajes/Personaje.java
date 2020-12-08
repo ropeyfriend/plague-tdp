@@ -11,8 +11,7 @@ public abstract class Personaje extends Entidad{
 	/**Indica si es personaje esta muerto*/
 	protected boolean muerto;
 	/**Representa el danio que ejerce el personaje*/
-	protected int danio;
-	 
+	protected int danio; 
 	 
 	/**Disminuye la carga viral del infectado*/
 	 public abstract void recibirDanio(int d);

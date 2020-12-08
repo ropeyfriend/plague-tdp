@@ -3,6 +3,7 @@ package entidades.premios;
 import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 /**Clase que modela a un super arma sanitaria*/
 
@@ -12,8 +13,8 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	private int danioExtra;
 	
 	/**Crea una super arma sanitaria nueva*/
-	public SuperArmaSanitaria(int danioExtra, int duracion, int x, int y) {
-		super(duracion);
+	public SuperArmaSanitaria(int danioExtra, int duracion, Juego g, int x, int y) {
+		super(duracion,g);
 		this.danioExtra = danioExtra;
 		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_super.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x , y);

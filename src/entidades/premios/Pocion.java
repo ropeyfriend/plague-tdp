@@ -3,14 +3,15 @@ package entidades.premios;
 import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
+import juego.Juego;
 
 public class Pocion extends ObjetoPrecioso {
 	/**Representa la cantidad de curacion de la pocion*/
 	private int cantCuracion;
 	
 	/**Crea una nueva pocion*/
-	public Pocion(int x, int y) {
-		super();
+	public Pocion(int x, int y, Juego g) {
+		super(g);
 		cantCuracion = 25;
 		ruta_dibujo_moviendose = "recursos/Premios/ObjetosPreciosos/pocionVida.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);

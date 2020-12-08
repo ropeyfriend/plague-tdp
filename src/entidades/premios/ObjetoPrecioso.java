@@ -1,9 +1,11 @@
 package entidades.premios;
 
+import juego.Juego;
+
 public abstract class ObjetoPrecioso extends Premio {
 
-	public ObjetoPrecioso() {
-		super();
+	public ObjetoPrecioso(Juego g) {
+		super(g);
 	}
 
 }

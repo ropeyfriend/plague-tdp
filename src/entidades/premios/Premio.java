@@ -2,12 +2,14 @@ package entidades.premios;
 
 import entidades.Entidad;
 import entidades.personajes.Jugador;
+import juego.Juego;
 
 /**Clase que modela a un premio del juego*/
 
 public abstract class Premio extends Entidad{
 	/**Crea un nuevo premio*/
-	public Premio() {
+	public Premio(Juego g) {
+		game = g;
 	}
     
 	/**Activa el efecto del premio
