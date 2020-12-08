@@ -5,9 +5,9 @@ import java.awt.event.KeyListener;
 
 import entidades.EntidadGrafica;
 
-public class MovimientoJugador implements KeyListener {
+public class MovimientoJugadorListener implements KeyListener {
 	EntidadGrafica jugadorGrafico;
-	public MovimientoJugador(EntidadGrafica jugadorGrafico) {
+	public MovimientoJugadorListener(EntidadGrafica jugadorGrafico) {
 		this.jugadorGrafico = jugadorGrafico;
 	}
 

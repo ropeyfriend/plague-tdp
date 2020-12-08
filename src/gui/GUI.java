@@ -37,7 +37,7 @@ import javax.swing.JTextPane;
 public class GUI extends JFrame {
 
 	protected Juego juego;
-	protected MovimientoHorizontal mv;
+	protected MovimientoJugadorListener mv;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -66,7 +66,7 @@ public class GUI extends JFrame {
 		// movimiento
 		this.setFocusable(true);
 		//this.requestFocus();
-		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
+		mv = new MovimientoJugadorListener(juego.getJugador().getEntidadGrafica());
 		addKeyListener(new Adapter());
 		
 	}
@@ -158,12 +158,6 @@ public class GUI extends JFrame {
 		labelNivel.setBounds(677, 24, 69, 25);
 		panel_informacion.add(labelNivel);
 		//Hay que setear oyente cuando cambia de nivel
-		
-		Mapa panel_mapa = juego.getMapa();
-		getContentPane().add(panel_mapa);
-		
-		mv = new MovimientoHorizontal(juego.getJugador().getEntidadGrafica());
-		
 	}
 
 	private class Adapter extends KeyAdapter {
