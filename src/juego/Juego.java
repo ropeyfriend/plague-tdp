@@ -16,7 +16,7 @@ public class Juego {
     
     public Juego() {
         mapa = new Mapa();
-        jugador = new Jugador(393,300,this);
+        jugador = new Jugador(393,440,this);
         entidades = new LinkedList<Entidad>();
         
         mapa.agregarEntidad(jugador);
@@ -46,8 +46,5 @@ public class Juego {
 
 	public void agregarArreglo(Infectado[] array) {
 		// TODO Auto-generated method stub
-		
 	}
-
-
 }

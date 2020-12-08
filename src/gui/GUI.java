@@ -5,6 +5,7 @@ import mapa.Mapa;
 import javax.swing.JProgressBar;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -71,8 +72,10 @@ public class GUI extends JFrame {
 		Mapa panel_mapa = juego.getMapa();
 		
 		//movimiento
+		this.setFocusable(true);
 		getContentPane().add(panel_mapa);
-		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
+		mv = new MovimientoJugadorListener(juego.getJugador().getEntidadGrafica());
+		this.addKeyListener(new Adapter());
 		
 		//pociones
 		pociones = new Premio[3];
@@ -118,6 +121,8 @@ public class GUI extends JFrame {
 					}
 				});
 				pocion1.setEnabled(true);
+				pocion1.setFocusable(false);
+				pocion1.setMargin(new Insets(0, 0, 0, 0));
 				panel_informacion.add(pocion1);
 				
 				//LISTENER POCION VIDA
@@ -147,6 +152,8 @@ public class GUI extends JFrame {
 					}
 				});
 				pocion2.setEnabled(true);
+				pocion2.setFocusable(false);
+				pocion2.setMargin(new Insets(0, 0, 0, 0));
 				panel_informacion.add(pocion2);
 				
 				pocion2.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
@@ -174,6 +181,8 @@ public class GUI extends JFrame {
 					}
 				});
 				pocion3.setEnabled(true);
+				pocion3.setFocusable(false);
+				pocion3.setMargin(new Insets(0, 0, 0, 0));
 				panel_informacion.add(pocion3);
 				
 				pocion3.addActionListener(new ActionListener() {//---------------Cuando agarra una pocion de vida hay q sumarle 1 a la cant de pociones de vida
