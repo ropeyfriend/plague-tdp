@@ -3,43 +3,32 @@ package gui;
 import juego.Juego;
 import mapa.Mapa;
 import javax.swing.JProgressBar;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import entidades.movimiento.MovimientoHorizontal;
 import entidades.premios.Pocion;
 import entidades.premios.Premio;
 
-import javax.swing.JTextPane;
 import java.awt.SystemColor;
 
 public class GUI extends JFrame {
 
+	private static final long serialVersionUID = 2116746884888994591L;
 	protected Juego juego;
 	protected MovimientoJugadorListener mv;
 	protected Premio pociones[];
@@ -74,7 +63,7 @@ public class GUI extends JFrame {
 		//movimiento
 		this.setFocusable(true);
 		getContentPane().add(panel_mapa);
-		mv = new MovimientoJugadorListener(juego.getJugador().getEntidadGrafica());
+		mv = new MovimientoJugadorListener(juego.getJugador());
 		this.addKeyListener(new Adapter());
 		
 		//pociones
@@ -228,6 +217,9 @@ public class GUI extends JFrame {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			mv.keyPressed(e);
+		}
+		public void keyReleased(KeyEvent e) {
+			mv.keyReleased(e);
 		}
 	}
 	
