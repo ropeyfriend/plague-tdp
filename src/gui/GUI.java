@@ -34,6 +34,7 @@ import javax.swing.JTextPane;
 public class GUI extends JFrame {
 	
 	protected Juego juego;
+	protected MovimientoJugador mv;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -84,7 +85,7 @@ public class GUI extends JFrame {
 				pocion1.setEnabled(false);
 			}
 		});
-		pocion1.setEnabled(true);
+		//pocion1.setEnabled(true);
 		panel_informacion.add(pocion1);
 		
 		//Pocion2
@@ -97,7 +98,7 @@ public class GUI extends JFrame {
 				pocion2.setEnabled(false);
 			}
 		});
-		pocion2.setEnabled(true);
+		//pocion2.setEnabled(true);
 		panel_informacion.add(pocion2);
 		
 		//Pocion3
@@ -110,7 +111,7 @@ public class GUI extends JFrame {
 				pocion3.setEnabled(false);
 			}
 		});
-		pocion3.setEnabled(true);
+		//pocion3.setEnabled(true);
 		panel_informacion.add(pocion3);
 		
 		JLabel labelCargaViral = new JLabel("CARGA VIRAL:");
@@ -136,5 +137,15 @@ public class GUI extends JFrame {
 		Mapa panel_mapa = juego.getMapa();
 		getContentPane().add(panel_mapa);
 		
+		mv = new MovimientoJugador(juego.getJugador().getEntidadGrafica());
+		
+	}
+	
+	private class Adapter extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+        	System.out.println("key pressed 1");
+            mv.keyPressed(e);
+        }
 	}
 }

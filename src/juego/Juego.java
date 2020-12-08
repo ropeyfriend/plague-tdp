@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
+import gui.MovimientoJugador;
 import mapa.Mapa;
 
 public class Juego {
