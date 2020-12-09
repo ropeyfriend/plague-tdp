@@ -7,6 +7,7 @@ import entidades.personajes.Infectado;
 import entidades.personajes.InfectadoAlpha;
 import entidades.personajes.InfectadoBeta;
 import entidades.personajes.Jugador;
+import entidades.premios.Pocion;
 import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
 import entidades.proyectiles.ProyectilInfectado;
@@ -34,12 +35,17 @@ public class Juego implements Runnable {
 	protected GUI gui;
 	//protected Infectado a;
 	//protected Infectado b;
+	protected Infectado a;
+	protected Infectado b;
+	protected Premio premio;
 
     public Juego(GUI gui) {
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		mapa.agregarEntidad(jugador);
 		pociones = new Premio[3];
+		premio = new Pocion(200,200,this);
+		
 		entidades = new LinkedList<Entidad>();		
 		
 		System.out.println("x " + jugador.getEntidadGrafica().getX());
@@ -51,6 +57,7 @@ public class Juego implements Runnable {
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
 		this.agregarEntidad(a);
 		this.agregarEntidad(b);
+		mapa.agregarEntidad(premio);
 		mapa.repaint();	
     }
 
