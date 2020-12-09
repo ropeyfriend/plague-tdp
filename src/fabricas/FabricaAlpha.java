@@ -17,21 +17,20 @@ public class FabricaAlpha extends Fabrica{
 
 	@Override
 	public Infectado crearInfectado() {
-		int x_random = 124;
-		//Infectado inf = new InfectadoAlpha(5,5,game);
-		Infectado inf = new InfectadoAlpha(game ,5 ,5 ,x_random ,game.getMapa().y_infectados); 
 		
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
 		Random rnd = new Random();
-		int x = rnd.nextInt(game.getMapa().getHeight() - inf.getEntidadGrafica().getAncho());
+		int x = rnd.nextInt(game.getMapa().getHeight() - 40);
 		
 		while(repetido(x,ubicacionX)) {
-			x = rnd.nextInt(game.getMapa().getHeight() - inf.getEntidadGrafica().getAncho());
+			x = rnd.nextInt(game.getMapa().getHeight() - 40);
 		}
 		
 		ubicacionX.add(x);//Si no esta repetido guardo a x en la lista
-		
+		//Infectado inf = new InfectadoAlpha(5,5,game);
+		Infectado inf = new InfectadoAlpha(game ,5 ,5 , x,game.getMapa().y_infectados); 
+
 		int y = 0;
 		inf.getEntidadGrafica().setX(x);
 		inf.getEntidadGrafica().setY(y);
