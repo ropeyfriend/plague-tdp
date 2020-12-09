@@ -34,7 +34,7 @@ public class Juego implements Runnable {
 		a = new InfectadoAlpha(this, 10, 3, 150 , 0);
 		b = new InfectadoBeta(this, 10, 3, 400, 0);
 		p = new ProyectilInfectado(this, 300, 0);
-		p1 = new ProyectilJugador(this, 350, 200);
+		p1 = new ProyectilJugador(this, 375, 400);
 		mapa.agregarEntidad(a);
 		mapa.agregarEntidad(b);
 		mapa.agregarEntidad(p);
@@ -47,11 +47,11 @@ public class Juego implements Runnable {
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(200);
+				Thread.sleep(700);
 				a.jugar();
 				b.jugar();
 				p.jugar();
-				p1.jugar();
+				//p1.jugar();
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();

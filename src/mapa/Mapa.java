@@ -13,6 +13,9 @@ public class Mapa extends JLayeredPane {
 	protected JLabel fondo;
 	/**Ruta donde se ubica el fondo del mapa*/
 	protected String ruta_fondo = "src\\recursos\\Mapa\\mapa.png";
+	
+	public final int y_infectados = 0;
+	public final int y_proyectiles_jugador = 400;
 
 	/**Crea un nuevo mapa*/
 	public Mapa() {

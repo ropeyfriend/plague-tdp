@@ -144,7 +144,11 @@ public class Jugador extends Personaje {
 	@Override
 	public void jugar() {
 		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public void disparar() {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
 	}
 
 	

@@ -18,7 +18,10 @@ public class FabricaBeta extends Fabrica{
 
 	@Override
 	public Infectado crearInfectado() {
-		Infectado inf = new InfectadoBeta(5,5,game);	
+		int x_random = 124;
+		
+		//Infectado inf = new InfectadoBeta(5,5,game);	
+		Infectado inf = new InfectadoBeta(game, 5, 5, x_random, game.getMapa().y_infectados);
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
 		Random rnd = new Random();

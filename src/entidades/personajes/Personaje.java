@@ -20,6 +20,11 @@ public abstract class Personaje extends Entidad{
 		return cargaViral;
 	}
 	
+	/**
+	 * Retorna un proyectil 
+	 */
+	public abstract void disparar();
+	
 	/**Retorna el danio del personaje
 	 * @return danio
 	 * */

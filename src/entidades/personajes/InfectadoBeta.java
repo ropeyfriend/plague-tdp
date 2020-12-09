@@ -1,8 +1,7 @@
 package entidades.personajes;
 
-import java.util.Random;
-
 import entidades.EntidadGrafica;
+import entidades.proyectiles.Proyectil;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
@@ -23,17 +22,6 @@ public class InfectadoBeta extends Infectado{
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
-	public InfectadoBeta(int vel, int r, Juego g) {
-		super(vel,r,g);
-		danio = 10;
-		visitor = new InfectadoVisitor(this);
-		activo = true;
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
-		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
-		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
-	}
-	
 	//Methods
 	public void recibirDanio(int danio_a_recibir) {//(Como le resto de a 10 entonces se muere en 10 golpes)
 		if(cargaViral - danio_a_recibir>= 10) { //Si la cargaViral es cero, no sigo desinfectandolo
@@ -51,9 +39,8 @@ public class InfectadoBeta extends Infectado{
 	}
 
 	@Override
-	public void atacar() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		
+	public void disparar() {
+		// TODO Auto-generated method stub
 	}
 	
 }
