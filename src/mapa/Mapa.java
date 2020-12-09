@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import entidades.Entidad;
+import juego.Juego;
 
 public class Mapa extends JLayeredPane {
 	/**Fondo del mapa*/

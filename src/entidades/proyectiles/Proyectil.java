@@ -35,7 +35,7 @@ public abstract class Proyectil extends Entidad {
 		if (!fueraDelMapa(this.entidadGrafica.getY()))
 			this.mv.mover();
 		else
-			game.getMapa().eliminarEntidad(this);
+			game.eliminarEntidad(this);
 	}
 
 	public boolean fueraDelMapa(int y) {

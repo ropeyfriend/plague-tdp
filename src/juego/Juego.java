@@ -47,18 +47,30 @@ public class Juego implements Runnable {
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(700);
+				Thread.sleep(250);
 				a.jugar();
 				b.jugar();
 				p.jugar();
 				//p1.jugar();
 				
+				for(Entidad e : entidades) {
+					e.jugar();
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}	
 		}
 	}
 
+  	public void agregarEntidad(Entidad e) {
+  		entidades.add(e);
+  		mapa.agregarEntidad(e);
+  	}
+  	
+  	public void eliminarEntidad(Entidad e) {
+  		entidades.remove(e);
+  		mapa.eliminarEntidad(e);
+  	}
     
     /**Crea un nuevo nivel del juego
      * @param n, es un entero que representa el nivel a crear

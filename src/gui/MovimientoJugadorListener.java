@@ -8,25 +8,29 @@ import entidades.personajes.Jugador;
 
 public class MovimientoJugadorListener implements KeyListener {
 	Jugador jugador;
+
 	public MovimientoJugadorListener(Jugador jugador) {
 		this.jugador = jugador;
 	}
 
 	public void keyPressed(KeyEvent e) {
 		System.out.println("key pressed");
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT && !fueraDelMapa(jugador.getEntidadGrafica().getX() + jugador.getVelocidad())) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT
+				&& !fueraDelMapa(jugador.getEntidadGrafica().getX() + jugador.getVelocidad())) {
 			System.out.println("key pressed RIGHT");
 			jugador.mover(1);
-		} else
-			if(e.getKeyCode() == KeyEvent.VK_LEFT && !fueraDelMapa(jugador.getEntidadGrafica().getX() - jugador.getVelocidad())) {
-				System.out.println("key pressed LEFT");
-				jugador.mover(-1);
-			} 
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT
+				&& !fueraDelMapa(jugador.getEntidadGrafica().getX() - jugador.getVelocidad())) {
+			System.out.println("key pressed LEFT");
+			jugador.mover(-1);
+		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			System.out.println("Disparar");
+			jugador.disparar();
+		}
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -34,7 +38,7 @@ public class MovimientoJugadorListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		jugador.mover(0);
 	}
-	
+
 	public boolean fueraDelMapa(int x) {
 		boolean toret = false;
 		if (x < 0 || x + jugador.getEntidadGrafica().getLabel().getWidth() > jugador.getJuego().getMapa().getWidth())
