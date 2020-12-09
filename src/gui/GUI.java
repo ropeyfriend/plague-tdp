@@ -129,7 +129,7 @@ public class GUI extends JFrame {
 						
 						if(cantPociones != 0) {
 							cantPociones--;//Consumo una de las pociones
-							juego.eliminarPocion(1);//elimino la pocion 1
+							juego.eliminarPocion(0);//elimino la pocion 1
 							pociones[0].startEffect(juego.getJugador());//Curo al jugador
 							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
 							pocion1.setEnabled(false);
@@ -159,7 +159,7 @@ public class GUI extends JFrame {
 						
 						if(cantPociones != 0) {
 							cantPociones--;//Consumo una de las pociones
-							juego.eliminarPocion(2);//elimino la pocion 2
+							juego.eliminarPocion(1);//elimino la pocion 2
 							pociones[0].startEffect(juego.getJugador());
 							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
 							pocion2.setEnabled(false);
@@ -207,7 +207,7 @@ public class GUI extends JFrame {
 						
 						if(cantPociones != 0) {
 							cantPociones--;//Consumo una de las pociones
-							juego.eliminarPocion(3);//elimino la pocion 3
+							juego.eliminarPocion(2);//elimino la pocion 3
 							pociones[0].startEffect(juego.getJugador());
 							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
 							pocion3.setEnabled(false);	
