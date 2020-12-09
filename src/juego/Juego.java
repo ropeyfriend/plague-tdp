@@ -111,23 +111,28 @@ public class Juego implements Runnable {
      * @param cant, cantidad de infectados a crear en ese nivel
      * */
     public void crearNivel(int n, Nivel siguiente, int cant) {
-    	nivel = new Nivel(this,cant,n);
+    	nivel = new Nivel(this,cant/*,n*/);
     	nivel.setSiguiente(siguiente);
 		nivel.setTanda(new Tanda1(nivel, cant/2));
-		nivel.setTanda(new Tanda2(nivel, cant/2));	
-    }
-    
+		nivel.setTanda(new Tanda2(nivel, cant/2));
+		gui.cambiarNivel();
+    }    
 
 	public void agregarArreglo(Infectado[] array) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i< array.length; i++) {
+			if(array[i] != null) {
+				entidades.add(array[i]);
+				mapa.agregarEntidad(array[i]);
+			}
+		}
 	}
     
     //Getters
     /**Retorna el nivel del juego
      * @return nivel del juego
      * */
-    public int getNivel() {
-    	return nivel.getNivel();
+    public Nivel getNivel() {
+    	return nivel;
     }
     
     /**Obtiene el jugador del juego

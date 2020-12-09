@@ -17,13 +17,13 @@ public class Nivel {
 	/**Representa la cantidad de infectados del nivel*/
 	protected int cant;
 	/**Entero que representa el nivel actual*/
-	protected int nivel;
+	//protected int nivel;
 	
 	/**Crea un nuevo nivel*/
-	public Nivel(Juego g, int cant, int n) {
+	public Nivel(Juego g, int cant /*,int n*/) {
 		game = g;
 		gane = false;
-		nivel = n;
+		//nivel = n;
 		this.cant = cant;
 	}
 	
@@ -98,7 +98,7 @@ public class Nivel {
 	/**Retorna un entero que representa el nivel actual
 	 * @return nivel actual
 	 * */
-	public int getNivel() {
+	/*public int getNivel() {
 		return nivel;
-	}
+	}*/
 }
