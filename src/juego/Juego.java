@@ -43,7 +43,7 @@ public class Juego implements Runnable {
   		
 		while(true) {
 			try {
-				Thread.sleep(250);
+				Thread.sleep(200);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				
 				for(Entidad e : entidadesClone) {
