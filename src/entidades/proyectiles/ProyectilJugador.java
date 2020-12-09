@@ -12,7 +12,7 @@ import juego.Juego;
 public class ProyectilJugador extends Proyectil{
 	
 	/**Crea un nuevo proyectil del jugador*/
-	public ProyectilJugador(Juego g ,int x, int y) {
+	public ProyectilJugador(Juego g ,int x, int y, boolean superArmaSanitaria) {
 		super(g, 10 ,MovimientoVertical.ARRIBA); //Va hacia arriba (-1)
 		danio = 10;
 		activo = true;
@@ -20,21 +20,18 @@ public class ProyectilJugador extends Proyectil{
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 		mv = new MovimientoVertical(this, this.direccion);
 		visitor = new ProyectilJugadorVisitor(this);
+		
+		if (superArmaSanitaria) {
+			danio = danio * 3;
+			ruta_dibujo_moviendose = "src/recursos/Proyectiles/SuperArmaSanitaria.gif";
+			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
+		}
 	}
 	
 	
 	public void accept(Visitor v) {
 		v.visitarProyectil(this);	
 	}
-	
-	/**Multiplica la capacidad de desinfeccion por la pasada por parametro
-	 * @param valor a multiplicar
-	 * */
-	public void efectoSuper(int valor) {
-		danio = danio * valor;
-	}
-
-	//Getters
 	
 	/**Retorna la capacidad de desinfeccion del proyectil
 	 * @return capacidad de desinfeccion

@@ -14,8 +14,7 @@ public class InfectadoBeta extends Infectado{
 	/**Crea un nuevo infectado Beta*/
 	public InfectadoBeta(Juego g, int vel, int r, int x, int y) {
 		super(vel, r,g);
-		danio = 10; //Danio q le hace al jugador
-		//danio_a_recibir = 10;
+		danio = 10;
 		activo = true;
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
@@ -27,9 +26,9 @@ public class InfectadoBeta extends Infectado{
 	//Methods
 	public void recibirDanio(Proyectil p) {//(Como le resto de a 10 entonces se muere en 10 golpes)
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
-		cargaViral -= p.getDanio();
+		cargaViral -= p.getDanio()/2; 	//recibe menos daño
 		game.eliminarEntidad(p);
-		if(cargaViral <= 0) {
+		if(cargaViral <= 0 && activo) {
 			activo = false;
 			morir();
 		}

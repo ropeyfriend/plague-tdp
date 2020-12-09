@@ -24,7 +24,9 @@ public abstract class Tanda {
 	protected Fabrica[] fabricas;
 	
 	/**Crea una nueva tanda de infectados*/
-	public Tanda(Nivel nivel, int n) {
+	public Tanda(Juego g, Nivel nivel, int n) {
+		game = g;
+		fabricas = new Fabrica[2];
 		level = nivel;
 		cant = 0;
 		array = new Infectado[n];

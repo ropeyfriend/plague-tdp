@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import entidades.premios.Pocion;
-import entidades.premios.Premio;
 
 import java.awt.SystemColor;
 
@@ -120,13 +119,11 @@ public class GUI extends JFrame {
 		panel_informacion.add(pocion1);
 
 		// LISTENER POCION VIDA
-		pocion1.addActionListener(new ActionListener() {// ---------------Cuando agarra una pocion de vida hay q sumarle
-														// 1 a la cant de pociones de vida
+		pocion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-
 				if (cantPociones != 0) {
 					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(1);// elimino la pocion 1
+					juego.eliminarPocion(0);// elimino la pocion 1
 					pociones[0].startEffect(juego.getJugador());// Curo al jugador
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion1.setEnabled(false);
@@ -140,24 +137,16 @@ public class GUI extends JFrame {
 		pocion2.setBounds(519, 11, 43, 38);
 		ImageIcon icon2 = new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png");
 		pocion2.setIcon(icon2);
-		pocion2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				juego.getJugador().curar(25);
-				pocion2.setEnabled(false);
-			}
-		});
 		pocion2.setEnabled(true);
 		pocion2.setFocusable(false);
 		pocion2.setMargin(new Insets(0, 0, 0, 0));
 		panel_informacion.add(pocion2);
 
-		pocion2.addActionListener(new ActionListener() {// ---------------Cuando agarra una pocion de vida hay q sumarle
-														// 1 a la cant de pociones de vida
+		pocion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-
 				if (cantPociones != 0) {
 					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(2);// elimino la pocion 2
+					juego.eliminarPocion(1);// elimino la pocion 2
 					pociones[0].startEffect(juego.getJugador());
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion2.setEnabled(false);
@@ -190,30 +179,20 @@ public class GUI extends JFrame {
 		pocion3.setBounds(571, 11, 43, 38);
 		panel_informacion.add(pocion3);
 		pocion3.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
-		pocion3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				juego.getJugador().curar(25);
-				pocion3.setEnabled(false);
-			}
-		});
 		pocion3.setEnabled(true);
 		pocion3.setFocusable(false);
 		pocion3.setMargin(new Insets(0, 0, 0, 0));
-
 		pocion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-
 				if (cantPociones != 0) {
 					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(3);// elimino la pocion 3
+					juego.eliminarPocion(2);// elimino la pocion 3
 					pociones[0].startEffect(juego.getJugador());
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion3.setEnabled(false);
 				}
-
 			}
 		});
-
 	}
 
 	public void agregarPocion(Pocion p) {

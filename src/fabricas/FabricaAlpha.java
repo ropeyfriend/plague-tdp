@@ -49,6 +49,4 @@ public class FabricaAlpha extends Fabrica{
 		}
 		return found;
 	}
-	
-
 }

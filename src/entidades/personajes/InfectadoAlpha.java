@@ -15,7 +15,6 @@ public class InfectadoAlpha extends Infectado {
 	public InfectadoAlpha(Juego g, int vel, int r, int x, int y) {
 		super(vel, r, g);
 		danio = 20;
-		// danio_a_recibir = 12.5F;
 		activo = true;
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
@@ -29,14 +28,11 @@ public class InfectadoAlpha extends Infectado {
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral -= p.getDanio();
 		game.eliminarEntidad(p);
-		
-		if (cargaViral <= 0) {
+
+		if (cargaViral <= 0 && activo) {
 			activo = false;
 			morir();
-		}
-		
-
-		if (cargaViral < 20 && activo) {// Si la cargaV es menor a 20 y esta vivo, duplican su velocidad
+		} else if (cargaViral <= 20 && activo) {// Si la cargaV es menor a 20 y esta vivo, duplican su velocidad
 			velocidad = velocidad * 2;
 		}
 

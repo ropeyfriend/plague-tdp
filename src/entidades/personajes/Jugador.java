@@ -1,5 +1,8 @@
 package entidades.personajes;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoHorizontal;
 import entidades.proyectiles.*;
@@ -10,9 +13,9 @@ public class Jugador extends Personaje {
 
 	// Atributes
 	/* Arma del jugador para desinfectar a los infectados */
-	protected ProyectilJugador armaSanitaria;
 	protected MovimientoHorizontal mh;
 	protected String ruta_dibujo_moviendose_i;
+	protected boolean efectoSuperArmaSanitaria;
 
 	/**
 	 * Crea un nuevo jugador
@@ -26,19 +29,24 @@ public class Jugador extends Personaje {
 		ruta_dibujo_ataque = "src/recursos/Jugador/JugadorQuieto.png";
 		ruta_dibujo_moviendose_i = "src/recursos/Jugador/JugadorCaminandoIzquierda.gif";
 		ruta_dibujo_hit = "src/recursos/Jugador/JugadorHit.gif";
+		efectoSuperArmaSanitaria = false;
 		cargaViral = 0;
 		velocidad = 10;
-		danio = 15;
+		danio = 10;
 		activo = true;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
 		mh = new MovimientoHorizontal(this, MovimientoHorizontal.DERECHA);
 	}
 	
-	public Juego getJuego() {
-		return game;
-	}
+
 	
+	public void disparar() {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		int x = this.entidadGrafica.getX() + 13; //-18 para q este centrado
+		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador, efectoSuperArmaSanitaria);
+		game.agregarEntidad(p);
+	}
 	/**
 	 * Suma la carga viral del jugador con la pasada por parametro.
 	 * 
@@ -71,15 +79,24 @@ public class Jugador extends Personaje {
 	 * @param valor a multiplicar a la capacidad de desinfeccion.
 	 */
 	public void efectoSuper(int cant) {
-		armaSanitaria.efectoSuper(cant);
+		efectoSuperArmaSanitaria = true;
+		Timer t = new Timer();
+		TimerTask setFalse = new TimerTask() {
+			@Override
+			public void run() {
+				efectoSuperArmaSanitaria = false;
+			}
+		};
+		t.schedule(setFalse, 10000);
 	}
-	
-	
 
 	public void accept(Visitor v) {
 		v.visitarJugador(this);
 	}
-
+	public Juego getJuego() {
+		return game;
+	}
+	
 	/**
 	 * Cambia el dibujo dependiendo del entero recibido. Si es menor a 1, carga el
 	 * dibujo viendo hacia la izquierda Si es 0, carga el dibujo mirando al frente
@@ -94,26 +111,6 @@ public class Jugador extends Personaje {
 			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 		else if (i < 0)
 			entidadGrafica.updateImagen(ruta_dibujo_moviendose_i);
-	}
-
-	// Setters
-	/**
-	 * Modifica al arma sanitaria por la pasada por parametro
-	 * 
-	 * @param a, arma sanitaria a modificar.
-	 */
-	public void setArmaSanitaria(ProyectilJugador a) {
-		armaSanitaria = a;
-	}
-
-	// Getters
-	/**
-	 * Retorna el arma sanitaria del jugador
-	 * 
-	 * @return arma sanitaria
-	 */
-	public ProyectilJugador getArmaSanitaria() {
-		return armaSanitaria;
 	}
 
 	/**
@@ -134,14 +131,8 @@ public class Jugador extends Personaje {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void disparar() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() + 13; //-18 para q este centrado
-		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador);
-		
-		game.agregarEntidad(p);
-	}
+
+	
 
 	
 }
