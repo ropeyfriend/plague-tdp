@@ -30,7 +30,7 @@ public class InfectadoBeta extends Infectado{
 			
 			if(cargaViral == 0) {
 				activo = false;
-				//Lo tengo q eliminar del juego
+				game.eliminarEntidad(this);
 			}
 		}
 	}
