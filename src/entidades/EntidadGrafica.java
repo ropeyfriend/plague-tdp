@@ -32,9 +32,6 @@ public class EntidadGrafica {
     	ImageIcon original = new ImageIcon(ruta);
     	dibujo = new JLabel(original);
     	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
-    	
-    	//borde a los labels
-    	dibujo.setBorder(new LineBorder(Color.BLACK));
     	ancho = dibujo.getWidth();
     	largo = dibujo.getHeight();
 	}

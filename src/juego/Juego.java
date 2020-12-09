@@ -100,7 +100,7 @@ public class Juego implements Runnable {
   	 * @param n, posicion en el arreglo de pociones
   	 * */
   	public void eliminarPocion(int n) {
-  		
+  		pociones[n] = null;
   	}
 
   	/**Agrega una entidad a la lista de entidades del juego
