@@ -1,5 +1,6 @@
 package juego;
 
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import entidades.Entidad;
@@ -33,10 +34,9 @@ public class Juego implements Runnable {
 	protected Premio[] pociones;
 	/**Gui del juego*/
 	protected GUI gui;
-	//protected Infectado a;
-	//protected Infectado b;
 	protected Infectado a;
 	protected Infectado b;
+	
 	protected Premio premio;
 
     public Juego(GUI gui) {
@@ -57,7 +57,8 @@ public class Juego implements Runnable {
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
 		this.agregarEntidad(a);
 		this.agregarEntidad(b);
-		mapa.agregarEntidad(premio);
+		this.agregarEntidad(premio);
+		
 		mapa.repaint();	
     }
 
@@ -69,6 +70,12 @@ public class Juego implements Runnable {
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for(Entidad e : entidadesClone) {
 					e.jugar();
+					
+					LinkedList<Entidad> colisiones = getColisiones(e);
+					for (Entidad entidadQueColisiona: colisiones) {
+						System.out.println(entidadQueColisiona);
+						e.accept(entidadQueColisiona.getVisitor());
+					}
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -126,11 +133,6 @@ public class Juego implements Runnable {
 		nivel.setTanda(new Tanda2(nivel, cant/2));	
     }
     
-
-	public void agregarArreglo(Infectado[] array) {
-		// TODO Auto-generated method stub
-	}
-    
     //Getters
     /**Retorna el nivel del juego
      * @return nivel del juego
@@ -168,8 +170,16 @@ public class Juego implements Runnable {
 	public LinkedList<Entidad> getColisiones(Entidad e) {
 		LinkedList<Entidad> toret = new LinkedList<Entidad> ();
 		for(Entidad entidad : entidades) {
-			
+			if (!e.equals(entidad) && verificarColision(e,entidad)) {
+				toret.add(entidad);
+			}
 		}
 		return toret;
+	}
+	
+	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
+		Rectangle r1= entidad_1.getEntidadGrafica().getLabel().getBounds();
+		Rectangle r2= entidad_2.getEntidadGrafica().getLabel().getBounds();
+		return r1.intersects(r2);
 	}
 }

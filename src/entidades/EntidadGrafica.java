@@ -37,7 +37,6 @@ public class EntidadGrafica {
     	dibujo.setBorder(new LineBorder(Color.BLACK));
     	ancho = dibujo.getWidth();
     	largo = dibujo.getHeight();
-    	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
 	}
     
     /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro

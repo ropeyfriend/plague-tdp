@@ -38,7 +38,7 @@ public abstract class Infectado extends Personaje {
 	@Override
 	public void jugar() {
 		Random rnd = new Random();
-		int probabilidad = rnd.nextInt(15);
+		int probabilidad = rnd.nextInt(150);
 		if (probabilidad == 0) {
 			this.disparar();
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()))
@@ -47,6 +47,11 @@ public abstract class Infectado extends Personaje {
 			game.eliminarEntidad(this);
 	}
 
+	public void mover() {
+		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
+		this.mv.mover();
+	}
+	
 	public boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
@@ -64,26 +69,21 @@ public abstract class Infectado extends Personaje {
 		if(n1 == 0) { // si agrego un premio
 			if(n2 == 0) { // o agrego una pocion
 				Premio p = new Pocion(x, y, game);
-				game.getMapa().agregarEntidad(p);
-				p.mover();
+				game.agregarEntidad(p);
 			} else
 				if(n2 == 1) { // o agrego una cuarentena obligatoria
 					Premio p = new CuarentenaObligatoria(5, game, x, y);
-					game.getMapa().agregarEntidad(p);
-					p.mover();
+					game.agregarEntidad(p);
 				} else
 					if(n2 == 2) { // o agrego un super arma sanitaria
 						Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
-						game.getMapa().agregarEntidad(p);
-						p.mover();
+						game.agregarEntidad(p);
 					}
 		} else {
 			// no agrego nada
 		}
 	}
 
-
-	// Getters
 	/**
 	 * Retorna el rango del infectado
 	 * 
@@ -93,26 +93,11 @@ public abstract class Infectado extends Personaje {
 		return rango;
 	}
 
-	public void mover() {
-		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
-		this.mv.mover();
-	}
-
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1)
 			this.mv.setDireccion(i);
 	}
 
-	/*
-	 * /**Retorna la cantidad de danio que recibe el infectado
-	 * 
-	 * @return danio que recibe el infectado
-	 */
-	/*
-	 * public float getDanio_a_recibir() { return danio_a_recibir; }
-	 */
-
-	// Setters
 	/**
 	 * Actualiza el valor del rango por el pasado por parametro
 	 * 
@@ -121,15 +106,5 @@ public abstract class Infectado extends Personaje {
 	public void setRango(int r) {
 		rango = r;
 	}
-
-	/**
-	 * Actualiza el valor del danio que recibe el infectado por el pasado por
-	 * parametro
-	 * 
-	 * @param d, danio a actualizar.
-	 */
-	/*
-	 * public void setDanio_a_recibir(float d) { danio_a_recibir = d; }
-	 */
 
 }

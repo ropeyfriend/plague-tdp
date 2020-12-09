@@ -16,7 +16,7 @@ public class Pocion extends ObjetoPrecioso {
 	public Pocion(int x, int y, Juego g) {
 		super(g);
 		cantCuracion = 25;
-		ruta_dibujo_moviendose = "recursos/Premios/ObjetosPreciosos/pocionVida.gif";
+		ruta_dibujo_moviendose = "src/recursos/Premios/ObjetosPreciosos/PocionVida.png";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
@@ -49,22 +49,4 @@ public class Pocion extends ObjetoPrecioso {
 		v.visitarPremio(this);
 	}
 
-
-	@Override
-	public void jugar() {
-			Premio actual = this;
-			int posInicial = entidadGrafica.getY();
-			entidadGrafica.setY(posInicial + velocidad);
-
-			if(entidadGrafica.getY()>786) {//Si se pasa del mapa
-				Timer timer = new Timer();
-				TimerTask tarea = new TimerTask() {
-					@Override
-					public void run() {
-						game.getMapa().eliminarEntidad(actual);
-					}	
-				};
-				timer.schedule(tarea,10000);
-			}
-	}
 }

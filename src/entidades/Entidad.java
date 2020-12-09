@@ -64,6 +64,9 @@ public abstract class Entidad {
 		return game;
 	}
 	
+	public Visitor getVisitor() {
+		return visitor;
+	}
 	//Setters
 	/**Modifica el valor de la velocidad por el pasado por parametro
 	 * @param v, velocidad a modificar
