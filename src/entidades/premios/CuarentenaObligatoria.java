@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import entidades.EntidadGrafica;
 import entidades.visitor.CuarentenaVisitor;
+import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -51,6 +52,10 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 			};
 			timer.schedule(tarea,10000);
 		}
+	}
+
+	public void startEffect(Jugador j) {
+		
 	}
 
 }
