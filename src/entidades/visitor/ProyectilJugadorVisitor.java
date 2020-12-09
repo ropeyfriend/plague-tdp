@@ -6,13 +6,18 @@ import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
 import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
+import entidades.proyectiles.ProyectilJugador;
 
-public class ProyectilVisitor extends Visitor{
+public class ProyectilJugadorVisitor extends Visitor{
+	protected ProyectilJugador p;
+	
+	public ProyectilJugadorVisitor(ProyectilJugador p) {
+		this.p = p;
+	}
 
 	@Override
 	public void visitarInfectado(Infectado i) {
-		// TODO Auto-generated method stub
-		
+		i.recibirDanio(p);
 	}
 
 	@Override

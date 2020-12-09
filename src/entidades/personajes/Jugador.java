@@ -25,6 +25,7 @@ public class Jugador extends Personaje {
 		ruta_dibujo_moviendose = "src/recursos/Jugador/JugadorCaminandoDerecha.gif";
 		ruta_dibujo_ataque = "src/recursos/Jugador/JugadorQuieto.png";
 		ruta_dibujo_moviendose_i = "src/recursos/Jugador/JugadorCaminandoIzquierda.gif";
+		ruta_dibujo_hit = "src/recursos/Jugador/JugadorHit.gif";
 		cargaViral = 0;
 		velocidad = 10;
 		danio = 15;
@@ -37,33 +38,33 @@ public class Jugador extends Personaje {
 	public Juego getJuego() {
 		return game;
 	}
-	// Methods
-	/**
-	 * Ataca al infectado pasado por parametro
-	 * 
-	 * @param i, infectado a atacar
-	 */
-	public void atacar(Infectado i) {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		armaSanitaria.disparar(i);
-	}
-
+	
 	/**
 	 * Suma la carga viral del jugador con la pasada por parametro.
 	 * 
 	 * @param danio, danio a sumar.
 	 */
-	public void recibirDanio(int danio) {
-		if (cargaViral + danio < 100) {
-			cargaViral += danio;
-
-			if (cargaViral == 100) {
-				// Lo tengo q eliminar del juego
-				activo = false;
-			}
-		}
+	public void recibirDanio(Proyectil p) {
+		entidadGrafica.updateImagen(ruta_dibujo_hit);
+		cargaViral += p.getDanio();
+		System.out.println("[JUGADOR] vida+daño: " + cargaViral);
+		game.eliminarEntidad(p);
+		game.getGUI().modificarBarra((int) cargaViral);
 	}
 
+	/**
+	 * Cura al jugador restando el valor pasado por parametro a la carga viral
+	 * 
+	 * @param vida, valor a restar a la carga viral
+	 */
+	public void curar(int vida) {
+		cargaViral -= vida;
+		if(cargaViral < 0)
+			cargaViral = 0;
+		game.getGUI().modificarBarra((int)cargaViral);
+		System.out.println("[JUGADOR] vida-cura: " + cargaViral);
+	}
+	
 	/**
 	 * Le otorga mayor capacidad de desinfeccion al arma del jugador
 	 * 
@@ -73,20 +74,7 @@ public class Jugador extends Personaje {
 		armaSanitaria.efectoSuper(cant);
 	}
 	
-	/**
-	 * Cura al jugador restando el valor pasado por parametro a la carga viral
-	 * 
-	 * @param vida, valor a restar a la carga viral
-	 */
-	public void curar(int vida) {
-		if (cargaViral != 100) {// Si no esta muerto
-			if (cargaViral - vida >= 0) {
-				cargaViral -= vida;
-			} else {
-				cargaViral = 0;
-			}
-		}
-	}
+	
 
 	public void accept(Visitor v) {
 		v.visitarJugador(this);
@@ -149,7 +137,7 @@ public class Jugador extends Personaje {
 	@Override
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() - 18; //-18 para q este centrado
+		int x = this.entidadGrafica.getX() + 13; //-18 para q este centrado
 		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador);
 		
 		game.agregarEntidad(p);

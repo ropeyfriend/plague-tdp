@@ -4,37 +4,29 @@ import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
-import entidades.premios.Premio;
 import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
+import entidades.proyectiles.ProyectilInfectado;
 
-public class CuarentenaVisitor extends Visitor{
+public class ProyectilInfectadoVisitor extends Visitor{
+	protected ProyectilInfectado p;
 	
-	protected CuarentenaObligatoria c;
-	
-	public CuarentenaVisitor(CuarentenaObligatoria cuarentena) {
-		c = cuarentena;
+	public ProyectilInfectadoVisitor(ProyectilInfectado p) {
+		this.p = p;
 	}
-	
+
 	@Override
 	public void visitarInfectado(Infectado i) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void visitarJugador(Jugador j) {
-		
+		j.recibirDanio(p);
 	}
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visitarCuarentena(CuarentenaObligatoria p) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,5 +43,10 @@ public class CuarentenaVisitor extends Visitor{
 		
 	}
 
+	@Override
+	public void visitarCuarentena(CuarentenaObligatoria p) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -8,7 +8,12 @@ import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
 
 public class SuperArmaVisitor extends Visitor{
-
+	protected SuperArmaSanitaria arma;
+	
+	public SuperArmaVisitor(SuperArmaSanitaria a) {
+		arma = a;
+	}
+	
 	@Override
 	public void visitarInfectado(Infectado i) {
 		// TODO Auto-generated method stub

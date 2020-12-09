@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
+import entidades.visitor.SuperArmaVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -21,6 +22,7 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 		this.danioExtra = danioExtra;
 		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_super.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x , y);
+		visitor = new SuperArmaVisitor(this);
 	}
 	
 	//Methods

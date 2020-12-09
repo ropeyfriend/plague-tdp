@@ -1,5 +1,6 @@
 package juego;
 
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import entidades.Entidad;
@@ -33,34 +34,44 @@ public class Juego implements Runnable {
 	protected Premio[] pociones;
 	/**Gui del juego*/
 	protected GUI gui;
-	//protected Infectado a;
-	//protected Infectado b;
+	protected Infectado a;
+	protected Infectado b;
+	
+	protected Premio premio;
 
-	/**Crea un nuevo juego*/
-    public Juego() {
+    public Juego(GUI g) {
+    	gui = g;
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
-		mapa.agregarEntidad(jugador);
 		pociones = new Premio[3];
+		premio = new Pocion(200,200,this);
+		
 		entidades = new LinkedList<Entidad>();		
 		
-		//a = new InfectadoAlpha(this, 3, 3, 150 , 0);
-		//b = new InfectadoBeta(this, 3, 3, 400, 0);
-		//this.agregarEntidad(a);
-		//this.agregarEntidad(b);
+		a = new InfectadoAlpha(this, 3, 3, 150 , 0);
+		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		this.agregarEntidad(jugador);
+		this.agregarEntidad(a);
+		this.agregarEntidad(b);
+		this.agregarEntidad(premio);
+		
 		mapa.repaint();	
     }
 
   	@Override
 	public void run() {
-  		
 		while(true) {
 			try {
-				Thread.sleep(250);
+				Thread.sleep(200);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
-				
 				for(Entidad e : entidadesClone) {
 					e.jugar();
+					
+					LinkedList<Entidad> colisiones = getColisiones(e);
+					for (Entidad entidadQueColisiona: colisiones) {
+						//System.out.println(e +" <- "+entidadQueColisiona);
+						e.accept(entidadQueColisiona.getVisitor());
+					}
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -87,7 +98,7 @@ public class Juego implements Runnable {
   	 * @param n, posicion en el arreglo de pociones
   	 * */
   	public void eliminarPocion(int n) {
-  		pociones[n] = null;
+  		
   	}
 
   	/**Agrega una entidad a la lista de entidades del juego
@@ -149,6 +160,10 @@ public class Juego implements Runnable {
     	return mapa;
     }
     
+    public GUI getGUI() {
+    	return gui;
+    }
+    
     //Setters
     /**Modifica el nivel del juego por el pasado por parametro
      * @param n, nivel a modificar
@@ -156,4 +171,20 @@ public class Juego implements Runnable {
     public void setNivel(Nivel n) {
     	nivel = n;
     }
+	
+	public LinkedList<Entidad> getColisiones(Entidad e) {
+		LinkedList<Entidad> toret = new LinkedList<Entidad> ();
+		for(Entidad entidad : entidades) {
+			if (!e.equals(entidad) && verificarColision(e,entidad)) {
+				toret.add(entidad);
+			}
+		}
+		return toret;
+	}
+	
+	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
+		Rectangle r1= entidad_1.getEntidadGrafica().getLabel().getBounds();
+		Rectangle r2= entidad_2.getEntidadGrafica().getLabel().getBounds();
+		return r1.intersects(r2);
+	}
 }

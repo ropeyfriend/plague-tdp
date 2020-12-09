@@ -8,9 +8,11 @@ public abstract class Personaje extends Entidad{
 	protected float cargaViral;
 	/**Representa el danio que ejerce el personaje*/
 	protected int danio; 
+	
+	protected String ruta_dibujo_hit;
 	 
 	/**Disminuye la carga viral del infectado*/
-	 public abstract void recibirDanio(int d);
+	 public abstract void recibirDanio(Proyectil p);
 	
 	//Getters
 	/**Retorna la carga viral del personaje

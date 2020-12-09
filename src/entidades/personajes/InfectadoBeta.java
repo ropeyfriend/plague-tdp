@@ -14,24 +14,24 @@ public class InfectadoBeta extends Infectado{
 	/**Crea un nuevo infectado Beta*/
 	public InfectadoBeta(Juego g, int vel, int r, int x, int y) {
 		super(vel, r,g);
-		danio = 10;//Danio q le hace al jugador
+		danio = 10; //Danio q le hace al jugador
 		//danio_a_recibir = 10;
 		activo = true;
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
+		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoBeta_hit.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
 	//Methods
-	public void recibirDanio(int danio_a_recibir) {//(Como le resto de a 10 entonces se muere en 10 golpes)
-		if(cargaViral - danio_a_recibir>= 10) { //Si la cargaViral es cero, no sigo desinfectandolo
-			cargaViral -= danio_a_recibir;
-			
-			if(cargaViral == 0) {
-				activo = false;
-				game.eliminarEntidad(this);
-			}
+	public void recibirDanio(Proyectil p) {//(Como le resto de a 10 entonces se muere en 10 golpes)
+		entidadGrafica.updateImagen(ruta_dibujo_hit);
+		cargaViral -= p.getDanio();
+		game.eliminarEntidad(p);
+		if(cargaViral <= 0) {
+			activo = false;
+			morir();
 		}
 	}
 	
@@ -42,8 +42,8 @@ public class InfectadoBeta extends Infectado{
 	@Override
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() - 2;
-		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
+		int x = this.entidadGrafica.getX() + 8;
+		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY(), danio);
 		game.agregarEntidad(disparo);
 	}
 	

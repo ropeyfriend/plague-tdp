@@ -3,6 +3,7 @@ package entidades.proyectiles;
 import entidades.Entidad;
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
+import entidades.visitor.ProyectilInfectadoVisitor;
 import juego.Juego;
 
 /** Clase que modela a un proyectil */
@@ -35,7 +36,7 @@ public abstract class Proyectil extends Entidad {
 		if (!fueraDelMapa(this.entidadGrafica.getY()))
 			this.mv.mover();
 		else
-			game.eliminarEntidad(this);
+			eliminarProyectil();
 	}
 
 	public boolean fueraDelMapa(int y) {
@@ -45,7 +46,10 @@ public abstract class Proyectil extends Entidad {
 		return toret;
 	}
 	
-
+	public void eliminarProyectil() {
+		game.eliminarEntidad(this);
+	}
+	
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1) {
 			this.mv.setDireccion(i);
