@@ -172,10 +172,6 @@ public class Juego implements Runnable {
     public void setNivel(Nivel n) {
     	nivel = n;
     }
-
-	public void agregarArreglo(Infectado[] array) {
-		// TODO Auto-generated method stub
-	}
 	
 	public LinkedList<Entidad> getColisiones(Entidad e) {
 		LinkedList<Entidad> toret = new LinkedList<Entidad> ();
