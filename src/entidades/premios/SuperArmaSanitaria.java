@@ -26,7 +26,8 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	//Methods
 	@Override
 	public void accept(Visitor v) {
-		v.visitarPremio(this);	}
+		v.visitarSuperArma(this);	
+	}
 	
 	
 	/**Activa el efecto de super arma sanitaria al jugador

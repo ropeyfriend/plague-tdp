@@ -8,49 +8,44 @@ import entidades.premios.Premio;
 import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
 
-/**Clase que representa al visitor del jugador*/
-
-public class JugadorVisitor extends Visitor {
-	/**Jugador del visitor*/
-	private Jugador j;
-
-	/**Crea un nuevo visitor del jugador*/
-	public JugadorVisitor(Jugador j) {
-		this.j = j;
-	}
-
+public class CuarentenaVisitor extends Visitor{
+	
+	private CuarentenaObligatoria c;
+	
 	@Override
 	public void visitarInfectado(Infectado i) {
-		//i.atacar();
-		j.recibirDanio(i.getDanio());
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void visitarJugador(Jugador J) {
-		// TODO Auto-generated method stub
+	public void visitarJugador(Jugador j) {
+		
 	}
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
-		j.recibirDanio(p.getDanio());
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void visitarCuarentena(CuarentenaObligatoria p) {
-		p.startEffect();
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitarPocion(Pocion p) {
-		p.startEffect(j);
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitarSuperArma(SuperArmaSanitaria p) {
-		p.startEffect(j);
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+
 }

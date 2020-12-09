@@ -4,7 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import entidades.EntidadGrafica;
-import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -21,10 +20,10 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 
 	@Override
 	public void accept(Visitor v) {
-		v.visitarPremio(this);	
+		v.visitarCuarentena(this);	
 	}
 	
-	public void startEffect(Jugador j) {
+	public void startEffect() {
 		/*game.obtenerListaEntidades
 		 * for(Entidad e: lista){
 		 * 	if(e es un infectado){
@@ -50,7 +49,6 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 			};
 			timer.schedule(tarea,10000);
 		}
-}
-	
+	}
 
 }

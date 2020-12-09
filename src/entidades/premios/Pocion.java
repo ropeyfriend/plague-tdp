@@ -46,7 +46,7 @@ public class Pocion extends ObjetoPrecioso {
 
 	@Override
 	public void accept(Visitor v) {
-		v.visitarPremio(this);
+		v.visitarPocion(this);
 	}
 
 }

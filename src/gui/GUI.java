@@ -33,7 +33,7 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 2116746884888994591L;
 	protected Juego juego;
 	protected MovimientoJugadorListener mv;
-	protected Premio pociones[];
+	protected Pocion pociones[];
 	protected int cantPociones;
 	protected JButton pocion1;
 	protected JButton pocion2;
@@ -72,7 +72,7 @@ public class GUI extends JFrame {
 		this.addKeyListener(new Adapter());
 		
 		//pociones
-		pociones = new Premio[3];
+		pociones = new Pocion[3];
 		
 		//cantidad de pociones
 		cantPociones = 0;
@@ -229,7 +229,7 @@ public class GUI extends JFrame {
 		}
 	}
 	
-	public void agregarPocion(Premio p) {
+	public void agregarPocion(Pocion p) {
 		if(cantPociones < 3) {//Si no esta lleno de pociones (hasta 3)
 			for(int i = 0; i< pociones.length; i++) {
 				if(pociones[i] == null) {

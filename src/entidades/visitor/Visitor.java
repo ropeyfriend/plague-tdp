@@ -14,6 +14,10 @@ public abstract class Visitor {
 		
 		public abstract void visitarProyectil(Proyectil p);
 	
-		public abstract void visitarPremio(Premio p);
+		public abstract void visitarPocion(Pocion p);
+		
+		public abstract void visitarSuperArma(SuperArmaSanitaria p);
+		
+		public abstract void visitarCuarentena(CuarentenaObligatoria p);
 }
 

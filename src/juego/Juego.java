@@ -86,7 +86,7 @@ public class Juego implements Runnable {
   	/**Agrega una pocion al arreglo de pociones del juego
   	 * @param p, pocion a agregar
   	 * */
-  	public void agregarPocion(Premio p) {
+  	public void agregarPocion(Pocion p) {
   		boolean encontre = false;
   		
   			for(int i = 0; i<pociones.length && !encontre; i++) {
@@ -127,8 +127,7 @@ public class Juego implements Runnable {
      * @param cant, cantidad de infectados a crear en ese nivel
      * */
     public void crearNivel(int n, Nivel siguiente, int cant) {
-    	nivel = new Nivel(this,cant/*,n*/);
-    	nivel.setSiguiente(siguiente);
+    	nivel = new Nivel(this,cant, siguiente/*,n*/);
 		nivel.setTanda(new Tanda1(nivel, cant/2));
 		nivel.setTanda(new Tanda2(nivel, cant/2));
 		gui.cambiarNivel();

@@ -30,7 +30,7 @@ public class InfectadoAlpha extends Infectado{
 			
 			if(cargaViral == 0) {
 				activo = false;
-				//Lo tengo q eliminar del juego
+				game.eliminarEntidad(this);
 			}
 			
 			if(cargaViral < 20 && cargaViral != 0) {//Si la cargaV es menor a 20 y esta infectado, duplican su velocidad
