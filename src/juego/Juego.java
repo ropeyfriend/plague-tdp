@@ -39,22 +39,18 @@ public class Juego implements Runnable {
 	
 	protected Premio premio;
 
-    public Juego(GUI gui) {
+    public Juego(GUI g) {
+    	gui = g;
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
-		mapa.agregarEntidad(jugador);
 		pociones = new Premio[3];
 		premio = new Pocion(200,200,this);
 		
 		entidades = new LinkedList<Entidad>();		
 		
-		System.out.println("x " + jugador.getEntidadGrafica().getX());
-		System.out.println("y " + jugador.getEntidadGrafica().getY());
-		System.out.println("width " + jugador.getEntidadGrafica().getAncho());
-		System.out.println("height "+ jugador.getEntidadGrafica().getLargo());
-		
 		a = new InfectadoAlpha(this, 3, 3, 150 , 0);
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		this.agregarEntidad(jugador);
 		this.agregarEntidad(a);
 		this.agregarEntidad(b);
 		this.agregarEntidad(premio);
@@ -73,7 +69,7 @@ public class Juego implements Runnable {
 					
 					LinkedList<Entidad> colisiones = getColisiones(e);
 					for (Entidad entidadQueColisiona: colisiones) {
-						System.out.println(entidadQueColisiona);
+						//System.out.println(e +" <- "+entidadQueColisiona);
 						e.accept(entidadQueColisiona.getVisitor());
 					}
 				}
@@ -102,7 +98,7 @@ public class Juego implements Runnable {
   	 * @param n, posicion en el arreglo de pociones
   	 * */
   	public void eliminarPocion(int n) {
-  		pociones[n] = null;
+  		
   	}
 
   	/**Agrega una entidad a la lista de entidades del juego
@@ -162,6 +158,10 @@ public class Juego implements Runnable {
      * */
     public Mapa getMapa() {
     	return mapa;
+    }
+    
+    public GUI getGUI() {
+    	return gui;
     }
     
     //Setters

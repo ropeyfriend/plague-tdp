@@ -38,7 +38,7 @@ public abstract class Infectado extends Personaje {
 	@Override
 	public void jugar() {
 		Random rnd = new Random();
-		int probabilidad = rnd.nextInt(150);
+		int probabilidad = rnd.nextInt(15);
 		if (probabilidad == 0) {
 			this.disparar();
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()))
@@ -79,9 +79,8 @@ public abstract class Infectado extends Personaje {
 						Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
 						game.agregarEntidad(p);
 					}
-		} else {
-			// no agrego nada
 		}
+		game.eliminarEntidad(this);
 	}
 
 	/**

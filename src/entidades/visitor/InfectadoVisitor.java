@@ -16,7 +16,6 @@ public class InfectadoVisitor extends Visitor{
 	
 	/**Crea un nuevo visitor del infectado*/
 	public InfectadoVisitor(Infectado i) {
-		inf = i;
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarProyectil(Proyectil p) {
-		inf.recibirDanio(p.getDanio()); 
+		
 	}
 
 	@Override

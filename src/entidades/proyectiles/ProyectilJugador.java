@@ -3,6 +3,7 @@ package entidades.proyectiles;
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
 import entidades.personajes.Infectado;
+import entidades.visitor.ProyectilJugadorVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -18,15 +19,9 @@ public class ProyectilJugador extends Proyectil{
 		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilJugador.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 		mv = new MovimientoVertical(this, this.direccion);
+		visitor = new ProyectilJugadorVisitor(this);
 	}
 	
-	//Methods
-	/**Desinfecta a un infectado
-	 * @param i, infectado a desinfectar
-	 * */
-	public void disparar(Infectado i) {
-		i.recibirDanio(danio);
-	}
 	
 	public void accept(Visitor v) {
 		v.visitarProyectil(this);	

@@ -1,10 +1,8 @@
 package entidades.premios;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
+import entidades.visitor.PocionVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -18,6 +16,7 @@ public class Pocion extends ObjetoPrecioso {
 		cantCuracion = 25;
 		ruta_dibujo_moviendose = "src/recursos/Premios/ObjetosPreciosos/PocionVida.png";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
+		visitor = new PocionVisitor(this);
 	}
 	
 	//Methods

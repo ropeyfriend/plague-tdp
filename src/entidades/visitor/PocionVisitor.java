@@ -10,13 +10,13 @@ import entidades.proyectiles.Proyectil;
 
 /** Clase que representa al visitor del jugador */
 
-public class JugadorVisitor extends Visitor {
+public class PocionVisitor extends Visitor {
 	/** Jugador del visitor */
-	private Jugador j;
+	private Pocion p;
 
 	/** Crea un nuevo visitor del jugador */
-	public JugadorVisitor(Jugador j) {
-		this.j = j;
+	public PocionVisitor(Pocion pocion) {
+		this.p = pocion;
 	}
 
 	@Override
@@ -35,18 +35,17 @@ public class JugadorVisitor extends Visitor {
 
 	@Override
 	public void visitarCuarentena(CuarentenaObligatoria p) {
-		p.startEffect();
+
 	}
 
 	@Override
 	public void visitarPocion(Pocion p) {
-		j.getJuego().getGUI().agregarPocion(p);
-		j.getJuego().eliminarEntidad(p);
+
 	}
 
 	@Override
 	public void visitarSuperArma(SuperArmaSanitaria p) {
-		p.startEffect(j);
+
 	}
 
 }

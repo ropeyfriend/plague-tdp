@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import entidades.EntidadGrafica;
+import entidades.visitor.CuarentenaVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -16,6 +17,7 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 		super(duracion,g);
 		ruta_dibujo_moviendose = "recursos/Premios/EfectosTemporales/efecto_cuarentena.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x ,y);
+		visitor = new CuarentenaVisitor(this);
 	}
 
 	@Override

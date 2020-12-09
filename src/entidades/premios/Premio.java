@@ -41,11 +41,4 @@ public abstract class Premio extends Entidad {
 			toret = true;
 		return toret;
 	}
-
-	/**
-	 * Activa el efecto del premio
-	 * 
-	 * @param j, jugador donde aplica el efecto
-	 */
-	public abstract void startEffect(Jugador j);
 }

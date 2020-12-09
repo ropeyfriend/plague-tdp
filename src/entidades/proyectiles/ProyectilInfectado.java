@@ -3,6 +3,7 @@ package entidades.proyectiles;
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
 import entidades.personajes.Jugador;
+import entidades.visitor.ProyectilInfectadoVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -14,24 +15,19 @@ public class ProyectilInfectado extends Proyectil{
 	protected int rango;
 		
 	/**Crea un nuevo proyectil infectado*/
-	public ProyectilInfectado(Juego g ,int x, int y) {
+	public ProyectilInfectado(Juego g ,int x, int y, int d) {
 		super(g, 10, MovimientoVertical.ABAJO); //Va hacia abajo (1)
+		danio = d;
 		rango = 5;
 		activo = true;
 		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilInfectado.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 		mv = new MovimientoVertical(this, this.direccion);
+		visitor = new ProyectilInfectadoVisitor(this);
 	}
 	
 	public void accept(Visitor v) {
 		v.visitarProyectil(this);	
-	}
-	
-    /**Dispara al jugador pasado por parametro
-     * @param j, jugador al cual disparar
-     * */
-	public void disparar(Jugador j) {
-		j.recibirDanio(danio);
 	}
 	
 	/**Retorna el rango del proyectil

@@ -14,17 +14,13 @@ public class MovimientoJugadorListener implements KeyListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		System.out.println("key pressed");
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT
 				&& !fueraDelMapa(jugador.getEntidadGrafica().getX() + jugador.getVelocidad())) {
-			System.out.println("key pressed RIGHT");
 			jugador.mover(1);
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT
 				&& !fueraDelMapa(jugador.getEntidadGrafica().getX() - jugador.getVelocidad())) {
-			System.out.println("key pressed LEFT");
 			jugador.mover(-1);
 		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			System.out.println("Disparar");
 			jugador.disparar();
 		}
 	}
