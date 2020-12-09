@@ -32,6 +32,11 @@ public class Juego implements Runnable {
 		
 		entidades = new LinkedList<Entidad>();		
 		
+		System.out.println("x " + jugador.getEntidadGrafica().getX());
+		System.out.println("y " + jugador.getEntidadGrafica().getY());
+		System.out.println("width " + jugador.getEntidadGrafica().getAncho());
+		System.out.println("height "+ jugador.getEntidadGrafica().getLargo());
+		
 		a = new InfectadoAlpha(this, 3, 3, 150 , 0);
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
 		this.agregarEntidad(a);
@@ -108,5 +113,13 @@ public class Juego implements Runnable {
 
 	public void agregarArreglo(Infectado[] array) {
 		// TODO Auto-generated method stub
+	}
+	
+	public LinkedList<Entidad> getColisiones(Entidad e) {
+		LinkedList<Entidad> toret = new LinkedList<Entidad> ();
+		for(Entidad entidad : entidades) {
+			
+		}
+		return toret;
 	}
 }
