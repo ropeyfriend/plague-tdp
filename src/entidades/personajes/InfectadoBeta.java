@@ -1,7 +1,5 @@
 package entidades.personajes;
 
-import java.util.Random;
-
 import entidades.EntidadGrafica;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
@@ -52,8 +50,7 @@ public class InfectadoBeta extends Infectado{
 
 	@Override
 	public void atacar() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);	
 	}
 	
 }

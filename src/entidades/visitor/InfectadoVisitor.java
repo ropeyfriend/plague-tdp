@@ -23,7 +23,7 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarJugador(Jugador j) {
-		inf.atacar(j);
+		inf.atacar();
 	}
 
 	@Override
