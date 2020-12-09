@@ -28,16 +28,12 @@ public class InfectadoAlpha extends Infectado {
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral -= p.getDanio();
 		game.eliminarEntidad(p);
-		
-		
-		if (cargaViral <= 0) {
+
+		if (cargaViral <= 0 && activo) {
 			activo = false;
 			morir();
-		}
-
-		if (cargaViral <= 20 && activo) {// Si la cargaV es menor a 20 y esta vivo, duplican su velocidad
+		} else if (cargaViral <= 20 && activo) {// Si la cargaV es menor a 20 y esta vivo, duplican su velocidad
 			velocidad = velocidad * 2;
-			System.out.println("se activa");
 		}
 
 	}

@@ -64,15 +64,17 @@ public class Juego implements Runnable {
 			try {
 				Thread.sleep(200);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
+				
 				for(Entidad e : entidadesClone) {
 					e.jugar();
-					
 					LinkedList<Entidad> colisiones = getColisiones(e);
+					
 					for (Entidad entidadQueColisiona: colisiones) {
-						//System.out.println(e +" <- "+entidadQueColisiona);
 						e.accept(entidadQueColisiona.getVisitor());
+						//System.out.println(e +" <- "+entidadQueColisiona);
 					}
 				}
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}	
@@ -174,7 +176,7 @@ public class Juego implements Runnable {
 	
 	public LinkedList<Entidad> getColisiones(Entidad e) {
 		LinkedList<Entidad> toret = new LinkedList<Entidad> ();
-		for(Entidad entidad : entidades) {
+		for(Entidad entidad : entidadesClone) {
 			if (!e.equals(entidad) && verificarColision(e,entidad)) {
 				toret.add(entidad);
 			}

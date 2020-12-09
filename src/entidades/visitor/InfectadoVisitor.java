@@ -16,6 +16,7 @@ public class InfectadoVisitor extends Visitor{
 	
 	/**Crea un nuevo visitor del infectado*/
 	public InfectadoVisitor(Infectado i) {
+		inf = i;
 	}
 
 	@Override

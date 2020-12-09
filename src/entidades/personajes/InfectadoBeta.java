@@ -28,7 +28,7 @@ public class InfectadoBeta extends Infectado{
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral -= p.getDanio()/2; 	//recibe menos daño
 		game.eliminarEntidad(p);
-		if(cargaViral <= 0) {
+		if(cargaViral <= 0 && activo) {
 			activo = false;
 			morir();
 		}

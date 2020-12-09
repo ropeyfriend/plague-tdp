@@ -47,6 +47,8 @@ public class JugadorVisitor extends Visitor {
 	@Override
 	public void visitarSuperArma(SuperArmaSanitaria p) {
 		p.startEffect(j);
+		
+		j.getJuego().eliminarEntidad(p);
 	}
 
 }

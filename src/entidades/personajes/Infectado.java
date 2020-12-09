@@ -66,7 +66,10 @@ public abstract class Infectado extends Personaje {
 		int n2 = rnd2.nextInt(3); // determina que premio agregar
 		int x = this.getEntidadGrafica().getX();
 		int y = this.getEntidadGrafica().getY();
+		//n1=0;
+		//n2=2;
 		if(n1 == 0) { // si agrego un premio
+			System.out.println("n1: "+n1+ " n2: "+ n2);
 			if(n2 == 0) { // o agrego una pocion
 				Premio p = new Pocion(x, y, game);
 				game.agregarEntidad(p);

@@ -35,14 +35,16 @@ public abstract class Proyectil extends Entidad {
 	public void jugar() {
 		if (!fueraDelMapa(this.entidadGrafica.getY()))
 			this.mv.mover();
-		else
+		else 
 			eliminarProyectil();
+		
 	}
 
 	public boolean fueraDelMapa(int y) {
 		boolean toret = false;
-		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
+		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight()) {
 			toret = true;
+		}
 		return toret;
 	}
 	
