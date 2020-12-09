@@ -19,6 +19,8 @@ public abstract class Entidad {
 	protected String ruta_dibujo_ataque;
 	/**Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
+	
+	protected boolean activo;
     
 	/**Crea una nueva entidad*/
 	public Entidad() {
@@ -31,11 +33,27 @@ public abstract class Entidad {
 		return entidadGrafica;
 	}
 	
+	public boolean getActivo() {
+		return activo;
+	}
+	
+	public void setActivo(boolean a) {
+		activo = a;
+	}
+	
 	/**Modifica el valor de la la entidad grafica por el pasado por parametro
 	 * @param e, entidad grafica a modificar.
 	 * */
 	public void setEntidadGrafica(EntidadGrafica e) {
 		entidadGrafica = e;
+	}
+	
+	public void setJuego(Juego g) {
+		game = g;
+	}
+	
+	public Juego getJuego() {
+		return game;
 	}
 	
 	/**Retorna la velocidad del personaje
@@ -53,12 +71,11 @@ public abstract class Entidad {
 	}
 	
 	/**Se encarga de aceptar al visitor pasado por parametro
-	 * @param v, visitor a aceptar*/
+	 * @param v, visitor a aceptar
+	 * */
     public abstract void accept(Visitor v);
     
-    /**Verifica si la entidad fue eliminada del juego
-     * @return true si la entidad fue eliminada
-     * */
-    public abstract boolean getMuerto();
+    
+    public abstract void jugar();
     
 }

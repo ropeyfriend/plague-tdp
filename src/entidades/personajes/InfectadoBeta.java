@@ -1,5 +1,7 @@
 package entidades.personajes;
 
+import java.util.Random;
+
 import entidades.EntidadGrafica;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
@@ -10,11 +12,11 @@ import juego.Juego;
 public class InfectadoBeta extends Infectado{
 	
 	/**Crea un nuevo infectado Beta*/
-	public InfectadoBeta(int vel, int r, int x, int y,Juego g) {
+	public InfectadoBeta(Juego g, int vel, int r, int x, int y) {
 		super(vel, r,g);
 		danio = 10;//Danio q le hace al jugador
 		//danio_a_recibir = 10;
-		muerto = false;
+		activo = true;
 		visitor = new InfectadoVisitor(this);
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
@@ -23,9 +25,9 @@ public class InfectadoBeta extends Infectado{
 	
 	public InfectadoBeta(int vel, int r, Juego g) {
 		super(vel,r,g);
-		muerto = false;
 		danio = 10;
 		visitor = new InfectadoVisitor(this);
+		activo = true;
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
 		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
@@ -38,20 +40,20 @@ public class InfectadoBeta extends Infectado{
 			cargaViral -= danio_a_recibir;
 			
 			if(cargaViral == 0) {
-				muerto = true;
+				activo = false;
 				//Lo tengo q eliminar del juego
 			}
 		}
 	}
 	
-	public void atacar(Jugador j) {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		//p.disparar(j);
-		//j.recibirDanio(danio);
-	}
-	
 	public void accept(Visitor v){
 		v.visitarInfectado(this);
+	}
+
+	@Override
+	public void atacar() {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		
 	}
 	
 }

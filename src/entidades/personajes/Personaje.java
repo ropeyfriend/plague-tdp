@@ -6,8 +6,6 @@ public abstract class Personaje extends Entidad{
 	//Atributes
 	/**Representa la carga viral personaje*/
 	protected float cargaViral;
-	/**Indica si es personaje esta muerto*/
-	protected boolean muerto;
 	/**Representa el danio que ejerce el personaje*/
 	protected int danio; 
 	 
@@ -29,13 +27,6 @@ public abstract class Personaje extends Entidad{
     	return danio;
     }	
 	
-	/**Retorna si el personaje esta o no muerto
-	 * @return muerto
-	 * */
-	public boolean getMuerto() {
-		return muerto;
-	}
-	
 	//Setters
 	/**Modifica el valor de la carga viral por el pasado por parametro
 	 * @param c, carga viral a modificar
@@ -50,12 +41,5 @@ public abstract class Personaje extends Entidad{
     public void setDanio(int d) {
     	danio = d;
     }
-	
-	/**Modifica el valor de la variable muerto por la pasada por parametro
-	 * @param m, variable a modificar
-	 * */
-	public void setMuerto(boolean m) {
-		muerto = m;
-	}
 
 }

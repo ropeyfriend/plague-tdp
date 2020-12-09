@@ -93,6 +93,7 @@ public class EntidadGrafica {
 		int toret = this.y;
 		this.y = y;
 		dibujo.setLocation(this.x, this.y);
+		dibujo.repaint();
 		return toret;
 	}
 	

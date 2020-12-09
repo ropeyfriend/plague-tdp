@@ -41,19 +41,12 @@ public class ProyectilInfectado extends Proyectil{
 		return rango;
 	}
 	
-	@Override
-	public boolean getMuerto() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	/**Modifica el rango del proyectil por el pasado por parametro
 	 * @param r, rango a modificar
 	 * */
 	public void setRango(int r) {
 		rango = r;
-	}
-
-	
+	}	
 
 }

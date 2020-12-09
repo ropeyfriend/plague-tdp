@@ -48,22 +48,12 @@ public class ProyectilJugador extends Proyectil{
 		return danio;
 	}
 	
-	@Override
-	public boolean getMuerto() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 	//Setters
-	
 	/**Modifica la capacidad de desinfeccion del protectil por el pasado por parametro
 	 * @param c, capacidad de decinfeccion a modificar
 	 * */
 	public void setdanio(int c) {
 		danio = c;
-	}
-
-	
-	
+	}	
 
 }

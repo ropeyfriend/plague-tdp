@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import entidades.Entidad;
 import entidades.personajes.Infectado;
+import entidades.personajes.InfectadoAlpha;
+import entidades.personajes.InfectadoBeta;
 import entidades.personajes.Jugador;
 import entidades.proyectiles.Proyectil;
 import entidades.proyectiles.ProyectilInfectado;
@@ -18,7 +20,8 @@ public class Juego implements Runnable {
 	protected Mapa mapa;
 	protected Jugador jugador;
 	protected Nivel nivel;
-	
+	protected Infectado a;
+	protected Infectado b;
 	protected Proyectil p;
 	protected Proyectil p1;
 
@@ -28,25 +31,31 @@ public class Juego implements Runnable {
 		mapa.agregarEntidad(jugador);
 		
 		entidades = new LinkedList<Entidad>();		
-		
-		p = new ProyectilJugador(this, 300, 435);
-		p1 = new ProyectilInfectado(this, 376, 35);
+		a = new InfectadoAlpha(this, 10, 3, 150 , 0);
+		b = new InfectadoBeta(this, 10, 3, 400, 0);
+		p = new ProyectilInfectado(this, 300, 0);
+		p1 = new ProyectilJugador(this, 350, 200);
+		mapa.agregarEntidad(a);
+		mapa.agregarEntidad(b);
 		mapa.agregarEntidad(p);
 		mapa.agregarEntidad(p1);
 		
-		mapa.repaint();
+		mapa.repaint();	
+    }
 
   	@Override
 	public void run() {
 		while(true) {
 			try {
 				Thread.sleep(200);
-				p.mover();
-				p1.mover();
+				a.jugar();
+				b.jugar();
+				p.jugar();
+				p1.jugar();
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			
+			}	
 		}
 	}
 

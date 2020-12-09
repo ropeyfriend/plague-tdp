@@ -16,6 +16,7 @@ public abstract class Proyectil extends Entidad {
 	protected boolean activo;
 	/** Indica la cantidad de danio que genera el proyectil */
 	protected int danio;
+	/**Representa el movimiento del proyectil*/
 	protected MovimientoVertical mv;
 
 	/**
@@ -29,8 +30,8 @@ public abstract class Proyectil extends Entidad {
 		direccion = d;
 		game = g;
 	}
-
-	public void mover() {
+	
+	public void jugar() {
 		if (!fueraDelMapa(this.entidadGrafica.getY()))
 			this.mv.mover();
 		else
@@ -43,6 +44,7 @@ public abstract class Proyectil extends Entidad {
 			toret = true;
 		return toret;
 	}
+	
 
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1) {

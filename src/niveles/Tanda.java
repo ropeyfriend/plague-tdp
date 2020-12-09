@@ -57,8 +57,9 @@ public abstract class Tanda {
 	public void delete() {
 			
 		for(int i = 0; i<array.length; i++) {
-			if (array[i].getMuerto() == true) {
+			if (array[i].getActivo() == false) {
 				array[i] = null;
+				//game.getMapa().eliminarEntidad(array[i]);
 				cant--;
 			}
 		}

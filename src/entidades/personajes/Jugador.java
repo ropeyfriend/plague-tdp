@@ -28,7 +28,7 @@ public class Jugador extends Personaje {
 		cargaViral = 0;
 		velocidad = 10;
 		danio = 15;
-		muerto = false;
+		activo = true;
 		visitor = new JugadorVisitor(this);
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
 		mh = new MovimientoHorizontal(this, MovimientoHorizontal.DERECHA);
@@ -59,7 +59,7 @@ public class Jugador extends Personaje {
 
 			if (cargaViral == 100) {
 				// Lo tengo q eliminar del juego
-				muerto = true;
+				activo = false;
 			}
 		}
 	}
@@ -139,6 +139,12 @@ public class Jugador extends Personaje {
 			this.mh.setDireccion(i);
 			this.mh.mover();
 		}
+	}
+
+	@Override
+	public void jugar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

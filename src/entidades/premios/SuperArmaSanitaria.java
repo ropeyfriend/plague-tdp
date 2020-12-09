@@ -1,5 +1,8 @@
 package entidades.premios;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import entidades.EntidadGrafica;
 import entidades.personajes.Jugador;
 import entidades.visitor.Visitor;
@@ -50,9 +53,21 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 	}
 
 	@Override
-	public boolean getMuerto() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void jugar() {
+		Premio actual = this;
+		int posInicial = entidadGrafica.getY();
+		entidadGrafica.setY(posInicial + velocidad);
+
+		if(entidadGrafica.getY()>786) {//Si se pasa del mapa
+			Timer timer = new Timer();
+			TimerTask tarea = new TimerTask() {
+				@Override
+				public void run() {
+					game.getMapa().eliminarEntidad(actual);
+				}	
+			};
+			timer.schedule(tarea,10000);
+		}
+}
 
 }

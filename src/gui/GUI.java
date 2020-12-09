@@ -98,11 +98,9 @@ public class GUI extends JFrame {
 				progressBar.setBounds(135, 16, 207, 25);
 				progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 				progressBar.setForeground(Color.GREEN);
-				progressBar.setValue((int) juego.getJugador().getCargaViral() );
+				progressBar.setValue((int) juego.getJugador().getCargaViral());
 				panel_informacion.add(progressBar);
 				// Hay que setearle oyente cuando lo ataquen nomas
-				
-				
 				
 				
 				//Pocion1

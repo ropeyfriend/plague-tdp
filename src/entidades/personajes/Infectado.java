@@ -1,5 +1,7 @@
 package entidades.personajes;
 
+import java.util.Random;
+
 import entidades.movimiento.MovimientoVertical;
 import juego.Juego;
 
@@ -20,16 +22,39 @@ public abstract class Infectado extends Personaje{
 	public Infectado(int vel, int r, Juego g) {
 		cargaViral = 100;
 		velocidad = vel;
+		mv = new MovimientoVertical(this, MovimientoVertical.ABAJO);
 		game = g;
 		//p = new ProyectilInfectado();
 		rango = r;
+	}
+	
+	@Override
+	public void jugar() {
+		
+		Random rnd = new Random();
+		int probabilidad = rnd.nextInt(2);
+		if(probabilidad == 0) {
+			this.atacar();
+		}
+		
+		if (!fueraDelMapa(this.entidadGrafica.getY()))
+			this.mv.mover();
+		else
+			game.getMapa().eliminarEntidad(this);
+	} 
+	
+	public boolean fueraDelMapa(int y) {
+		boolean toret = false;
+		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
+			toret = true;
+		return toret;
 	}
 	 
 	//Methods
 	/**Ataca al jugador pasado por parametro
 	 * @param j, jugador a atacar
 	 * */
-	 public abstract void atacar(Jugador j);
+	 public abstract void atacar();
 	 
 	//Getters
 	 /**Retorna el rango del infectado
