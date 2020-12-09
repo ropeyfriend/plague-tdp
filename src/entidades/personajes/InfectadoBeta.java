@@ -2,6 +2,7 @@ package entidades.personajes;
 
 import entidades.EntidadGrafica;
 import entidades.proyectiles.Proyectil;
+import entidades.proyectiles.ProyectilInfectado;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
@@ -40,7 +41,10 @@ public class InfectadoBeta extends Infectado{
 
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		int x = this.entidadGrafica.getX() - 30;
+		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
+		game.agregarEntidad(disparo);
 	}
 	
 }

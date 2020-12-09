@@ -51,9 +51,11 @@ public class InfectadoAlpha extends Infectado{
 		return toret;
 	}
 
-	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		int x = this.entidadGrafica.getX() - 30;
+		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
+		game.agregarEntidad(disparo);
 	}
 
 }
