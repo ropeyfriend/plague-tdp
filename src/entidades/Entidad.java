@@ -19,13 +19,23 @@ public abstract class Entidad {
 	protected String ruta_dibujo_ataque;
 	/**Representa la velocidad a la que se mueve el personaje*/
 	protected int velocidad;
-	
+	/**Indica si la entidad esta activa y si fue eliminada del juego*/
 	protected boolean activo;
     
 	/**Crea una nueva entidad*/
 	public Entidad() {
 	}
 	
+	//Methods
+	/**Se encarga de aceptar al visitor pasado por parametro
+	 * @param v, visitor a aceptar
+	 * */
+    public abstract void accept(Visitor v);
+    
+    
+    public abstract void jugar();
+	
+    //Getters
 	/**Retorna la entidad grafica del personaje
 	 * @return entidad grafica.
 	 * */
@@ -33,10 +43,38 @@ public abstract class Entidad {
 		return entidadGrafica;
 	}
 	
+	/**Retorna true si la entidad esta activa
+	 * @return true si esta activa
+	 * */
 	public boolean getActivo() {
 		return activo;
 	}
 	
+	/**Retorna la velocidad del personaje
+	 * @return velocidad.
+	 * */
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	/**Retorna el juego de la entidad
+	 * @return juego
+	 * */
+	public Juego getJuego() {
+		return game;
+	}
+	
+	//Setters
+	/**Modifica el valor de la velocidad por el pasado por parametro
+	 * @param v, velocidad a modificar
+	 * */
+	public void setVelocidad(int v) {
+		velocidad = v;
+	}
+	
+	/**Modifica el valor de activo por el pasado por parametro
+	 * @param a, variable a modificar
+	 * */
 	public void setActivo(boolean a) {
 		activo = a;
 	}
@@ -48,34 +86,11 @@ public abstract class Entidad {
 		entidadGrafica = e;
 	}
 	
+	/**Modifica el valor de juego por el pasado por parametro
+	 * @param g, variable a modificar
+	 * */
 	public void setJuego(Juego g) {
 		game = g;
 	}
-	
-	public Juego getJuego() {
-		return game;
-	}
-	
-	/**Retorna la velocidad del personaje
-	 * @return velocidad.
-	 * */
-	public int getVelocidad() {
-		return velocidad;
-	}
-	
-	/**Modifica el valor de la velocidad por el pasado por parametro
-	 * @param v, velocidad a modificar
-	 * */
-	public void setVelocidad(int v) {
-		velocidad = v;
-	}
-	
-	/**Se encarga de aceptar al visitor pasado por parametro
-	 * @param v, visitor a aceptar
-	 * */
-    public abstract void accept(Visitor v);
-    
-    
-    public abstract void jugar();
     
 }

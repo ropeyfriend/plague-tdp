@@ -19,9 +19,9 @@ public class EntidadGrafica {
     /**Icono de la entidad*/
     protected JLabel dibujo;
     /**Ancho de la imagen*/
-	protected int ancho; 
+	public int ancho;
 	/**Largo de la imagen*/
-	protected int largo; 
+	protected int largo;
 	/**Ruta del diubjo */ 
     protected String ruta;
 	
@@ -42,6 +42,7 @@ public class EntidadGrafica {
     	//dibujo.setIcon(new ImageIcon(original.getImage().getScaledInstance(ancho, largo, Image.SCALE_SMOOTH)));
 	}
     
+    /**Crea una nueva entidad grafica*/
     public EntidadGrafica(String ruta) {
     	largo = 60;
     	this.ruta = ruta;
@@ -60,6 +61,7 @@ public class EntidadGrafica {
 		dibujo.repaint();
 	}
        
+	//Getters
     /**Retorna la coordenada X donde se ubica la entidad
      * @return coordenada X
      * */
@@ -67,6 +69,37 @@ public class EntidadGrafica {
 		return x;
 	}
 	
+	/**Retorna la coordenada Y donde se ubica la entidad
+     * @return coordenada Y
+     * */
+    public int getY() {
+        return y;
+    }
+    
+	/**Retorna el icono de la entidad
+	 * @return icono de la entidad
+	 * */
+	public JLabel getLabel() {
+		return dibujo;
+	}
+	
+	/**
+	 * Devuelve el ancho del dibujo de la entidad
+	 * @return la anchura de la entidad
+	 */
+	public int getAncho() {
+		return ancho;
+	}
+	
+	/**
+	 * Devuelve el largo del dibujo de la entidad
+	 * @return el valor anterior del largo de la entidad
+	 */
+	public int getLargo() {
+		return largo;
+	}
+	
+	//Setters
 	/**
 	 * Inserta un nuevo valor de x
 	 * @param x el valor anterior de x
@@ -78,13 +111,6 @@ public class EntidadGrafica {
 		return toret;
 	}
 	
-	/**Retorna la coordenada Y donde se ubica la entidad
-     * @return coordenada Y
-     * */
-    public int getY() {
-        return y;
-    }
-    
     /**
 	 * Inserta un nuevo valor de y
 	 * @param x el valor anterior de y
@@ -95,13 +121,6 @@ public class EntidadGrafica {
 		dibujo.setLocation(this.x, this.y);
 		dibujo.repaint();
 		return toret;
-	}
-	
-	/**Retorna el icono de la entidad
-	 * @return icono de la entidad
-	 * */
-	public JLabel getLabel() {
-		return dibujo;
 	}
 	
 	/**
@@ -116,14 +135,6 @@ public class EntidadGrafica {
 	}
 	
 	/**
-	 * Devuelve el ancho del dibujo de la entidad
-	 * @return la anchura de la entidad
-	 */
-	public int getAncho() {
-		return ancho;
-	}
-	
-	/**
 	 * Modifica el ancho del dibujo
 	 * @param ancho el nuevo ancho
 	 * @return retorna el valor de la anchura anterior
@@ -134,13 +145,6 @@ public class EntidadGrafica {
 		return toret;
 	}
 
-	/**
-	 * Devuelve el largo del dibujo de la entidad
-	 * @return el valor anterior del largo de la entidad
-	 */
-	public int getLargo() {
-		return largo;
-	}
 
 	/**
 	 * Modifica el largo del dibujo
