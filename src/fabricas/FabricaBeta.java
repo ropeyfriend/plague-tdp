@@ -2,7 +2,6 @@ package fabricas;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import entidades.personajes.Infectado;
 import entidades.personajes.InfectadoBeta;
 import juego.Juego;
@@ -18,7 +17,6 @@ public class FabricaBeta extends Fabrica{
 
 	@Override
 	public Infectado crearInfectado() {
-		
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
 		Random rnd = new Random();
@@ -29,13 +27,7 @@ public class FabricaBeta extends Fabrica{
 		}
 		
 		ubicacionX.add(x);//Si no esta repetido guardo a x en la lista
-		
-		//Infectado inf = new InfectadoBeta(5,5,game);	
-		Infectado inf = new InfectadoBeta(game, 5, 5, x, game.getMapa().y_infectados);
-		
-		int y = 0;//Poner el numero donde aparecen los infectados al principio
-		inf.getEntidadGrafica().setX(x);
-		inf.getEntidadGrafica().setY(y);
+		Infectado inf = new InfectadoBeta(game ,5 ,5 , x,game.getMapa().y_infectados); 
 
 		return inf;
 	}

@@ -16,6 +16,10 @@ public abstract class Premio extends Entidad{
 		game = g;
 	}
 	
+	public void jugar() {
+		
+	}
+	
 	public void mover() {
 		this.mv.mover();
 	}

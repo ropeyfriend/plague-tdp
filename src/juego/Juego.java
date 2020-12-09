@@ -7,6 +7,7 @@ import entidades.personajes.Infectado;
 import entidades.personajes.InfectadoAlpha;
 import entidades.personajes.InfectadoBeta;
 import entidades.personajes.Jugador;
+import entidades.premios.Premio;
 import entidades.proyectiles.Proyectil;
 import entidades.proyectiles.ProyectilInfectado;
 import entidades.proyectiles.ProyectilJugador;
@@ -17,19 +18,28 @@ import niveles.Tanda1;
 import niveles.Tanda2;
 
 public class Juego implements Runnable {
+	/**Lista de entidades del juego*/
 	protected LinkedList<Entidad> entidades;
+	/***/
 	private LinkedList<Entidad> entidadesClone;
+	/**Mapa del juego*/
 	protected Mapa mapa;
+	/**Jugador del juego*/
 	protected Jugador jugador;
+	/**Nivel del juego*/
 	protected Nivel nivel;
-	protected Infectado a;
-	protected Infectado b;
+	/**Pociones de curacion del juego*/
+	protected Premio[] pociones;
+	/**Gui del juego*/
+	protected GUI gui;
+	//protected Infectado a;
+	//protected Infectado b;
 
     public Juego(GUI gui) {
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		mapa.agregarEntidad(jugador);
-		
+		pociones = new Premio[3];
 		entidades = new LinkedList<Entidad>();		
 		
 		System.out.println("x " + jugador.getEntidadGrafica().getX());
@@ -58,12 +68,40 @@ public class Juego implements Runnable {
 			}	
 		}
 	}
+  	
+  	/**Agrega una pocion al arreglo de pociones del juego
+  	 * @param p, pocion a agregar
+  	 * */
+  	public void agregarPocion(Premio p) {
+  		boolean encontre = false;
+  		
+  			for(int i = 0; i<pociones.length && !encontre; i++) {
+  				if(pociones[i] == null) {
+  					encontre = true;
+  					pociones[i] = p;
+  					gui.agregarPocion(p);
+  				}
+  			}
+  	}
+  	
+  	/**Elimina la pocion ubicada en la posicion pasada por parametro
+  	 * @param n, posicion en el arreglo de pociones
+  	 * */
+  	public void eliminarPocion(int n) {
+  		pociones[n] = null;
+  	}
 
+  	/**Agrega una entidad a la lista de entidades del juego
+  	 * @param e, entidad a agregar
+  	 * */
   	public void agregarEntidad(Entidad e) {
   		entidades.add(e);
   		mapa.agregarEntidad(e);
   	}
   	
+  	/**Elimina una entidad de la lista de entidades del juego
+  	 * @param e, entidad a eliminar
+  	 * */
   	public void eliminarEntidad(Entidad e) {
   		entidades.remove(e);
   		mapa.eliminarEntidad(e);
@@ -80,6 +118,11 @@ public class Juego implements Runnable {
 		nivel.setTanda(new Tanda1(nivel, cant/2));
 		nivel.setTanda(new Tanda2(nivel, cant/2));	
     }
+    
+
+	public void agregarArreglo(Infectado[] array) {
+		// TODO Auto-generated method stub
+	}
     
     //Getters
     /**Retorna el nivel del juego
