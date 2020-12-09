@@ -20,9 +20,10 @@ public class Nivel {
 	//protected int nivel;
 	
 	/**Crea un nuevo nivel*/
-	public Nivel(Juego g, int cant /*,int n*/) {
+	public Nivel(Juego g, int cant, Nivel next /*,int n*/) {
 		game = g;
 		gane = false;
+		siguiente = next;
 		//nivel = n;
 		this.cant = cant;
 	}

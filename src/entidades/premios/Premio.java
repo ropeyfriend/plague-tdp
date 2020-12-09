@@ -2,7 +2,6 @@ package entidades.premios;
 
 import entidades.Entidad;
 import entidades.movimiento.EstrategiaMovimiento;
-import entidades.personajes.Jugador;
 import juego.Juego;
 
 /**Clase que modela a un premio del juego*/
@@ -28,9 +27,4 @@ public abstract class Premio extends Entidad{
 		if (i == 1 || i == -1)
 			this.mv.setDireccion(i);
 	}
-    
-	/**Activa el efecto del premio
-	 * @param j, jugador donde aplica el efecto
-	 * */
-	public abstract void startEffect(Jugador j);
 }
