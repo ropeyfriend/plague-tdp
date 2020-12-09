@@ -20,9 +20,23 @@ public abstract class Premio extends Entidad{
 		this.mv.mover();
 	}
 	
+	public void jugar() {
+		if (!fueraDelMapa(this.entidadGrafica.getY()))
+			this.mv.mover();
+		else
+			game.eliminarEntidad(this);
+	}
+	
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1)
 			this.mv.setDireccion(i);
+	}
+	
+	public boolean fueraDelMapa(int y) {
+		boolean toret = false;
+		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
+			toret = true;
+		return toret;
 	}
     
 	/**Activa el efecto del premio
