@@ -2,6 +2,8 @@ package gui;
 
 import juego.Juego;
 import mapa.Mapa;
+import niveles.Nivel;
+
 import javax.swing.JProgressBar;
 import java.awt.Insets;
 
@@ -250,8 +252,14 @@ public class GUI extends JFrame {
 		}
 	}
 	
-	public void cambiarNivel(int n) {
-		labelNivel.setText("NIVEL: "+n);
+	public void cambiarNivel() {
+		Nivel n = juego.getNivel();
+		if(n.getSiguiente() == null) {//Si no hay siguiente estas en el nivel 2
+			labelNivel.setText("NIVEL: "+2);
+		}
+		else {
+			labelNivel.setText("NIVEL: "+1);
+		}
 	}
 	
 	//CUANDO ATACAN AL JUGADOR
