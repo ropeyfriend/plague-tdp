@@ -17,13 +17,12 @@ import niveles.Tanda2;
 
 public class Juego implements Runnable {
 	protected LinkedList<Entidad> entidades;
+	private LinkedList<Entidad> entidadesClone;
 	protected Mapa mapa;
 	protected Jugador jugador;
 	protected Nivel nivel;
 	protected Infectado a;
 	protected Infectado b;
-	protected Proyectil p;
-	protected Proyectil p1;
 
     public Juego() {
 		mapa = new Mapa();
@@ -31,29 +30,23 @@ public class Juego implements Runnable {
 		mapa.agregarEntidad(jugador);
 		
 		entidades = new LinkedList<Entidad>();		
-		a = new InfectadoAlpha(this, 10, 3, 150 , 0);
-		b = new InfectadoBeta(this, 10, 3, 400, 0);
-		p = new ProyectilInfectado(this, 300, 0);
-		p1 = new ProyectilJugador(this, 375, 400);
-		mapa.agregarEntidad(a);
-		mapa.agregarEntidad(b);
-		mapa.agregarEntidad(p);
-		mapa.agregarEntidad(p1);
 		
+		a = new InfectadoAlpha(this, 3, 3, 150 , 0);
+		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		this.agregarEntidad(a);
+		this.agregarEntidad(b);
 		mapa.repaint();	
     }
 
   	@Override
 	public void run() {
+  		
 		while(true) {
 			try {
 				Thread.sleep(250);
-				a.jugar();
-				b.jugar();
-				p.jugar();
-				//p1.jugar();
+				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				
-				for(Entidad e : entidades) {
+				for(Entidad e : entidadesClone) {
 					e.jugar();
 				}
 			} catch (InterruptedException e) {

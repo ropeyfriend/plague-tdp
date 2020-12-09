@@ -34,13 +34,13 @@ public abstract class Infectado extends Personaje {
 	@Override
 	public void jugar() {
 		Random rnd = new Random();
-		int probabilidad = rnd.nextInt(3);
+		int probabilidad = rnd.nextInt(25);
 		if (probabilidad == 0) {
-			//this.disparar();
+			this.disparar();
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()))
 			this.mover();
 		else
-			game.getMapa().eliminarEntidad(this);
+			game.eliminarEntidad(this);
 	}
 
 	public boolean fueraDelMapa(int y) {
