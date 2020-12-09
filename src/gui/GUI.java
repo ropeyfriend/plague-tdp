@@ -53,7 +53,7 @@ public class GUI extends JFrame {
 
 	public GUI() {
 		//juego y mapa
-		juego = new Juego();
+		juego = new Juego(this);
 		Mapa panel_mapa = juego.getMapa();
 		
 		

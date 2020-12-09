@@ -149,7 +149,7 @@ public class Jugador extends Personaje {
 	@Override
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() - 18; //-18 para q este centrado
+		int x = this.entidadGrafica.getX() + 13; //-18 para q este centrado
 		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador);
 		
 		game.agregarEntidad(p);

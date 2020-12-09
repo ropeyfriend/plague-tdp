@@ -42,7 +42,7 @@ public class InfectadoBeta extends Infectado{
 	@Override
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() - 2;
+		int x = this.entidadGrafica.getX() + 8;
 		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
 		
 		game.agregarEntidad(disparo);

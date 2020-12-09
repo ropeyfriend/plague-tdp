@@ -10,6 +10,7 @@ import entidades.personajes.Jugador;
 import entidades.proyectiles.Proyectil;
 import entidades.proyectiles.ProyectilInfectado;
 import entidades.proyectiles.ProyectilJugador;
+import gui.GUI;
 import mapa.Mapa;
 import niveles.Nivel;
 import niveles.Tanda1;
@@ -24,7 +25,7 @@ public class Juego implements Runnable {
 	protected Infectado a;
 	protected Infectado b;
 
-    public Juego() {
+    public Juego(GUI gui) {
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		mapa.agregarEntidad(jugador);
@@ -40,12 +41,10 @@ public class Juego implements Runnable {
 
   	@Override
 	public void run() {
-  		
 		while(true) {
 			try {
 				Thread.sleep(200);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
-				
 				for(Entidad e : entidadesClone) {
 					e.jugar();
 				}

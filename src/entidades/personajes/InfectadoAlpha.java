@@ -53,7 +53,7 @@ public class InfectadoAlpha extends Infectado{
 
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() + 13;
+		int x = this.entidadGrafica.getX() + 20;
 		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
 		game.agregarEntidad(disparo);
 	}
