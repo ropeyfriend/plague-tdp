@@ -1,7 +1,6 @@
 package entidades;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 
 /**Clase encargada de la parte grafica de la entidad*/
@@ -144,7 +143,6 @@ public class EntidadGrafica {
 		this.ancho = ancho;
 		return toret;
 	}
-
 
 	/**
 	 * Modifica el largo del dibujo
