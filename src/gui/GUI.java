@@ -36,6 +36,8 @@ public class GUI extends JFrame {
 	protected JButton pocion1;
 	protected JButton pocion2;
 	protected JButton pocion3;
+	protected JProgressBar progressBar;
+	protected JLabel labelNivel;
 	
 	
 	public static void main(String[] args) {
@@ -95,13 +97,13 @@ public class GUI extends JFrame {
 				panel_informacion.setLayout(null);
 				
 				//Barra de carga viral
-				JProgressBar progressBar = new JProgressBar();
+				progressBar = new JProgressBar();
 				progressBar.setBounds(135, 16, 207, 25);
 				progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 				progressBar.setForeground(Color.GREEN);
 				progressBar.setValue((int) juego.getJugador().getCargaViral());
 				panel_informacion.add(progressBar);
-				// Hay que setearle oyente cuando lo ataquen nomas
+				
 				
 				
 				//Pocion1
@@ -125,18 +127,18 @@ public class GUI extends JFrame {
 						
 						if(cantPociones != 0) {
 							cantPociones--;//Consumo una de las pociones
-							pociones[0].startEffect(juego.getJugador());
+							juego.eliminarPocion(1);//elimino la pocion 1
+							pociones[0].startEffect(juego.getJugador());//Curo al jugador
 							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+							pocion1.setEnabled(false);
 						}
-						
-						pocion1.setEnabled(false);
 						
 					}
 				});
 				
 				//Pocion2
 				pocion2 = new JButton(" ");
-				pocion2.setBounds(572, 11, 43, 38);
+				pocion2.setBounds(519, 11, 43, 38);
 				ImageIcon icon2 = new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png");
 				pocion2.setIcon(icon2);
 				pocion2.addActionListener(new ActionListener() {
@@ -155,40 +157,12 @@ public class GUI extends JFrame {
 						
 						if(cantPociones != 0) {
 							cantPociones--;//Consumo una de las pociones
+							juego.eliminarPocion(2);//elimino la pocion 2
 							pociones[0].startEffect(juego.getJugador());
 							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+							pocion2.setEnabled(false);
 						}
 						
-						pocion2.setEnabled(false);
-						
-					}
-				});
-				
-				//Pocion3
-				pocion3 = new JButton(" ");
-				pocion3.setBounds(519, 11, 43, 38);
-				pocion3.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
-				pocion3.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						juego.getJugador().curar(25);
-						pocion3.setEnabled(false);
-					}
-				});
-				pocion3.setEnabled(true);
-				pocion3.setFocusable(false);
-				pocion3.setMargin(new Insets(0, 0, 0, 0));
-				panel_informacion.add(pocion3);
-				
-				pocion3.addActionListener(new ActionListener() { 
-					public void actionPerformed(ActionEvent arg) {
-						
-						if(cantPociones != 0) {
-							cantPociones--;//Consumo una de las pociones
-							pociones[0].startEffect(juego.getJugador());
-							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
-						}
-						
-						pocion3.setEnabled(false);	
 					}
 				});
 				
@@ -204,13 +178,41 @@ public class GUI extends JFrame {
 				labelPremios.setBounds(379, 16, 77, 25);
 				panel_informacion.add(labelPremios);
 				
-				JLabel labelNivel = new JLabel("NIVEL: "/*+juego.getNivel()*/);
+				labelNivel = new JLabel("NIVEL: "/*+juego.getNivel()*/);
 				labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
 				labelNivel.setForeground(Color.WHITE);
 				labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				labelNivel.setBounds(696, 16, 69, 25);
 				panel_informacion.add(labelNivel);
-				//Hay que setear oyente cuando cambia de nivel
+				
+				//Pocion3
+				pocion3 = new JButton(" ");
+				pocion3.setBounds(571, 11, 43, 38);
+				panel_informacion.add(pocion3);
+				pocion3.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
+				pocion3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						juego.getJugador().curar(25);
+						pocion3.setEnabled(false);
+					}
+				});
+				pocion3.setEnabled(true);
+				pocion3.setFocusable(false);
+				pocion3.setMargin(new Insets(0, 0, 0, 0));
+				
+				pocion3.addActionListener(new ActionListener() { 
+					public void actionPerformed(ActionEvent arg) {
+						
+						if(cantPociones != 0) {
+							cantPociones--;//Consumo una de las pociones
+							juego.eliminarPocion(3);//elimino la pocion 3
+							pociones[0].startEffect(juego.getJugador());
+							progressBar.setValue((int)(juego.getJugador().getCargaViral()));
+							pocion3.setEnabled(false);	
+						}
+						
+					}
+				});
 				
 	}
 
@@ -225,7 +227,7 @@ public class GUI extends JFrame {
 		}
 	}
 	
-	public void agregarPocion(Pocion p) {
+	public void agregarPocion(Premio p) {
 		if(cantPociones < 3) {//Si no esta lleno de pociones (hasta 3)
 			for(int i = 0; i< pociones.length; i++) {
 				if(pociones[i] == null) {
@@ -246,6 +248,15 @@ public class GUI extends JFrame {
 				}
 			}
 		}
+	}
+	
+	public void cambiarNivel(int n) {
+		labelNivel.setText("NIVEL: "+n);
+	}
+	
+	//CUANDO ATACAN AL JUGADOR
+	public void modificarBarra() {
+		progressBar.setValue((int) juego.getJugador().getCargaViral());
 	}
 	
 }

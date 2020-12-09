@@ -17,7 +17,6 @@ public class FabricaAlpha extends Fabrica{
 
 	@Override
 	public Infectado crearInfectado() {
-		
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
 		Random rnd = new Random();
@@ -28,12 +27,7 @@ public class FabricaAlpha extends Fabrica{
 		}
 		
 		ubicacionX.add(x);//Si no esta repetido guardo a x en la lista
-		//Infectado inf = new InfectadoAlpha(5,5,game);
 		Infectado inf = new InfectadoAlpha(game ,5 ,5 , x,game.getMapa().y_infectados); 
-
-		int y = 0;
-		inf.getEntidadGrafica().setX(x);
-		inf.getEntidadGrafica().setY(y);
 
 		return inf;
 	}
