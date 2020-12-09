@@ -1,8 +1,8 @@
 package entidades.personajes;
 
-import java.util.Random;
-
 import entidades.EntidadGrafica;
+import entidades.proyectiles.Proyectil;
+import entidades.proyectiles.ProyectilInfectado;
 import entidades.visitor.InfectadoVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
@@ -23,17 +23,6 @@ public class InfectadoAlpha extends Infectado{
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
-	public InfectadoAlpha(int vel, int r, Juego g) {
-		super(vel,r,g);
-		danio = 20;
-		visitor = new InfectadoVisitor(this);
-		activo = true;
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
-		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
-		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
-		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
-	}
-	
 	//Methods
 	public void recibirDanio(int danio_a_recibir){	//(Como le resto de a 12.5 entonces se muere en 8 golpes)
 		if(cargaViral >= danio_a_recibir) {//Si la cargaViral es cero, no sigo desinfectandolo
@@ -50,21 +39,23 @@ public class InfectadoAlpha extends Infectado{
 		}
 	}
 	
-	public void atacar() {
-		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		//p.disparar(j);
-	}
 	
 	public void accept(Visitor v){
 		v.visitarInfectado(this);
 	}
 
-	
 	public boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
 			toret = true;
 		return toret;
+	}
+
+	public void disparar() {
+		entidadGrafica.updateImagen(ruta_dibujo_ataque);
+		int x = this.entidadGrafica.getX() + 13;
+		Proyectil disparo = new ProyectilInfectado(game, x, this.getEntidadGrafica().getY());
+		game.agregarEntidad(disparo);
 	}
 
 }

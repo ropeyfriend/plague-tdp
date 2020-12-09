@@ -23,7 +23,7 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarJugador(Jugador j) {
-		inf.atacar();
+		//se modela desde el lado del jugador
 	}
 
 	@Override

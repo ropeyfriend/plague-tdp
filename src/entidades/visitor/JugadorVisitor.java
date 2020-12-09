@@ -18,7 +18,8 @@ public class JugadorVisitor extends Visitor {
 
 	@Override
 	public void visitarInfectado(Infectado i) {
-		i.atacar();
+		//i.atacar();
+		j.recibirDanio(i.getDanio());
 	}
 
 	@Override

@@ -17,13 +17,12 @@ import niveles.Tanda2;
 
 public class Juego implements Runnable {
 	protected LinkedList<Entidad> entidades;
+	private LinkedList<Entidad> entidadesClone;
 	protected Mapa mapa;
 	protected Jugador jugador;
 	protected Nivel nivel;
 	protected Infectado a;
 	protected Infectado b;
-	protected Proyectil p;
-	protected Proyectil p1;
 
     public Juego() {
 		mapa = new Mapa();
@@ -31,34 +30,40 @@ public class Juego implements Runnable {
 		mapa.agregarEntidad(jugador);
 		
 		entidades = new LinkedList<Entidad>();		
-		a = new InfectadoAlpha(this, 10, 3, 150 , 0);
-		b = new InfectadoBeta(this, 10, 3, 400, 0);
-		p = new ProyectilInfectado(this, 300, 0);
-		p1 = new ProyectilJugador(this, 350, 200);
-		mapa.agregarEntidad(a);
-		mapa.agregarEntidad(b);
-		mapa.agregarEntidad(p);
-		mapa.agregarEntidad(p1);
 		
+		a = new InfectadoAlpha(this, 3, 3, 150 , 0);
+		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		this.agregarEntidad(a);
+		this.agregarEntidad(b);
 		mapa.repaint();	
     }
 
   	@Override
 	public void run() {
+  		
 		while(true) {
 			try {
-				Thread.sleep(200);
-				a.jugar();
-				b.jugar();
-				p.jugar();
-				p1.jugar();
+				Thread.sleep(250);
+				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				
+				for(Entidad e : entidadesClone) {
+					e.jugar();
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}	
 		}
 	}
 
+  	public void agregarEntidad(Entidad e) {
+  		entidades.add(e);
+  		mapa.agregarEntidad(e);
+  	}
+  	
+  	public void eliminarEntidad(Entidad e) {
+  		entidades.remove(e);
+  		mapa.eliminarEntidad(e);
+  	}
     
     /**Crea un nuevo nivel del juego
      * @param n, es un entero que representa el nivel a crear
