@@ -70,17 +70,13 @@ public class Juego implements Runnable {
 
 	@Override
 	public void run() {
-
 		while (true) {
 			try {
 				Thread.sleep(200);
-				
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
-
 				for (Entidad e : entidadesClone) {
 					e.jugar();
 					LinkedList<Entidad> colisiones = getColisiones(e);
-
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
 						// System.out.println(e +" <- "+entidadQueColisiona);
