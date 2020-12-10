@@ -52,13 +52,13 @@ public class GUI extends JFrame {
 	}
 
 	public GUI() {
+		setVentana();
+		setPanelInformacion();
 		// juego y mapa
 		juego = new Juego(this);
 		Mapa panel_mapa = juego.getMapa();
-
+		
 		// ventana y panel info
-		setVentana();
-		setPanelInformacion();
 
 		// movimiento
 		this.setFocusable(true);
@@ -92,7 +92,7 @@ public class GUI extends JFrame {
 		progressBar.setBounds(135, 16, 207, 25);
 		progressBar.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		progressBar.setForeground(Color.GREEN);
-		progressBar.setValue((int) juego.getJugador().getCargaViral());
+		progressBar.setValue(0);
 		panel_informacion.add(progressBar);
 
 		// Pocion1
@@ -107,9 +107,7 @@ public class GUI extends JFrame {
 		// LISTENER POCION VIDA
 		pocion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-				System.out.println(juego.buscarPocion(0));
 				if (juego.buscarPocion(0) != null) {
-					System.out.println("entra pocion 1");
 					juego.setCantPociones(juego.getCantPociones() - 1);
 					juego.buscarPocion(0).startEffect(juego.getJugador());
 					juego.eliminarPocion(0); 		
@@ -133,7 +131,6 @@ public class GUI extends JFrame {
 		pocion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
 				if (juego.buscarPocion(1) != null) {
-					System.out.println("entra pocion 2");
 					juego.setCantPociones(juego.getCantPociones() - 1);
 					juego.buscarPocion(1).startEffect(juego.getJugador());
 					juego.eliminarPocion(1);
@@ -155,7 +152,7 @@ public class GUI extends JFrame {
 		labelPremios.setBounds(379, 16, 77, 25);
 		panel_informacion.add(labelPremios);
 
-		labelNivel = new JLabel("NIVEL: "/* +juego.getNivel() */);
+		labelNivel = new JLabel("NIVEL: 1");
 		labelNivel.setHorizontalAlignment(SwingConstants.TRAILING);
 		labelNivel.setForeground(Color.WHITE);
 		labelNivel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -173,7 +170,6 @@ public class GUI extends JFrame {
 		pocion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
 				if (juego.buscarPocion(2) != null) {
-					System.out.println("entra pocion 3");
 					juego.setCantPociones(juego.getCantPociones() - 1);
 					juego.buscarPocion(2).startEffect(juego.getJugador());
 					juego.eliminarPocion(2);
@@ -184,8 +180,8 @@ public class GUI extends JFrame {
 		});
 	}
 
-	public void cambiarNivel() {
-		labelNivel.setText("NIVEL: " + juego.getNivel());
+	public void cambiarNivel(int i) {
+		labelNivel.setText("NIVEL: " + i);
 	}
 
 	// CUANDO ATACAN AL JUGADOR

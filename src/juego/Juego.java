@@ -52,7 +52,6 @@ public class Juego implements Runnable {
 		pociones[2] = new Pocion(this);
 		
 		cantPociones = 3;
-		premio = new CuarentenaObligatoria(this, 7500, 200, 200);
 
 		entidades = new LinkedList<Entidad>();
 		this.agregarEntidad(jugador);
@@ -73,7 +72,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(120);
+				Thread.sleep(100);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -221,6 +220,7 @@ public class Juego implements Runnable {
 	}
 
 	private void iniciarNivel() {
+		gui.cambiarNivel(getNivel());
 		iniciarTanda(++tandaActual);
 		tandaActiva = true;
 	}
