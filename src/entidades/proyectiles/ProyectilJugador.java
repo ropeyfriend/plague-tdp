@@ -9,7 +9,11 @@ import juego.Juego;
 /**Clase que modela al proyectil del jugador*/
 
 public class ProyectilJugador extends Proyectil{
+	
+	/** Velocidad constante del proyectil de un jugador */
 	protected static final int velocidad = 20;
+	
+	/** Rango constante del proyectil del jugador */
 	protected static final int rango = 500;
 	
 	/**Crea un nuevo proyectil del jugador*/
