@@ -26,14 +26,15 @@ public class Tanda {
 	protected int rango_beta;
 
 	/** Crea una nueva tanda de infectados */
-	public Tanda(Juego g, int cantidadInfectados, int velocidad_alpha, int rango_alpha, int velocidad_beta, int rango_beta) {
+	public Tanda(Juego g, int cantidadInfectados, int velocidad_alpha, int rango_alpha, int velocidad_beta,
+			int rango_beta) {
 		this.game = g;
 		this.cant = cantidadInfectados;
 		this.velocidad_alpha = velocidad_alpha;
 		this.rango_alpha = rango_alpha;
 		this.velocidad_beta = velocidad_beta;
 		this.rango_beta = rango_beta;
-		
+
 		this.array = new Infectado[cantidadInfectados];
 		this.fabricas = new Fabrica[2];
 		this.fabricas[0] = new FabricaAlpha(game);
@@ -83,8 +84,9 @@ public class Tanda {
 	public boolean getTandaFinalizada() {
 		boolean toret = true;
 		for (int i = 0; i < array.length && toret; i++) {
-			if (array[i].getActivo())
+			if (array[i].getActivo()) {
 				toret = false;
+			}
 		}
 
 		return toret;

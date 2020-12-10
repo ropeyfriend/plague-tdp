@@ -69,6 +69,18 @@ public class Jugador extends Personaje {
 		game.eliminarEntidad(p);
 		game.getGUI().modificarBarra((int) cargaViral);
 	}
+	
+	public void recibirDanio(int danio_recibido) {
+		entidadGrafica.updateImagen(ruta_dibujo_hit);
+		cargaViral += danio_recibido;
+		
+		//morir
+		if(cargaViral >= 100) {
+			activo = false;
+			game.eliminarEntidad(this);
+		}
+		game.getGUI().modificarBarra((int) cargaViral);
+	}
 
 	/**
 	 * Cura al jugador restando el valor pasado por parametro a la carga viral

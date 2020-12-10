@@ -12,6 +12,8 @@ import juego.Juego;
 /** Clase que modela a un infectado del juego */
 
 public abstract class Infectado extends Personaje {
+	protected static final int danio_cuerpo_a_cuerpo = 20;
+
 	// Atributes
 	/** Representa el rango donde se exparcen las particulas del infectado */
 	protected int rango;
@@ -43,8 +45,7 @@ public abstract class Infectado extends Personaje {
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()) && !game.getCuarentena())
 			this.mover();
 		else if (fueraDelMapa(this.entidadGrafica.getY())) {
-			game.eliminarEntidad(this);
-			activo = false;
+			this.entidadGrafica.setY(game.getMapa().y_infectados); 
 		}
 	}
 
@@ -63,23 +64,21 @@ public abstract class Infectado extends Personaje {
 	public void morir() {
 		Random rnd1 = new Random();
 		Random rnd2 = new Random();
-		int n1 = rnd1.nextInt(3); // determina si se agrega premio o no
 		int n2 = rnd2.nextInt(3); // determina que premio agregar
 		int x = this.getEntidadGrafica().getX();
 		int y = this.getEntidadGrafica().getY();
-		if (n1 == 0) { // si agrego un premio
-			System.out.println("n1: " + n1 + " n2: " + n2);
-			if (n2 == 0) { // o agrego una pocion
-				Premio p = new Pocion(x, y, game);
-				game.agregarEntidad(p);
-			} else if (n2 == 1) { // o agrego una cuarentena obligatoria
-				Premio p = new CuarentenaObligatoria(game, 5000, x, y);
-				game.agregarEntidad(p);
-			} else if (n2 == 2) { // o agrego un super arma sanitaria
-				Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
-				game.agregarEntidad(p);
-			}
+
+		if (n2 == 0) { // o agrego una pocion
+			Premio p = new Pocion(x, y, game);
+			game.agregarEntidad(p);
+		} else if (n2 == 1) { // o agrego una cuarentena obligatoria
+			Premio p = new CuarentenaObligatoria(game, 5000, x, y);
+			game.agregarEntidad(p);
+		} else if (n2 == 2) { // o agrego un super arma sanitaria
+			Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
+			game.agregarEntidad(p);
 		}
+
 		game.eliminarEntidad(this);
 		activo = false;
 	}

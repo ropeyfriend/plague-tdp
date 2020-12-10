@@ -50,7 +50,7 @@ public class Juego implements Runnable {
 		pociones[0] = new Pocion(this);
 		pociones[1] = new Pocion(this);
 		pociones[2] = new Pocion(this);
-		
+
 		cantPociones = 3;
 
 		entidades = new LinkedList<Entidad>();
@@ -72,7 +72,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(75);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -81,16 +81,16 @@ public class Juego implements Runnable {
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
 					}
-					
-					if(!jugador.getActivo() && !gameover) {						
-						gameover=true;
+
+					if (!jugador.getActivo() && !gameover) {
+						gameover = true;
 						gui.ganar(gameover);
 					}
-					
-					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
+
+					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva && !gameover) {
 						if (niveles[nivelActual].getNivelFinalizado() && nivelActual == 1) {
 							gui.ganar(gameover);
-							gameover=true;
+							gameover = true;
 						} else {
 							tandaActiva = false;
 							Timer t = new Timer();
@@ -234,23 +234,22 @@ public class Juego implements Runnable {
 		}
 	}
 
-	
 	public int getCantPociones() {
 		return cantPociones;
 	}
-	
+
 	public void setCantPociones(int n) {
 		cantPociones = n;
-		if(cantPociones < 0)
+		if (cantPociones < 0)
 			cantPociones = 0;
-		if(cantPociones > 3)
+		if (cantPociones > 3)
 			cantPociones = 3;
-	}	
-	
+	}
+
 	public Pocion buscarPocion(int n) {
 		return (Pocion) pociones[n];
 	}
-	
+
 	/**
 	 * Agrega una pocion al arreglo de pociones del juego
 	 * 
@@ -269,7 +268,7 @@ public class Juego implements Runnable {
 		}
 		return j;
 	}
-	
+
 	public void agregarPocion(Pocion p, int i) {
 		pociones[i] = p;
 	}

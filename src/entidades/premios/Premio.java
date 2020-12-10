@@ -16,7 +16,7 @@ public abstract class Premio extends Entidad {
 	public Premio(Juego g) {
 		game = g;
 		mv = new MovimientoVertical(this, MovimientoVertical.ABAJO);
-		velocidad = 5;
+		velocidad = 15;
 	}
 	
 	/**Activa el efecto del premio

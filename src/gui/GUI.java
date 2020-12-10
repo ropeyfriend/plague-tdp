@@ -196,6 +196,7 @@ public class GUI extends JFrame {
 		else {
 			JOptionPane.showMessageDialog(this, "GAMEOVER");
 		}
+		System.exit(0);
 	}
 
 	private class Adapter extends KeyAdapter {

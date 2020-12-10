@@ -26,7 +26,9 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarJugador(Jugador j) {
-		//se modela desde el lado del jugador
+		j.recibirDanio(inf.getDanio()*2);
+		inf.setActivo(false);
+		j.getJuego().eliminarEntidad(inf);
 	}
 
 	@Override

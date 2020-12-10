@@ -55,7 +55,6 @@ public abstract class Proyectil extends Entidad {
 	private boolean fueraDeRango(int y) {
 		boolean toret = false;
 		int dif = Math.abs(y_inicial - y);
-		System.out.println("dif: "+dif+" , rango: "+rango);
 		if (dif > rango)
 			toret = true;
 		return toret;

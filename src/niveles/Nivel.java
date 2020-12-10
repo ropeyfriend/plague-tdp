@@ -13,7 +13,7 @@ public class Nivel {
 	protected Tanda t2;
 	
 	protected static int velocidad_alpha = 2;
-	protected static int rango_alpha = 300;
+	protected static int rango_alpha = 250;
 	protected static int velocidad_beta = 3;
 	protected static int rango_beta = 400;
 	
