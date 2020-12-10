@@ -4,7 +4,6 @@ import entidades.personajes.Infectado;
 import entidades.personajes.Jugador;
 import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
-import entidades.premios.Premio;
 import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
 

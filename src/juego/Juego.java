@@ -16,6 +16,7 @@ import entidades.premios.Premio;
 import gui.GUI;
 import mapa.Mapa;
 import niveles.Nivel;
+import niveles.Tanda;
 
 public class Juego implements Runnable {
 	/** Lista de entidades del juego */
@@ -27,7 +28,7 @@ public class Juego implements Runnable {
 	/** Jugador del juego */
 	protected Jugador jugador;
 	/** Nivel del juego actual */
-	protected Nivel nivel_actual;
+	protected Nivel niveles[];
 	/** Pociones de curacion del juego */
 	protected Premio[] pociones;
 	/** Gui del juego */
@@ -50,18 +51,22 @@ public class Juego implements Runnable {
 		a = new InfectadoAlpha(this, 3, 3, 150, 0);
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
 		
+		System.out.println(a.getEntidadGrafica().getAncho());
+		System.out.println(b.getEntidadGrafica().getAncho());
+		
 		this.agregarEntidad(jugador);
 		this.agregarEntidad(a);
 		this.agregarEntidad(b);
 		this.agregarEntidad(premio);
 		
-		mapa.repaint();
-		
-		//Nivel
-		nivel_actual = new Nivel(2,2);
-		
 		cuarentena = false;
 		
+		//Nivel
+		niveles = new Nivel[2];
+		for (int i = 1; i <= niveles.length; i++) 
+			niveles[i-1] = new Nivel(this, 10*i, 10, 10);
+		
+		mapa.repaint();
 	}
 
 	@Override
@@ -146,8 +151,8 @@ public class Juego implements Runnable {
 	 * 
 	 * @return nivel del juego
 	 */
-	public Nivel getNivel() {
-		return nivel_actual;
+	public int getNivel() {
+		return 1;
 	}
 
 	/**

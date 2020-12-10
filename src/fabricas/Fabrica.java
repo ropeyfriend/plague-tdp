@@ -17,5 +17,5 @@ public abstract class Fabrica {
 	/**Crea un nuevo infectado
 	 * @return infectado creado
 	 * */
-	public abstract Infectado crearInfectado();
+	public abstract Infectado[] crearInfectado(int n, int vel, int rango);
 }

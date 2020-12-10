@@ -7,7 +7,6 @@ import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
 import entidades.premios.Premio;
 import entidades.premios.SuperArmaSanitaria;
-import entidades.proyectiles.ProyectilInfectado;
 import juego.Juego;
 
 /** Clase que modela a un infectado del juego */
@@ -31,7 +30,7 @@ public abstract class Infectado extends Personaje {
 		velocidad = vel;
 		mv = new MovimientoVertical(this, MovimientoVertical.ABAJO);
 		game = g;
-		// p = new ProyectilInfectado();
+		activo = true;
 		rango = r;
 	}
 
@@ -43,8 +42,10 @@ public abstract class Infectado extends Personaje {
 			this.disparar();
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()) && !game.getCuarentena())
 			this.mover();
-		else if (fueraDelMapa(this.entidadGrafica.getY()))
+		else if (fueraDelMapa(this.entidadGrafica.getY())) {
 			game.eliminarEntidad(this);
+			activo = false;
+		}
 	}
 
 	public void mover() {
@@ -82,6 +83,7 @@ public abstract class Infectado extends Personaje {
 			}
 		}
 		game.eliminarEntidad(this);
+		activo = false;
 	}
 
 	/**
