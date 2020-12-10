@@ -46,12 +46,12 @@ public class Juego implements Runnable {
 
 		entidades = new LinkedList<Entidad>();
 
-		//a = new InfectadoAlpha(this, 3, 3, 150, 0);
-		//b = new InfectadoBeta(this, 3, 3, 400, 0);
+		a = new InfectadoAlpha(this, 3, 3, 150, 0);
+		b = new InfectadoBeta(this, 3, 3, 400, 0);
 		this.agregarEntidad(jugador);
-		//this.agregarEntidad(a);
-		//this.agregarEntidad(b);
-		//this.agregarEntidad(premio);
+		this.agregarEntidad(a);
+		this.agregarEntidad(b);
+		this.agregarEntidad(premio);
 		
 		mapa.repaint();
 		
