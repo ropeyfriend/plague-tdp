@@ -19,7 +19,7 @@ public class Tanda {
 	protected Juego game;
 	/** Fabricas de infectados */
 	protected Fabrica[] fabricas;
-	
+
 	protected int velocidad;
 	protected int rango;
 
@@ -33,7 +33,6 @@ public class Tanda {
 		this.fabricas = new Fabrica[2];
 		this.fabricas[0] = new FabricaAlpha(game);
 		this.fabricas[1] = new FabricaBeta(game);
-		System.out.println("cantidadInfectados "+cantidadInfectados);
 		init();
 	}
 
@@ -44,22 +43,20 @@ public class Tanda {
 	public void init() {
 		Infectado[] infectadosAlpha = fabricas[0].crearInfectado(cant / 2, velocidad, rango);
 		Infectado[] infectadosBeta = fabricas[1].crearInfectado(cant / 2, velocidad, rango);
-		
-		for(int i = 0; i < cant/2; i++) {
+
+		for (int i = 0; i < cant / 2; i++) {
 			array[i] = infectadosAlpha[i];
-			System.out.println("alpha -> array["+i+"] = " + array[i]);
 		}
-		for(int i = cant/2; i < cant; i++) {
-			array[i] = infectadosBeta[i];
-			System.out.println("beta -> array["+i+"] = " + array[i]);
+		for (int i = cant / 2; i < cant - 1; i++) {
+			array[i] = infectadosBeta[i - (cant / 2)];
 		}
 
-		// si cantidad de infectados es impar, entonces agrego uno mas de tipo Alpha
-		if (cant % 2 != 0) {
-			array[cant-1] = new InfectadoAlpha(game, velocidad, rango);
-		}
+		// mete una cantidad cant-1 de infectados, este seria el ultimo
+		array[cant - 1] = new InfectadoAlpha(game, velocidad, rango);
+
 	}
 
+	// Getters
 	/**
 	 * Devuleve si la tanda tiene o no infectados
 	 * 
@@ -78,17 +75,13 @@ public class Tanda {
 		return cant;
 	}
 
-	/**Devuelve true si la tanda finalizo
-	 * 
-	 * @return true si todos los infectados de la tanda fueron eliminados
-	 * */
 	public boolean getTandaFinalizada() {
 		boolean toret = true;
 		for (int i = 0; i < array.length && toret; i++) {
 			if (array[i].getActivo())
 				toret = false;
 		}
-		
+
 		return toret;
 	}
 
