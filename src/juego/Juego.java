@@ -30,6 +30,7 @@ public class Juego implements Runnable {
 	protected Nivel nivel_actual;
 	/** Pociones de curacion del juego */
 	protected Premio[] pociones;
+	protected int cantPociones;
 	/** Gui del juego */
 	protected GUI gui;
 	protected Infectado a;
@@ -43,6 +44,11 @@ public class Juego implements Runnable {
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		pociones = new Premio[3];
+		pociones[0] = new Pocion(this);
+		pociones[1] = new Pocion(this);
+		pociones[2] = new Pocion(this);
+		
+		cantPociones = 3;
 		premio = new CuarentenaObligatoria(this, 7500, 200, 200);
 
 		entidades = new LinkedList<Entidad>();
@@ -81,23 +87,6 @@ public class Juego implements Runnable {
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-		}
-	}
-
-	/**
-	 * Agrega una pocion al arreglo de pociones del juego
-	 * 
-	 * @param p, pocion a agregar
-	 */
-	public void agregarPocion(Pocion p) {
-		boolean encontre = false;
-
-		for (int i = 0; i < pociones.length && !encontre; i++) {
-			if (pociones[i] == null) {
-				encontre = true;
-				pociones[i] = p;
-				gui.agregarPocion(p);
 			}
 		}
 	}
@@ -204,4 +193,42 @@ public class Juego implements Runnable {
 		return r1.intersects(r2);
 	}
 	
+	public int getCantPociones() {
+		return cantPociones;
+	}
+	
+	public void setCantPociones(int n) {
+		cantPociones = n;
+		if(cantPociones < 0)
+			cantPociones = 0;
+		if(cantPociones > 3)
+			cantPociones = 3;
+	}	
+	
+	public Pocion buscarPocion(int n) {
+		return (Pocion) pociones[n];
+	}
+	
+	/**
+	 * Agrega una pocion al arreglo de pociones del juego
+	 * 
+	 * @param p, pocion a agregar
+	 */
+	public int agregarPocion(Pocion p) {
+		boolean encontre = false;
+		int j = 0;
+		for (int i = 0; i < 3 && !encontre; i++) {
+			if (pociones[i] == null) {
+				encontre = true;
+				pociones[i] = p;
+				cantPociones++;
+				j = i;
+			}
+		}
+		return j;
+	}
+	
+	public void agregarPocion(Pocion p, int i) {
+		pociones[i] = p;
+	}
 }

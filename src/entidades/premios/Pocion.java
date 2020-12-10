@@ -19,6 +19,11 @@ public class Pocion extends ObjetoPrecioso {
 		visitor = new PocionVisitor(this);
 	}
 	
+	public Pocion(Juego g) {
+		super(g);
+		cantCuracion = 25;
+	}
+	
 	//Methods
 	/**Cura al jugador pasado por parametro
 	 * @param j, jugador a curar
