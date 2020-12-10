@@ -37,7 +37,7 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 		j.efectoSuper(danioExtra);
 	}
 
-	// Getter
+	// ------ Getter ------ 
 	/**
 	 * Obtiene el valor del danio extra
 	 * 
@@ -47,7 +47,7 @@ public class SuperArmaSanitaria extends EfectoTemporal {
 		return danioExtra;
 	}
 
-	// Setter
+	// ------ Setter ------ 
 	/**
 	 * Modidica el valor del danio extra por el pasado por parametro
 	 * 

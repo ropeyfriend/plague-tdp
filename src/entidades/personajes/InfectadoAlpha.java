@@ -11,7 +11,13 @@ import juego.Juego;
 
 public class InfectadoAlpha extends Infectado {
 
-	/** Crea un nuevo infectado Alpha */
+	/** Crea un nuevo infectado Alpha en una posicion 
+	 * @param g El juego al que pertenece
+	 * @param vel Su velocidad
+	 * @param r Su rango
+	 * @param x Su posicion x en el mapa
+	 * @param x Su posicion y en el mapa
+	 * */
 	public InfectadoAlpha(Juego g, int vel, int r, int x, int y) {
 		super(vel, r, g);
 		danio = 20;
@@ -23,6 +29,11 @@ public class InfectadoAlpha extends Infectado {
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
+	/** Crea un nuevo infectado Alpha
+	 * @param g El juego al que pertenece
+	 * @param vel Su velocidad
+	 * @param r Su rango
+	 * */
 	public InfectadoAlpha(Juego g, int vel, int r) {
 		super(vel, r, g);
 		danio = 20;

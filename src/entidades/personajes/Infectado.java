@@ -12,20 +12,22 @@ import juego.Juego;
 /** Clase que modela a un infectado del juego */
 
 public abstract class Infectado extends Personaje {
+	/**
+	 * Constante de daño cuerpo a cuerpo
+	 */
 	protected static final int danio_cuerpo_a_cuerpo = 20;
 
 	// Atributes
 	/** Representa el rango donde se exparcen las particulas del infectado */
 	protected int rango;
-	/** Cantidad de danio que recibe al ser golpeado por el jugador */
-	protected float danio_a_recibir;
-	/**Movimiento del infectado*/
+
+	/** Movimiento del infectado */
 	protected MovimientoVertical mv;
 
 	/**
 	 * Crea un nuevo infectado
 	 * 
-	 * @param g, juego del infectado
+	 * @param g,   juego del infectado
 	 * @param vel, velocidad del infectado
 	 * @param r,   rango del infectado
 	 */
@@ -37,7 +39,7 @@ public abstract class Infectado extends Personaje {
 		activo = true;
 		rango = r;
 	}
-
+	
 	@Override
 	public void jugar() {
 		Random rnd = new Random();
@@ -47,19 +49,23 @@ public abstract class Infectado extends Personaje {
 		} else if (!fueraDelMapa(this.entidadGrafica.getY()) && !game.getCuarentena())
 			this.mover();
 		else if (fueraDelMapa(this.entidadGrafica.getY())) {
-			this.entidadGrafica.setY(game.getMapa().y_infectados); 
+			this.entidadGrafica.setY(game.getMapa().y_infectados);
 		}
 	}
-
+	
+	/**
+	 * Genera el movimietno del infectado
+	 */
 	public void mover() {
 		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 		this.mv.mover();
 	}
 
-	/**Verifica si el y pasado por parametro esta fuera del mapa
+	/**
+	 * Verifica si el y pasado por parametro esta fuera del mapa
 	 * 
 	 * @param y, entero que representa una posicion del mapa
-	 * */
+	 */
 	private boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
@@ -67,9 +73,8 @@ public abstract class Infectado extends Personaje {
 		return toret;
 	}
 
-	/**Genera los drops del infectado y luego lo elimina logica y graficamente*/
+	/** Genera los drops del infectado y luego lo elimina logica y graficamente */
 	public void morir() {
-		Random rnd1 = new Random();
 		Random rnd2 = new Random();
 		int n2 = rnd2.nextInt(3); // determina que premio agregar
 		int x = this.getEntidadGrafica().getX();
@@ -90,7 +95,7 @@ public abstract class Infectado extends Personaje {
 		activo = false;
 	}
 
-	//Getters
+	// ----------- Getters -----------
 	/**
 	 * Retorna el rango del infectado
 	 * 
@@ -99,21 +104,13 @@ public abstract class Infectado extends Personaje {
 	public int getRango() {
 		return rango;
 	}
-	
-	/**
-	 * Retorna el danio que recibe el infectado
-	 * 
-	 * @return danio
-	 */
-	public float getDanioARecibir() {
-		return danio_a_recibir;
-	}
 
-	//Setters
-	/**Modifica la direccion del infectado por la pasada por parametro
+	// ----------- Setters -----------
+	/**
+	 * Modifica la direccion del infectado por la pasada por parametro
 	 * 
 	 * @param i, nueva direccion
-	 * */
+	 */
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1)
 			this.mv.setDireccion(i);

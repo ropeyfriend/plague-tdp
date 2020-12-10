@@ -22,7 +22,7 @@ public abstract class EstrategiaMovimiento {
 	/**Se encarga de mover a la entidad en el mapa*/
 	public abstract void mover();
 	
-	//Setters
+	//----------- Setters -----------
 	/**Modifica la direccion por la pasada por parametro
 	 * 
 	 * @param direccion, nueva direccion
@@ -39,7 +39,7 @@ public abstract class EstrategiaMovimiento {
 		e = entidad;
 	}
 	
-	//Getters
+	// ----------- Getters -----------
 	/**Obtiene la entidad del movimiento
 	 * 
 	 * @return entidad del movimiento

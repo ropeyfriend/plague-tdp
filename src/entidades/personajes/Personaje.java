@@ -4,6 +4,7 @@ import entidades.proyectiles.Proyectil;
 
 public abstract class Personaje extends Entidad{
 	//Atributes
+	
 	/**Representa la carga viral personaje*/
 	protected float cargaViral;
 	/**Representa el danio que ejerce el personaje*/
@@ -11,15 +12,18 @@ public abstract class Personaje extends Entidad{
 	/**String que representa la ruta donde se guarda el dibujo del personaje siendo golpeado*/
 	protected String ruta_dibujo_hit;
 	 
-	/**Disminuye la carga viral del infectado*/
+	/**
+	 * Recibe daño (carga viral o desinfeccion) dado el proyectil que recibe
+	 * @param p El proyectil que recibe
+	 */
 	 public abstract void recibirDanio(Proyectil p);
 	
 	/**
-	 * dispara
+	 * Ejecuta un disparo 
 	 */
 	public abstract void disparar();
 		
-	//Getters
+	//------- Getters ------- 
 	/**Retorna la carga viral del personaje
 	 * @return carga viral
 	 * */
@@ -34,7 +38,7 @@ public abstract class Personaje extends Entidad{
     	return danio;
     }	
 	
-	//Setters
+	// ------- Setters ------- 
 	/**Modifica el valor de la carga viral por el pasado por parametro
 	 * @param c, carga viral a modificar
 	 * */

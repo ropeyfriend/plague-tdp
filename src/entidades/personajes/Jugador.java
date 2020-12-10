@@ -51,9 +51,10 @@ public class Jugador extends Personaje {
 		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador, efectoSuperArmaSanitaria);
 		game.agregarEntidad(p);
 	}
+	
 	/**
-	 * Suma la carga viral del jugador con la pasada por parametro.
 	 * 
+	 * Suma la carga viral del jugador con el del proyectil pasado por parametro.
 	 * @param danio, danio a sumar.
 	 */
 	public void recibirDanio(Proyectil p) {
@@ -69,6 +70,10 @@ public class Jugador extends Personaje {
 		game.getGUI().modificarBarra((int) cargaViral);
 	}
 	
+	/**
+	 * Suma la carga viral del jugador con la pasada por parametro.
+	 * @param danio_recibido
+	 */
 	public void recibirDanio(int danio_recibido) {
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral += danio_recibido;

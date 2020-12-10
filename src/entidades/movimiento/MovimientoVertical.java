@@ -6,7 +6,9 @@ import entidades.EntidadGrafica;
 /**Clase que modela el moviemiento vertical de las entidades*/
 
 public class MovimientoVertical extends EstrategiaMovimiento {
-	
+	/**
+	 * constantes de direccion
+	 */
 	public static final int ARRIBA = -1;
 	public static final int ABAJO = 1;
 	

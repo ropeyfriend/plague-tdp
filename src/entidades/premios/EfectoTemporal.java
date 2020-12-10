@@ -14,7 +14,7 @@ public abstract class EfectoTemporal extends Premio {
 		duracion = d;
 	}	
 	
-	//Getter
+	//------- Getter -------
 	/**Obtiene la duracion del efecto temporal
 	 * @return duracion del efecto
 	 * */
@@ -22,7 +22,7 @@ public abstract class EfectoTemporal extends Premio {
 		return duracion;
 	}
 	
-	//Setter
+	//------- Setter -------
 	/**Modifica la duracion del efecto temporal por la pasada por parametro
 	 * @param d, duracion a modificar
 	 * */

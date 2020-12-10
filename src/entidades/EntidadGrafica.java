@@ -3,88 +3,95 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-/**Clase que modela la parte grafica de una entidad*/
+/** Clase que modela la parte grafica de una entidad */
 
 public class EntidadGrafica {
-	/**Coordenada x donde se ubica la entidad*/
-    protected int x;
-    /**Coordenada y donde se ubica la entidad*/
-    protected int y;
-    /**Icono de la entidad*/
-    protected JLabel dibujo;
-    /**Ancho de la imagen*/
+	/** Coordenada x donde se ubica la entidad */
+	protected int x;
+	/** Coordenada y donde se ubica la entidad */
+	protected int y;
+	/** Icono de la entidad */
+	protected JLabel dibujo;
+	/** Ancho de la imagen */
 	protected int ancho;
-	/**Largo de la imagen*/
+	/** Largo de la imagen */
 	protected int largo;
-	/**Ruta del diubjo */ 
-    protected String ruta;
-	
-	/**Crea una nueva entidad grafica
+	/** Ruta del diubjo */
+	protected String ruta;
+
+	/**
+	 * Crea una nueva entidad grafica
 	 * 
 	 * @param ruta, ruta de la imagen
-	 * @param x, coordenada donde se ubica la entidad
-	 * @param y, coordenada donde se ubica la entidad
-	 * */
-    public EntidadGrafica(String ruta, int x, int y) {
-    	this.x = x;
-    	this.y = y;
-    	this.ruta = ruta;
-    	ImageIcon original = new ImageIcon(ruta);
-    	dibujo = new JLabel(original);
-    	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
-    	ancho = dibujo.getWidth();
-    	largo = dibujo.getHeight();
+	 * @param x,    coordenada donde se ubica la entidad
+	 * @param y,    coordenada donde se ubica la entidad
+	 */
+	public EntidadGrafica(String ruta, int x, int y) {
+		this.x = x;
+		this.y = y;
+		this.ruta = ruta;
+		ImageIcon original = new ImageIcon(ruta);
+		dibujo = new JLabel(original);
+		dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
+		ancho = dibujo.getWidth();
+		largo = dibujo.getHeight();
 	}
-    
-	/**Crea una nueva entidad grafica
+
+	/**
+	 * Crea una nueva entidad grafica
 	 * 
 	 * @param ruta, ruta de la imagen
-	 * */
-    public EntidadGrafica(String ruta) {
-    	this.ruta = ruta;
-    	ImageIcon original = new ImageIcon(ruta);
-    	dibujo = new JLabel(original);
-    	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
-    	ancho = dibujo.getWidth();
-    	largo = dibujo.getHeight();
+	 */
+	public EntidadGrafica(String ruta) {
+		this.ruta = ruta;
+		ImageIcon original = new ImageIcon(ruta);
+		dibujo = new JLabel(original);
+		dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
+		ancho = dibujo.getWidth();
+		largo = dibujo.getHeight();
 	}
-    
-    /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro
-     * 
-     * @param rutaDibujo, ruta del gif.
-     * */
+
+	/**
+	 * Actualiza la imagen de la entidad por la que esta en la ruta pasada por
+	 * parametro
+	 * 
+	 * @param rutaDibujo, ruta del gif.
+	 */
 	public void updateImagen(String ruta) {
 		dibujo.setIcon(new ImageIcon(ruta));
 		ancho = dibujo.getWidth();
 		largo = dibujo.getHeight();
 		dibujo.repaint();
 	}
-       
-	//Getters
-    /**Retorna la coordenada X donde se ubica la entidad
-     * 
-     * @return coordenada X
-     * */
+
+	// ----------- Getters -----------
+	/**
+	 * Retorna la coordenada X donde se ubica la entidad
+	 * 
+	 * @return coordenada X
+	 */
 	public int getX() {
 		return x;
 	}
-	
-	/**Retorna la coordenada Y donde se ubica la entidad
+
+	/**
+	 * Retorna la coordenada Y donde se ubica la entidad
 	 * 
-     * @return coordenada Y
-     * */
-    public int getY() {
-        return y;
-    }
-    
-	/**Retorna el icono de la entidad
+	 * @return coordenada Y
+	 */
+	public int getY() {
+		return y;
+	}
+
+	/**
+	 * Retorna el icono de la entidad
 	 * 
 	 * @return icono de la entidad
-	 * */
+	 */
 	public JLabel getLabel() {
 		return dibujo;
 	}
-	
+
 	/**
 	 * Devuelve el ancho del dibujo de la entidad
 	 * 
@@ -93,16 +100,26 @@ public class EntidadGrafica {
 	public int getAncho() {
 		return ancho;
 	}
-	
+
 	/**
 	 * Devuelve el largo del dibujo de la entidad
+	 * 
 	 * @return el valor anterior del largo de la entidad
 	 */
 	public int getLargo() {
 		return largo;
 	}
-	
-	//Setters
+
+	/**
+	 * Devuelve la ruta de la imagen de la entidad
+	 * 
+	 * @return Devuelve la ruta
+	 */
+	public String getRuta() {
+		return ruta;
+	}
+
+	// ----------- Setters -----------
 	/**
 	 * Inserta un nuevo valor de x
 	 * 
@@ -114,8 +131,8 @@ public class EntidadGrafica {
 		dibujo.setLocation(this.x, this.y);
 		return toret;
 	}
-	
-    /**
+
+	/**
 	 * Inserta un nuevo valor de y
 	 * 
 	 * @param x el valor anterior de y
@@ -127,7 +144,7 @@ public class EntidadGrafica {
 		dibujo.repaint();
 		return toret;
 	}
-	
+
 	/**
 	 * Inserta un nuevo dibujo
 	 * 
@@ -140,7 +157,7 @@ public class EntidadGrafica {
 		this.dibujo = dibujo;
 		return toret;
 	}
-	
+
 	/**
 	 * Modifica el ancho del dibujo
 	 * 
@@ -164,16 +181,7 @@ public class EntidadGrafica {
 	public void setLargo(int largo) {
 		this.largo = largo;
 	}
-	
-	/**
-	 * Devuelve la ruta de la imagen de la entidad
-	 * 
-	 * @return Devuelve la ruta
-	 */
-	public String getRuta() {
-		return ruta;
-	}
-	
+
 	/**
 	 * Modifica la ruta de la imagen de la entidad
 	 * 
@@ -185,6 +193,5 @@ public class EntidadGrafica {
 		String toret = this.ruta;
 		this.ruta = ruta;
 		return toret;
-	}   
-
+	}
 }
