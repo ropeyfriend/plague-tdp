@@ -24,9 +24,9 @@ public class InfectadoBeta extends Infectado{
 		danio = 10;
 		activo = true;
 		visitor = new InfectadoVisitor(this);
-		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
-		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
-		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoBeta_hit.gif";
+		ruta_dibujo_moviendose = "/recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "/recursos/Infectados/InfectadoBeta_ataque.gif";
+		ruta_dibujo_hit = "/recursos/Infectados/InfectadoBeta_hit.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
@@ -41,9 +41,9 @@ public class InfectadoBeta extends Infectado{
 		danio = 10;
 		activo = true;
 		visitor = new InfectadoVisitor(this);
-		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
-		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
-		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoBeta_hit.gif";
+		ruta_dibujo_moviendose = "/recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "/recursos/Infectados/InfectadoBeta_ataque.gif";
+		ruta_dibujo_hit = "/recursos/Infectados/InfectadoBeta_hit.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
 	}
 	

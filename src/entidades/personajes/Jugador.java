@@ -27,10 +27,10 @@ public class Jugador extends Personaje {
 	 */
 	public Jugador(int x, int y, Juego g) {
 		game = g;
-		ruta_dibujo_moviendose = "src/recursos/Jugador/JugadorCaminandoDerecha.gif";
-		ruta_dibujo_ataque = "src/recursos/Jugador/JugadorQuieto.png";
-		ruta_dibujo_moviendose_i = "src/recursos/Jugador/JugadorCaminandoIzquierda.gif";
-		ruta_dibujo_hit = "src/recursos/Jugador/JugadorHit.gif";
+		ruta_dibujo_moviendose = "/recursos/Jugador/JugadorCaminandoDerecha.gif";
+		ruta_dibujo_ataque = "/recursos/Jugador/JugadorQuieto.png";
+		ruta_dibujo_moviendose_i = "/recursos/Jugador/JugadorCaminandoIzquierda.gif";
+		ruta_dibujo_hit = "/recursos/Jugador/JugadorHit.gif";
 		efectoSuperArmaSanitaria = false;
 		cargaViral = 0;
 		velocidad = 10;

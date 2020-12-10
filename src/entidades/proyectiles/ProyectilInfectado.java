@@ -15,7 +15,7 @@ public class ProyectilInfectado extends Proyectil{
 		super(g, 10, MovimientoVertical.ABAJO, r, y); //Va hacia abajo (1)
 		danio = d;
 		activo = true;
-		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilInfectado.gif";
+		ruta_dibujo_moviendose = "/recursos/Proyectiles/ProyectilInfectado.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 		mv = new MovimientoVertical(this, this.direccion);
 		visitor = new ProyectilInfectadoVisitor(this);

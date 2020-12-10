@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -98,7 +100,7 @@ public class GUI extends JFrame {
 		// Pocion1
 		pocion1 = new JButton(" ");
 		pocion1.setBounds(466, 11, 43, 38);
-		pocion1.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
+		pocion1.setIcon(new ImageIcon(this.getClass().getResource("/recursos/Premios/ObjetosPreciosos/PocionVida.png")));
 		pocion1.setEnabled(true);
 		pocion1.setFocusable(false);
 		pocion1.setMargin(new Insets(0, 0, 0, 0));
@@ -121,7 +123,7 @@ public class GUI extends JFrame {
 		// Pocion2
 		pocion2 = new JButton(" ");
 		pocion2.setBounds(519, 11, 43, 38);
-		ImageIcon icon2 = new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png");
+		ImageIcon icon2 = new ImageIcon(this.getClass().getResource("/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
 		pocion2.setIcon(icon2);
 		pocion2.setEnabled(true);
 		pocion2.setFocusable(false);
@@ -163,7 +165,7 @@ public class GUI extends JFrame {
 		pocion3 = new JButton(" ");
 		pocion3.setBounds(571, 11, 43, 38);
 		panel_informacion.add(pocion3);
-		pocion3.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
+		pocion3.setIcon(new ImageIcon(this.getClass().getResource("/recursos/Premios/ObjetosPreciosos/PocionVida.png")));
 		pocion3.setEnabled(true);
 		pocion3.setFocusable(false);
 		pocion3.setMargin(new Insets(0, 0, 0, 0));
@@ -198,9 +200,17 @@ public class GUI extends JFrame {
 			JOptionPane.showMessageDialog(this, "¡Felicitaciones, ganaste el juego!");
 		}
 		else {
-			JOptionPane.showMessageDialog(this, "GAMEOVER");
+			JOptionPane.showMessageDialog(this, "GAME OVER");
 		}
-		System.exit(0);
+		Timer t = new Timer();
+		TimerTask exit = new TimerTask() {
+			@Override
+			public void run() {
+				System.exit(0);
+			}
+		};
+		t.schedule(exit, 1000);
+		
 	}
 
 	private class Adapter extends KeyAdapter {

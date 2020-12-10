@@ -30,7 +30,7 @@ public class EntidadGrafica {
 		this.x = x;
 		this.y = y;
 		this.ruta = ruta;
-		ImageIcon original = new ImageIcon(ruta);
+		ImageIcon original = new ImageIcon(this.getClass().getResource(ruta));
 		dibujo = new JLabel(original);
 		dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
 		ancho = dibujo.getWidth();
@@ -44,7 +44,7 @@ public class EntidadGrafica {
 	 */
 	public EntidadGrafica(String ruta) {
 		this.ruta = ruta;
-		ImageIcon original = new ImageIcon(ruta);
+		ImageIcon original = new ImageIcon(this.getClass().getResource(ruta));
 		dibujo = new JLabel(original);
 		dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
 		ancho = dibujo.getWidth();
@@ -58,7 +58,7 @@ public class EntidadGrafica {
 	 * @param rutaDibujo, ruta del gif.
 	 */
 	public void updateImagen(String ruta) {
-		dibujo.setIcon(new ImageIcon(ruta));
+		dibujo.setIcon(new ImageIcon(this.getClass().getResource(ruta)));
 		ancho = dibujo.getWidth();
 		largo = dibujo.getHeight();
 		dibujo.repaint();

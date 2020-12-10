@@ -1,7 +1,6 @@
 package entidades.premios;
 
 import entidades.Entidad;
-import entidades.movimiento.EstrategiaMovimiento;
 import entidades.movimiento.MovimientoVertical;
 import entidades.personajes.Jugador;
 import juego.Juego;

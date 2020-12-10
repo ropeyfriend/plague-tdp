@@ -19,7 +19,7 @@ public class Pocion extends ObjetoPrecioso {
 	public Pocion(int x, int y, Juego g) {
 		super(g);
 		cantCuracion = 25;
-		ruta_dibujo_moviendose = "src/recursos/Premios/ObjetosPreciosos/PocionVida.png";
+		ruta_dibujo_moviendose = "/recursos/Premios/ObjetosPreciosos/PocionVida.png";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 		visitor = new PocionVisitor(this);
 	}

@@ -7,16 +7,12 @@ import java.util.TimerTask;
 
 import entidades.Entidad;
 import entidades.personajes.Infectado;
-import entidades.personajes.InfectadoAlpha;
-import entidades.personajes.InfectadoBeta;
 import entidades.personajes.Jugador;
-import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
 import entidades.premios.Premio;
 import gui.GUI;
 import mapa.Mapa;
 import niveles.Nivel;
-import niveles.Tanda;
 
 /** Clase que modela al juego */
 

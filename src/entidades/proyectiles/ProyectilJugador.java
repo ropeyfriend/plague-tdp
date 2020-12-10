@@ -21,14 +21,14 @@ public class ProyectilJugador extends Proyectil{
 		super(g, velocidad ,MovimientoVertical.ARRIBA, rango, y); //Va hacia arriba (-1)
 		danio = 10;
 		activo = true;
-		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilJugador.gif";
+		ruta_dibujo_moviendose = "/recursos/Proyectiles/ProyectilJugador.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);
 		mv = new MovimientoVertical(this, this.direccion);
 		visitor = new ProyectilJugadorVisitor(this);
 		
 		if (superArmaSanitaria) {
 			danio = danio * 3;
-			ruta_dibujo_moviendose = "src/recursos/Proyectiles/SuperArmaSanitaria.gif";
+			ruta_dibujo_moviendose = "/recursos/Proyectiles/SuperArmaSanitaria.gif";
 			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 		}
 	}
