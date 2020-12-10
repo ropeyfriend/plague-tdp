@@ -36,6 +36,15 @@ public class EntidadGrafica {
     	largo = dibujo.getHeight();
 	}
     
+    public EntidadGrafica(String ruta) {
+    	this.ruta = ruta;
+    	ImageIcon original = new ImageIcon(ruta);
+    	dibujo = new JLabel(original);
+    	dibujo.setBounds(x, y, original.getIconWidth(), original.getIconHeight());
+    	ancho = dibujo.getWidth();
+    	largo = dibujo.getHeight();
+	}
+    
     /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro
      * @param rutaDibujo, ruta del gif.
      * */
