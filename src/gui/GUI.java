@@ -32,8 +32,6 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 2116746884888994591L;
 	protected Juego juego;
 	protected MovimientoJugadorListener mv;
-	protected Pocion pociones[];
-	protected int cantPociones;
 	protected JButton pocion1;
 	protected JButton pocion2;
 	protected JButton pocion3;
@@ -68,12 +66,6 @@ public class GUI extends JFrame {
 		mv = new MovimientoJugadorListener(juego.getJugador());
 		this.addKeyListener(new Adapter());
 
-		// pociones
-		pociones = new Pocion[3];
-
-		// cantidad de pociones
-		cantPociones = 0;
-
 		Thread hilo = new Thread(juego);
 		hilo.start();
 	}
@@ -107,12 +99,6 @@ public class GUI extends JFrame {
 		pocion1 = new JButton(" ");
 		pocion1.setBounds(466, 11, 43, 38);
 		pocion1.setIcon(new ImageIcon("src/recursos/Premios/ObjetosPreciosos/PocionVida.png"));
-		pocion1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				juego.getJugador().curar(25);
-				pocion1.setEnabled(false);
-			}
-		});
 		pocion1.setEnabled(true);
 		pocion1.setFocusable(false);
 		pocion1.setMargin(new Insets(0, 0, 0, 0));
@@ -121,10 +107,12 @@ public class GUI extends JFrame {
 		// LISTENER POCION VIDA
 		pocion1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-				if (cantPociones != 0) {
-					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(0);// elimino la pocion 1
-					pociones[0].startEffect(juego.getJugador());// Curo al jugador
+				System.out.println(juego.buscarPocion(0));
+				if (juego.buscarPocion(0) != null) {
+					System.out.println("entra pocion 1");
+					juego.setCantPociones(juego.getCantPociones() - 1);
+					juego.buscarPocion(0).startEffect(juego.getJugador());
+					juego.eliminarPocion(0); 		
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion1.setEnabled(false);
 				}
@@ -144,14 +132,14 @@ public class GUI extends JFrame {
 
 		pocion2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-				if (cantPociones != 0) {
-					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(1);// elimino la pocion 2
-					pociones[0].startEffect(juego.getJugador());
+				if (juego.buscarPocion(1) != null) {
+					System.out.println("entra pocion 2");
+					juego.setCantPociones(juego.getCantPociones() - 1);
+					juego.buscarPocion(1).startEffect(juego.getJugador());
+					juego.eliminarPocion(1);
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion2.setEnabled(false);
 				}
-
 			}
 		});
 
@@ -184,36 +172,16 @@ public class GUI extends JFrame {
 		pocion3.setMargin(new Insets(0, 0, 0, 0));
 		pocion3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg) {
-				if (cantPociones != 0) {
-					cantPociones--;// Consumo una de las pociones
-					juego.eliminarPocion(2);// elimino la pocion 3
-					pociones[0].startEffect(juego.getJugador());
+				if (juego.buscarPocion(2) != null) {
+					System.out.println("entra pocion 3");
+					juego.setCantPociones(juego.getCantPociones() - 1);
+					juego.buscarPocion(2).startEffect(juego.getJugador());
+					juego.eliminarPocion(2);
 					progressBar.setValue((int) (juego.getJugador().getCargaViral()));
 					pocion3.setEnabled(false);
 				}
 			}
 		});
-	}
-
-	public void agregarPocion(Pocion p) {
-		if (cantPociones < 3) {// Si no esta lleno de pociones (hasta 3)
-			for (int i = 0; i < pociones.length; i++) {
-				if (pociones[i] == null) {
-					pociones[i] = p;
-
-					if (i == 0) {
-						pocion1.setEnabled(true);
-					} else {
-						if (i == 2) {
-							pocion2.setEnabled(true);
-						} else {
-							pocion3.setEnabled(true);
-						}
-					}
-					cantPociones++;
-				}
-			}
-		}
 	}
 
 	public void cambiarNivel() {
@@ -226,7 +194,6 @@ public class GUI extends JFrame {
 	}
 
 	private class Adapter extends KeyAdapter {
-		@Override
 		public void keyPressed(KeyEvent e) {
 			mv.keyPressed(e);
 		}
@@ -234,5 +201,18 @@ public class GUI extends JFrame {
 		public void keyReleased(KeyEvent e) {
 			mv.keyReleased(e);
 		}
+	}
+
+	public void agregarPocionBoton(Pocion p) {
+		int i = juego.agregarPocion(p);
+		if(i == 0) {
+			pocion1.setEnabled(true);
+		} else
+			if(i == 1) {
+				pocion2.setEnabled(true);
+			} else
+				if(i == 2) {
+					pocion3.setEnabled(true);
+				}
 	}
 }
