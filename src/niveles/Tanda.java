@@ -1,7 +1,5 @@
 package niveles;
 
-import java.util.Random;
-
 import entidades.personajes.Infectado;
 import entidades.personajes.InfectadoAlpha;
 import fabricas.Fabrica;
@@ -19,13 +17,24 @@ public class Tanda {
 	protected Juego game;
 	/** Fabricas de infectados */
 	protected Fabrica[] fabricas;
-
+	
+	/**
+	 * Atributos de velocidad y rango para los infectados Alfa y Beta
+	 */
 	protected int velocidad_alpha;
 	protected int rango_alpha;
 	protected int velocidad_beta;
 	protected int rango_beta;
 
-	/** Crea una nueva tanda de infectados */
+	/**
+	 * Crea una tanda
+	 * @param g El juego al que se vincula
+	 * @param cantidadInfectados La cantidad de infectados de la tanda
+	 * @param velocidad_alpha La velocidad para los infectados alfa
+	 * @param rango_alpha El rango para los infectados alfa
+	 * @param velocidad_beta La velocidad para los infectados beta
+	 * @param rango_beta El rango para los infectados beta
+	 */
 	public Tanda(Juego g, int cantidadInfectados, int velocidad_alpha, int rango_alpha, int velocidad_beta,
 			int rango_beta) {
 		this.game = g;
@@ -42,9 +51,8 @@ public class Tanda {
 		init();
 	}
 
-	// Methods
 	/**
-	 * Inicializa las tandas
+	 * Inicializa la tanda creando la misma cantidad de infectados Alfa que de Beta
 	 */
 	public void init() {
 		Infectado[] infectadosAlpha = fabricas[0].crearInfectado(cant / 2, velocidad_alpha, rango_alpha);
@@ -59,7 +67,6 @@ public class Tanda {
 
 		// mete una cantidad cant-1 de infectados, este seria el ultimo
 		array[cant - 1] = new InfectadoAlpha(game, velocidad_alpha, rango_alpha);
-
 	}
 
 	// Getters
@@ -80,7 +87,11 @@ public class Tanda {
 	public int getCant() {
 		return cant;
 	}
-
+	
+	/**
+	 * Retorna true si todos los infectados de la tanda estan muertos
+	 * @return True si la tanda finalizo
+	 */
 	public boolean getTandaFinalizada() {
 		boolean toret = true;
 		for (int i = 0; i < array.length && toret; i++) {
