@@ -1,43 +1,38 @@
 package niveles;
 
 import java.util.Random;
-
 import entidades.personajes.Infectado;
 import fabricas.Fabrica;
 import fabricas.FabricaAlpha;
 import fabricas.FabricaBeta;
 import juego.Juego;
 
-public abstract class Tanda {
+public class Tanda {
 	//Atributes
-	/**Representa el nivel del juego*/
-	protected Nivel level;
 	/**Indica la cantidad de infectados de la tanda*/
 	protected int cant;
 	/**Arreglo donde se guardan los infectados de la tanda*/
 	protected Infectado[] array;
-	/**Tanda siguiente*/
-	protected Tanda next;
 	/**Representa al juego donde esta la tanda*/
 	protected Juego game;
 	/**Fabricas de infectados*/
 	protected Fabrica[] fabricas;
 	
+	protected boolean tandaFinalizada;
+	
 	/**Crea una nueva tanda de infectados*/
-	public Tanda(Juego g, Nivel nivel, int n) {
+	public Tanda(Juego g, int n) {
 		game = g;
-		fabricas = new Fabrica[2];
-		level = nivel;
 		cant = 0;
+		tandaFinalizada = false;
 		array = new Infectado[n];
+		fabricas = new Fabrica[2];
 		fabricas[0] = new FabricaAlpha(game);
 		fabricas[1] = new FabricaBeta(game);
 	}
 	
 	//Methods
 	/**Inicializa las tandas
-	 * @param fabricas, fabricas de infectados
-	 * @param f, tipo de fabrica de infectados (fabrica Alpha o Beta)
 	 * */
 	public void init() {
 		int fabricaRnd;
@@ -49,44 +44,20 @@ public abstract class Tanda {
 			array[i] = fabricas[fabricaRnd].crearInfectado();//Creo infectados aleatorios (Alpha o Beta)
 			cant++;
 		}
-		
-		if (next!=null) {//Si hay tanda siguiente
-			next.init();
-		}
 	}
 	
 	/**Elimina los infectados muertos de la tanda*/
 	public void delete() {
 			
 		for(int i = 0; i<array.length; i++) {
-			if (array[i].getActivo() == false) {
-				array[i] = null;
-				//game.getMapa().eliminarEntidad(array[i]);
+			if (array[i]!=null && !array[i].getActivo()) {//Si el infectado esta muerto
+				array[i] = null;//Lo elimino del arreglo
+				game.eliminarEntidad(array[i]);//Lo elimino del juego
 				cant--;
 			}
 		}
-		comprimir();
-	}
-	
-	/**Comprime el arreglo de infectados de la tanda*/
-	private void comprimir() {
-		int i = 0;
-		int aux=0;
-		boolean found=false;
-		
-		for (i=0; i<this.array.length && found; i++) {
-			if (array[i] == null) {
-				aux = i+1;
-				found = false;
-				while (aux < array.length && !found) {
-					if (array[aux] != null) {
-						array[i] = array[aux];
-						array[aux] = null;
-						found = true;
-					}
-					aux++;
-				}
-			}
+		if(cant == 0) {
+			tandaFinalizada = true;
 		}
 	}
 	
@@ -104,12 +75,9 @@ public abstract class Tanda {
 	public int getCant() { 
 		return cant;
 	}
-	
-	/**Devuelve la tanda siguiente a la actual
-	 * @return tanda siguiente
-	 * */
-	public Tanda getNext() { 
-		return next; 
+
+	public boolean getTandaFinalizada() {
+		return tandaFinalizada;
 	}
 	
 	/**Retorna el arreglo de infectados de la tanda
@@ -120,13 +88,6 @@ public abstract class Tanda {
 	}
 	
 	//Setters
-	/**Modifica la tanda siguiente por la pasada por parametro
-	 * @param next, tanda siguiente
-	 * */
-	public void setNext(Tanda next) {
-		this.next = next; 
-	}
-	
 	/**Modifica el arreglo de infectados por el pasado por parametro
 	 * @param a, arreglo de infectados a modificar
 	 * */

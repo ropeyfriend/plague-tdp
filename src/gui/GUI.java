@@ -218,11 +218,7 @@ public class GUI extends JFrame {
 
 	public void cambiarNivel() {
 		Nivel n = juego.getNivel();
-		if (n.getSiguiente() == null) {// Si no hay siguiente estas en el nivel 2
-			labelNivel.setText("NIVEL: " + 2);
-		} else {
-			labelNivel.setText("NIVEL: " + 1);
-		}
+		labelNivel.setText("NIVEL: " + n.getNivel());
 	}
 
 	// CUANDO ATACAN AL JUGADOR

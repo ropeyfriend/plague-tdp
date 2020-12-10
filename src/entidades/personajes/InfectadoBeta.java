@@ -23,6 +23,18 @@ public class InfectadoBeta extends Infectado{
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
 	
+	public InfectadoBeta(Juego g, int vel, int r) {
+		super(vel, r,g);
+		danio = 10;
+		activo = true;
+		visitor = new InfectadoVisitor(this);
+		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoBeta_caminar.gif";
+		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoBeta_ataque.gif";
+		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoBeta_hit.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+	}
+	
+	
 	//Methods
 	public void recibirDanio(Proyectil p) {//(Como le resto de a 10 entonces se muere en 10 golpes)
 		entidadGrafica.updateImagen(ruta_dibujo_hit);

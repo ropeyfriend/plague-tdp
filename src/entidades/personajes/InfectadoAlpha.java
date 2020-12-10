@@ -22,6 +22,17 @@ public class InfectadoAlpha extends Infectado {
 		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoAlpha_hit.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose, x, y);
 	}
+	
+	public InfectadoAlpha(Juego g, int vel, int r) {
+		super(vel, r, g);
+		danio = 20;
+		activo = true;
+		visitor = new InfectadoVisitor(this);
+		ruta_dibujo_ataque = "src/recursos/Infectados/InfectadoAlpha_ataque.gif";
+		ruta_dibujo_moviendose = "src/recursos/Infectados/InfectadoAlpha_caminar.gif";
+		ruta_dibujo_hit = "src/recursos/Infectados/InfectadoAlpha_hit.gif";
+		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose);
+	}
 
 	// Methods
 	public void recibirDanio(Proyectil p) { // (Como le resto de a 12.5 entonces se muere en 8 golpes)

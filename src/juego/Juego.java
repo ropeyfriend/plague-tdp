@@ -16,8 +16,6 @@ import entidades.proyectiles.ProyectilJugador;
 import gui.GUI;
 import mapa.Mapa;
 import niveles.Nivel;
-import niveles.Tanda1;
-import niveles.Tanda2;
 
 public class Juego implements Runnable {
 	/** Lista de entidades del juego */
@@ -28,10 +26,6 @@ public class Juego implements Runnable {
 	protected Mapa mapa;
 	/** Jugador del juego */
 	protected Jugador jugador;
-	/** Nivel del juego 1 */
-	protected Nivel nivel1;
-	/** Nivel del juego 2 */
-	protected Nivel nivel2;
 	/** Nivel del juego actual */
 	protected Nivel nivel_actual;
 	/** Pociones de curacion del juego */
@@ -52,20 +46,24 @@ public class Juego implements Runnable {
 
 		entidades = new LinkedList<Entidad>();
 
-		a = new InfectadoAlpha(this, 3, 3, 150, 0);
-		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		//a = new InfectadoAlpha(this, 3, 3, 150, 0);
+		//b = new InfectadoBeta(this, 3, 3, 400, 0);
 		this.agregarEntidad(jugador);
-		this.agregarEntidad(a);
-		this.agregarEntidad(b);
-		this.agregarEntidad(premio);
-
+		//this.agregarEntidad(a);
+		//this.agregarEntidad(b);
+		//this.agregarEntidad(premio);
+		
 		mapa.repaint();
-
-		// nivel 2
-		nivel2 = crearNivel(null, 16);
-		nivel1 = crearNivel(nivel2, 10);
-		gui.cambiarNivel();
-		nivel_actual = nivel1;
+		
+		//Nivel
+		nivel_actual = new Nivel(2,2);
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
@@ -139,20 +137,6 @@ public class Juego implements Runnable {
 		mapa.eliminarEntidad(e);
 	}
 
-	/**
-	 * Crea un nuevo nivel del juego
-	 * 
-	 * @param n,         es un entero que representa el nivel a crear
-	 * @param siguiente, nivel siguiente al actual
-	 * @param cant,      cantidad de infectados a crear en ese nivel
-	 */
-	public Nivel crearNivel(Nivel siguiente, int cant) {
-		Nivel toret = new Nivel(this, cant, siguiente);
-		toret.setTanda(new Tanda1(this, toret, cant / 2));
-		toret.setTanda(new Tanda2(this, toret, cant / 2));
-		return toret;
-	}
-
 	public void agregarArreglo(Infectado[] array) {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != null) {
@@ -163,24 +147,6 @@ public class Juego implements Runnable {
 	}
 
 	// Getters
-	/**
-	 * Retorna el nivel del juego
-	 * 
-	 * @return nivel del juego
-	 */
-	public Nivel getNivel1() {
-		return nivel1;
-	}
-
-	/**
-	 * Retorna el nivel del juego
-	 * 
-	 * @return nivel del juego
-	 */
-	public Nivel getNivel2() {
-		return nivel2;
-	}
-
 	/**
 	 * Retorna el nivel del juego
 	 * 
