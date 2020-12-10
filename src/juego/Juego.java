@@ -2,17 +2,17 @@ package juego;
 
 import java.awt.Rectangle;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import entidades.Entidad;
 import entidades.personajes.Infectado;
 import entidades.personajes.InfectadoAlpha;
 import entidades.personajes.InfectadoBeta;
 import entidades.personajes.Jugador;
+import entidades.premios.CuarentenaObligatoria;
 import entidades.premios.Pocion;
 import entidades.premios.Premio;
-import entidades.proyectiles.Proyectil;
-import entidades.proyectiles.ProyectilInfectado;
-import entidades.proyectiles.ProyectilJugador;
 import gui.GUI;
 import mapa.Mapa;
 import niveles.Nivel;
@@ -34,6 +34,7 @@ public class Juego implements Runnable {
 	protected GUI gui;
 	protected Infectado a;
 	protected Infectado b;
+	protected boolean cuarentena;
 
 	protected Premio premio;
 
@@ -42,12 +43,13 @@ public class Juego implements Runnable {
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		pociones = new Premio[3];
-		premio = new Pocion(200, 200, this);
+		premio = new CuarentenaObligatoria(this, 7500, 200, 200);
 
 		entidades = new LinkedList<Entidad>();
 
 		a = new InfectadoAlpha(this, 3, 3, 150, 0);
 		b = new InfectadoBeta(this, 3, 3, 400, 0);
+		
 		this.agregarEntidad(jugador);
 		this.agregarEntidad(a);
 		this.agregarEntidad(b);
@@ -58,11 +60,7 @@ public class Juego implements Runnable {
 		//Nivel
 		nivel_actual = new Nivel(2,2);
 		
-		
-		
-		
-		
-		
+		cuarentena = false;
 		
 	}
 
@@ -70,17 +68,17 @@ public class Juego implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
+					
 					LinkedList<Entidad> colisiones = getColisiones(e);
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
 						// System.out.println(e +" <- "+entidadQueColisiona);
 					}
 				}
-
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -184,9 +182,26 @@ public class Juego implements Runnable {
 		return toret;
 	}
 
+	public void setCuarentena(int tiempo) {
+		cuarentena = true;
+		Timer t = new Timer();
+		TimerTask setFalse = new TimerTask() {
+			@Override
+			public void run() {
+				cuarentena = false;
+			}
+		};
+		t.schedule(setFalse, tiempo);
+	}
+	
+	public boolean getCuarentena() {
+		return cuarentena;
+	}
+
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		Rectangle r1 = entidad_1.getEntidadGrafica().getLabel().getBounds();
 		Rectangle r2 = entidad_2.getEntidadGrafica().getLabel().getBounds();
 		return r1.intersects(r2);
 	}
+	
 }

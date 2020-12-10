@@ -14,13 +14,12 @@ public class FabricaAlpha extends Fabrica{
 	public FabricaAlpha(Juego g) {
 		super(g);
 	}
-
 	@Override
 	public Infectado crearInfectado() {
 		Infectado inf = new InfectadoAlpha(game,5,3);//ver el tema del rango
 		ArrayList<Integer> ubicacionX = new ArrayList<Integer> ();//lista donde guardo las posiciones de x
 		
-		Random rnd = new Random();
+		Random rnd = new Random(game.getMapa().ancho_mapa - inf.getEntidadGrafica().getAncho());
 		int x = rnd.nextInt();
 		if(!fueraDelMapa(x, inf)) {//Si la ubicacion esta dentro de los limites del mapa
 			while(repetido(x,ubicacionX)) {

@@ -17,13 +17,16 @@ public class Mapa extends JLayeredPane {
 	
 	public final int y_infectados = 0;
 	public final int y_proyectiles_jugador = 400;
+	public final int largo_mapa = 514;
+	public final int ancho_mapa = 786;
+	
 
 	/**Crea un nuevo mapa*/
 	public Mapa() {
 		super();
-		this.setBounds(0, 49, 786, 514);
+		this.setBounds(0, 49, ancho_mapa, largo_mapa);
 		fondo = new JLabel();
-		fondo.setBounds(0, 0, 786, 514);
+		fondo.setBounds(0, 0, ancho_mapa, largo_mapa);
 		ImageIcon original = new ImageIcon(ruta_fondo);
 		fondo.setIcon(new ImageIcon(
 				original.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_SMOOTH)));

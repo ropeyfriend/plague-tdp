@@ -39,11 +39,11 @@ public abstract class Infectado extends Personaje {
 	public void jugar() {
 		Random rnd = new Random();
 		int probabilidad = rnd.nextInt(15);
-		if (probabilidad == 0) {
+		if (probabilidad == 0 && !game.getCuarentena()) {
 			this.disparar();
-		} else if (!fueraDelMapa(this.entidadGrafica.getY()))
+		} else if (!fueraDelMapa(this.entidadGrafica.getY()) && !game.getCuarentena())
 			this.mover();
-		else
+		else if (fueraDelMapa(this.entidadGrafica.getY()))
 			game.eliminarEntidad(this);
 	}
 
@@ -51,14 +51,14 @@ public abstract class Infectado extends Personaje {
 		entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 		this.mv.mover();
 	}
-	
+
 	public boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
 			toret = true;
 		return toret;
 	}
-	
+
 	public void morir() {
 		Random rnd1 = new Random();
 		Random rnd2 = new Random();
@@ -66,22 +66,20 @@ public abstract class Infectado extends Personaje {
 		int n2 = rnd2.nextInt(3); // determina que premio agregar
 		int x = this.getEntidadGrafica().getX();
 		int y = this.getEntidadGrafica().getY();
-		//n1=0;
-		//n2=2;
-		if(n1 == 0) { // si agrego un premio
-			System.out.println("n1: "+n1+ " n2: "+ n2);
-			if(n2 == 0) { // o agrego una pocion
+		// n1=0;
+		// n2=2;
+		if (n1 == 0) { // si agrego un premio
+			System.out.println("n1: " + n1 + " n2: " + n2);
+			if (n2 == 0) { // o agrego una pocion
 				Premio p = new Pocion(x, y, game);
 				game.agregarEntidad(p);
-			} else
-				if(n2 == 1) { // o agrego una cuarentena obligatoria
-					Premio p = new CuarentenaObligatoria(5, game, x, y);
-					game.agregarEntidad(p);
-				} else
-					if(n2 == 2) { // o agrego un super arma sanitaria
-						Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
-						game.agregarEntidad(p);
-					}
+			} else if (n2 == 1) { // o agrego una cuarentena obligatoria
+				Premio p = new CuarentenaObligatoria(game, 5000, x, y);
+				game.agregarEntidad(p);
+			} else if (n2 == 2) { // o agrego un super arma sanitaria
+				Premio p = new SuperArmaSanitaria(10, 15, game, x, y);
+				game.agregarEntidad(p);
+			}
 		}
 		game.eliminarEntidad(this);
 	}

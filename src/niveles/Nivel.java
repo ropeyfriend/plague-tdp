@@ -22,9 +22,9 @@ public class Nivel {
 	 * @param t, cantidad de tandas del nivel
 	 * @param cantN, cantidad de niveles
 	 * */
-	public Nivel(int t, int cantN) {
+	public Nivel(int t, int cantNiveles) {
 		nivel = 1;
-		cantNiveles = cantN;//Van a ser 2
+		this.cantNiveles = cantNiveles;//Van a ser 2
 		cantTandas = t;
 		tandaActual = 1;
 		tandas = new Tanda[t];

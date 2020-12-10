@@ -35,7 +35,7 @@ public class JugadorVisitor extends Visitor {
 
 	@Override
 	public void visitarCuarentena(CuarentenaObligatoria p) {
-		p.startEffect();
+		j.getJuego().setCuarentena(p.getDuracion());
 		j.getJuego().eliminarEntidad(p);
 	}
 
