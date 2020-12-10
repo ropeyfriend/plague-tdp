@@ -29,59 +29,74 @@ public class Juego implements Runnable {
 	protected Jugador jugador;
 	/** Nivel del juego actual */
 	protected Nivel niveles[];
+	protected int nivelActual;
+	protected int tandaActual;
+	protected boolean tandaActiva;
+	protected boolean gameover;
 	/** Pociones de curacion del juego */
 	protected Premio[] pociones;
 	/** Gui del juego */
 	protected GUI gui;
-	protected Infectado a;
-	protected Infectado b;
 	protected boolean cuarentena;
 
-	protected Premio premio;
-
 	public Juego(GUI g) {
+		gameover = false;
 		gui = g;
 		mapa = new Mapa();
 		jugador = new Jugador(393, 440, this);
 		pociones = new Premio[3];
-		premio = new CuarentenaObligatoria(this, 7500, 200, 200);
-
-		entidades = new LinkedList<Entidad>();
-
-		a = new InfectadoAlpha(this, 3, 3, 150, 0);
-		b = new InfectadoBeta(this, 3, 3, 400, 0);
-		
-		System.out.println(a.getEntidadGrafica().getAncho());
-		System.out.println(b.getEntidadGrafica().getAncho());
-		
-		this.agregarEntidad(jugador);
-		this.agregarEntidad(a);
-		this.agregarEntidad(b);
-		this.agregarEntidad(premio);
-		
 		cuarentena = false;
-		
-		//Nivel
+		entidades = new LinkedList<Entidad>();
+		this.agregarEntidad(jugador);
+
+		// Nivel
 		niveles = new Nivel[2];
-		for (int i = 1; i <= niveles.length; i++) 
-			niveles[i-1] = new Nivel(this, 10*i, 10, 10);
-		
+		for (int i = 1; i <= niveles.length; i++)
+			niveles[i - 1] = new Nivel(this, 10 * i, 3, 3);
+
+		nivelActual = 0;
+		tandaActual = 0; // se actualiza en iniciarNivel
+		tandaActiva = false; // se actualiza en iniciarNivel
+		iniciarNivel();
 		mapa.repaint();
 	}
 
 	@Override
 	public void run() {
-		while (true) {
+		while (!gameover) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(2);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
-					
+
 					LinkedList<Entidad> colisiones = getColisiones(e);
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
-						// System.out.println(e +" <- "+entidadQueColisiona);
+					}
+					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
+						if (niveles[nivelActual].getNivelFinalizado() && nivelActual == 1) {
+							System.out.println("nivel 2 tanda 2 -> game over");
+							gameover=true;
+						} else {
+							System.out
+									.println("nivel " + (nivelActual+1) + " tanda " + tandaActual);
+							tandaActiva = false;
+							Timer t = new Timer();
+							TimerTask activarSigTanda = new TimerTask() {
+								@Override
+								public void run() {
+									if (tandaActual == 2) {
+										nivelActual++;
+										tandaActual = 0;
+										iniciarNivel();
+									} else if (tandaActual == 1) {
+										iniciarNivel();
+									}
+								}
+							};
+							t.schedule(activarSigTanda, 4000);
+						}
 					}
 				}
 			} catch (InterruptedException e) {
@@ -152,7 +167,7 @@ public class Juego implements Runnable {
 	 * @return nivel del juego
 	 */
 	public int getNivel() {
-		return 1;
+		return nivelActual + 1;
 	}
 
 	/**
@@ -198,7 +213,7 @@ public class Juego implements Runnable {
 		};
 		t.schedule(setFalse, tiempo);
 	}
-	
+
 	public boolean getCuarentena() {
 		return cuarentena;
 	}
@@ -208,5 +223,20 @@ public class Juego implements Runnable {
 		Rectangle r2 = entidad_2.getEntidadGrafica().getLabel().getBounds();
 		return r1.intersects(r2);
 	}
-	
+
+	private void iniciarNivel() {
+		iniciarTanda(++tandaActual);
+		tandaActiva = true;
+	}
+
+	private void iniciarTanda(int tanda) {
+		Infectado[] infectados = niveles[nivelActual].getTanda(tanda).getInfectados();
+
+		if (!niveles[nivelActual].getTanda(tanda).getTandaFinalizada()) {
+			for (Infectado i : infectados) {
+				agregarEntidad(i);
+			}
+		}
+	}
+
 }

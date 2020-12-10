@@ -3,7 +3,6 @@ package entidades.proyectiles;
 import entidades.Entidad;
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
-import entidades.visitor.ProyectilInfectadoVisitor;
 import juego.Juego;
 
 /** Clase que modela a un proyectil */
