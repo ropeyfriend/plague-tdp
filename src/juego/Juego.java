@@ -59,7 +59,7 @@ public class Juego implements Runnable {
 		// Nivel
 		niveles = new Nivel[2];
 		for (int i = 1; i <= niveles.length; i++)
-			niveles[i - 1] = new Nivel(this, 10 * i, 3, 3);
+			niveles[i - 1] = new Nivel(this, 10 * i);
 
 		nivelActual = 0;
 		tandaActual = 0; // se actualiza en iniciarNivel
@@ -72,7 +72,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(100);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -82,14 +82,14 @@ public class Juego implements Runnable {
 						e.accept(entidadQueColisiona.getVisitor());
 					}
 					
-					if(!jugador.getActivo()) {						
+					if(!jugador.getActivo() && !gameover) {						
 						gameover=true;
 						gui.ganar(gameover);
 					}
 					
 					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
 						if (niveles[nivelActual].getNivelFinalizado() && nivelActual == 1) {
-							System.out.println("nivel 2 tanda 2 -> game over");
+							gui.ganar(gameover);
 							gameover=true;
 						} else {
 							tandaActiva = false;

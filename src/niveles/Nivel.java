@@ -11,16 +11,21 @@ public class Nivel {
 	protected Juego game;
 	protected Tanda t1;
 	protected Tanda t2;
-
-	public Nivel(Juego game, int cantidadInfectados, int velocidad, int rango) {
+	
+	protected static int velocidad_alpha = 2;
+	protected static int rango_alpha = 300;
+	protected static int velocidad_beta = 3;
+	protected static int rango_beta = 400;
+	
+	public Nivel(Juego game, int cantidadInfectados) {
 		this.game = game;
-		t1 = new Tanda(game, cantidadInfectados / 2, velocidad, rango);
+		t1 = new Tanda(game, cantidadInfectados / 2, velocidad_alpha, rango_alpha, velocidad_beta, rango_beta);
 		// si es par, la tanda 2 tiene la misma cantidad que la tanda 1, si es impar
 		// tiene uno mas
 		if (cantidadInfectados % 2 == 0) {
-			t2 = new Tanda(game, cantidadInfectados / 2, velocidad, rango);
+			t2 = new Tanda(game, cantidadInfectados / 2, velocidad_alpha, rango_alpha, velocidad_beta, rango_beta);
 		} else
-			t2 = new Tanda(game, (cantidadInfectados / 2) + 1, velocidad, rango);
+			t2 = new Tanda(game, (cantidadInfectados / 2) + 1, velocidad_alpha, rango_alpha, velocidad_beta, rango_beta);
 		setPosiciones();
 	}
 

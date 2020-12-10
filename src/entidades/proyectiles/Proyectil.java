@@ -16,23 +16,29 @@ public abstract class Proyectil extends Entidad {
 	protected boolean activo;
 	/** Indica la cantidad de danio que genera el proyectil */
 	protected int danio;
+	
+	protected int rango;
+	
+	protected int y_inicial;
 	/**Representa el movimiento del proyectil*/
 	protected MovimientoVertical mv;
-
+	
 	/**
 	 * Crea un nuevo proyectil
 	 * 
 	 * @param v, velocidad del proyectil
 	 * @param d, direccion del proyectil
 	 */
-	public Proyectil(Juego g, int v, int d) {
+	public Proyectil(Juego g, int v, int d, int r, int y) {
 		velocidad = v;
 		direccion = d;
 		game = g;
+		y_inicial = y;
+		rango = r;
 	}
 	
 	public void jugar() {
-		if (!fueraDelMapa(this.entidadGrafica.getY()))
+		if (!fueraDelMapa(this.entidadGrafica.getY()) && !fueraDeRango(this.entidadGrafica.getY()))
 			this.mv.mover();
 		else 
 			eliminarProyectil();
@@ -43,6 +49,15 @@ public abstract class Proyectil extends Entidad {
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight()) {
 			toret = true;
 		}
+		return toret;
+	}
+	
+	private boolean fueraDeRango(int y) {
+		boolean toret = false;
+		int dif = Math.abs(y_inicial - y);
+		System.out.println("dif: "+dif+" , rango: "+rango);
+		if (dif > rango)
+			toret = true;
 		return toret;
 	}
 	

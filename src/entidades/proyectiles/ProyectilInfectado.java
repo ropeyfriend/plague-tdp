@@ -9,15 +9,10 @@ import juego.Juego;
 /**Clase que modela al proyectil de un infectado*/
 
 public class ProyectilInfectado extends Proyectil{
-	//Atributes
-	/*Representa el rango de las particulas exparcidas por los infectados*/
-	protected int rango;
-		
 	/**Crea un nuevo proyectil infectado*/
-	public ProyectilInfectado(Juego g ,int x, int y, int d) {
-		super(g, 10, MovimientoVertical.ABAJO); //Va hacia abajo (1)
+	public ProyectilInfectado(Juego g ,int x, int y, int d, int r) {
+		super(g, 10, MovimientoVertical.ABAJO, r, y); //Va hacia abajo (1)
 		danio = d;
-		rango = 5;
 		activo = true;
 		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilInfectado.gif";
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_moviendose,x,y);

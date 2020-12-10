@@ -2,7 +2,6 @@ package gui;
 
 import juego.Juego;
 import mapa.Mapa;
-import niveles.Nivel;
 
 import javax.swing.JProgressBar;
 import java.awt.Insets;
@@ -192,10 +191,10 @@ public class GUI extends JFrame {
 	
 	public void ganar(boolean gameover) {
 		if(!gameover) {
-			JOptionPane.showMessageDialog(null, "¡Felicitaciones, ganaste el juego!");
+			JOptionPane.showMessageDialog(this, "¡Felicitaciones, ganaste el juego!");
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "GAMEOVER");
+			JOptionPane.showMessageDialog(this, "GAMEOVER");
 		}
 	}
 

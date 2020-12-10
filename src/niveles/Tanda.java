@@ -20,15 +20,20 @@ public class Tanda {
 	/** Fabricas de infectados */
 	protected Fabrica[] fabricas;
 
-	protected int velocidad;
-	protected int rango;
+	protected int velocidad_alpha;
+	protected int rango_alpha;
+	protected int velocidad_beta;
+	protected int rango_beta;
 
 	/** Crea una nueva tanda de infectados */
-	public Tanda(Juego g, int cantidadInfectados, int velocidad, int rango) {
+	public Tanda(Juego g, int cantidadInfectados, int velocidad_alpha, int rango_alpha, int velocidad_beta, int rango_beta) {
 		this.game = g;
 		this.cant = cantidadInfectados;
-		this.velocidad = velocidad;
-		this.rango = rango;
+		this.velocidad_alpha = velocidad_alpha;
+		this.rango_alpha = rango_alpha;
+		this.velocidad_beta = velocidad_beta;
+		this.rango_beta = rango_beta;
+		
 		this.array = new Infectado[cantidadInfectados];
 		this.fabricas = new Fabrica[2];
 		this.fabricas[0] = new FabricaAlpha(game);
@@ -41,8 +46,8 @@ public class Tanda {
 	 * Inicializa las tandas
 	 */
 	public void init() {
-		Infectado[] infectadosAlpha = fabricas[0].crearInfectado(cant / 2, velocidad, rango);
-		Infectado[] infectadosBeta = fabricas[1].crearInfectado(cant / 2, velocidad, rango);
+		Infectado[] infectadosAlpha = fabricas[0].crearInfectado(cant / 2, velocidad_alpha, rango_alpha);
+		Infectado[] infectadosBeta = fabricas[1].crearInfectado(cant / 2, velocidad_beta, rango_beta);
 
 		for (int i = 0; i < cant / 2; i++) {
 			array[i] = infectadosAlpha[i];
@@ -52,7 +57,7 @@ public class Tanda {
 		}
 
 		// mete una cantidad cant-1 de infectados, este seria el ultimo
-		array[cant - 1] = new InfectadoAlpha(game, velocidad, rango);
+		array[cant - 1] = new InfectadoAlpha(game, velocidad_alpha, rango_alpha);
 
 	}
 

@@ -9,10 +9,12 @@ import juego.Juego;
 /**Clase que modela al proyectil del jugador*/
 
 public class ProyectilJugador extends Proyectil{
+	protected static final int velocidad = 20;
+	protected static final int rango = 500;
 	
 	/**Crea un nuevo proyectil del jugador*/
 	public ProyectilJugador(Juego g ,int x, int y, boolean superArmaSanitaria) {
-		super(g, 10 ,MovimientoVertical.ARRIBA); //Va hacia arriba (-1)
+		super(g, velocidad ,MovimientoVertical.ARRIBA, rango, y); //Va hacia arriba (-1)
 		danio = 10;
 		activo = true;
 		ruta_dibujo_moviendose = "src/recursos/Proyectiles/ProyectilJugador.gif";
