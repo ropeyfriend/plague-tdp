@@ -19,11 +19,13 @@ public abstract class Infectado extends Personaje {
 	protected int rango;
 	/** Cantidad de danio que recibe al ser golpeado por el jugador */
 	protected float danio_a_recibir;
+	/**Movimiento del infectado*/
 	protected MovimientoVertical mv;
 
 	/**
 	 * Crea un nuevo infectado
 	 * 
+	 * @param g, juego del infectado
 	 * @param vel, velocidad del infectado
 	 * @param r,   rango del infectado
 	 */
@@ -54,6 +56,10 @@ public abstract class Infectado extends Personaje {
 		this.mv.mover();
 	}
 
+	/**Verifica si el y pasado por parametro esta fuera del mapa
+	 * 
+	 * @param y, entero que representa una posicion del mapa
+	 * */
 	private boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
@@ -61,6 +67,7 @@ public abstract class Infectado extends Personaje {
 		return toret;
 	}
 
+	/**Genera los drops del infectado y luego lo elimina logica y graficamente*/
 	public void morir() {
 		Random rnd1 = new Random();
 		Random rnd2 = new Random();
@@ -83,6 +90,7 @@ public abstract class Infectado extends Personaje {
 		activo = false;
 	}
 
+	//Getters
 	/**
 	 * Retorna el rango del infectado
 	 * 
@@ -91,7 +99,21 @@ public abstract class Infectado extends Personaje {
 	public int getRango() {
 		return rango;
 	}
+	
+	/**
+	 * Retorna el danio que recibe el infectado
+	 * 
+	 * @return danio
+	 */
+	public float getDanioARecibir() {
+		return danio_a_recibir;
+	}
 
+	//Setters
+	/**Modifica la direccion del infectado por la pasada por parametro
+	 * 
+	 * @param i, nueva direccion
+	 * */
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1)
 			this.mv.setDireccion(i);

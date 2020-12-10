@@ -45,7 +45,6 @@ public class Jugador extends Personaje {
 		v.visitarJugador(this);
 	}
 	
-	/**Dispara*/
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
 		int x = this.entidadGrafica.getX() + 13; //13 para q este centrado
