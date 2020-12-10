@@ -53,7 +53,7 @@ public abstract class Infectado extends Personaje {
 		this.mv.mover();
 	}
 
-	public boolean fueraDelMapa(int y) {
+	private boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
 			toret = true;

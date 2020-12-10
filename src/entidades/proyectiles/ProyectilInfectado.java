@@ -2,7 +2,6 @@ package entidades.proyectiles;
 
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
-import entidades.personajes.Jugador;
 import entidades.visitor.ProyectilInfectadoVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;

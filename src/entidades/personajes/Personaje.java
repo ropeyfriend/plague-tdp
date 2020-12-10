@@ -8,12 +8,17 @@ public abstract class Personaje extends Entidad{
 	protected float cargaViral;
 	/**Representa el danio que ejerce el personaje*/
 	protected int danio; 
-	
+	/**String que representa la ruta donde se guarda el dibujo del personaje siendo golpeado*/
 	protected String ruta_dibujo_hit;
 	 
 	/**Disminuye la carga viral del infectado*/
 	 public abstract void recibirDanio(Proyectil p);
 	
+	/**
+	 * Retorna un proyectil 
+	 */
+	public abstract void disparar();
+		
 	//Getters
 	/**Retorna la carga viral del personaje
 	 * @return carga viral
@@ -21,11 +26,6 @@ public abstract class Personaje extends Entidad{
 	public float getCargaViral() {
 		return cargaViral;
 	}
-	
-	/**
-	 * Retorna un proyectil 
-	 */
-	public abstract void disparar();
 	
 	/**Retorna el danio del personaje
 	 * @return danio

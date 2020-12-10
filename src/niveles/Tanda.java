@@ -49,8 +49,8 @@ public class Tanda {
 			array[i] = infectadosAlpha[i];
 			System.out.println("alpha -> array["+i+"] = " + array[i]);
 		}
-		for(int i = cant/2; i < cant-1; i++) {
-			array[i] = infectadosBeta[i- (cant/2)];
+		for(int i = cant/2; i < cant; i++) {
+			array[i] = infectadosBeta[i];
 			System.out.println("beta -> array["+i+"] = " + array[i]);
 		}
 
@@ -60,7 +60,6 @@ public class Tanda {
 		}
 	}
 
-	// Getters
 	/**
 	 * Devuleve si la tanda tiene o no infectados
 	 * 
@@ -79,6 +78,10 @@ public class Tanda {
 		return cant;
 	}
 
+	/**Devuelve true si la tanda finalizo
+	 * 
+	 * @return true si todos los infectados de la tanda fueron eliminados
+	 * */
 	public boolean getTandaFinalizada() {
 		boolean toret = true;
 		for (int i = 0; i < array.length && toret; i++) {
