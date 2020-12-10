@@ -35,6 +35,7 @@ public class Juego implements Runnable {
 	protected boolean gameover;
 	/** Pociones de curacion del juego */
 	protected Premio[] pociones;
+	protected int cantPociones;
 	/** Gui del juego */
 	protected GUI gui;
 	protected boolean cuarentena;
@@ -46,6 +47,12 @@ public class Juego implements Runnable {
 		jugador = new Jugador(393, 440, this);
 		pociones = new Premio[3];
 		cuarentena = false;
+		pociones[0] = new Pocion(this);
+		pociones[1] = new Pocion(this);
+		pociones[2] = new Pocion(this);
+		
+		cantPociones = 3;
+
 		entidades = new LinkedList<Entidad>();
 		this.agregarEntidad(jugador);
 
@@ -65,7 +72,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(2);
+				Thread.sleep(100);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -74,6 +81,11 @@ public class Juego implements Runnable {
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
 					}
+					
+					if(!jugador.getActivo()) {						
+						gameover=true;
+					}
+					
 					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
 						if (niveles[nivelActual].getNivelFinalizado() && nivelActual == 1) {
 							System.out.println("nivel 2 tanda 2 -> game over");
@@ -101,23 +113,6 @@ public class Juego implements Runnable {
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-		}
-	}
-
-	/**
-	 * Agrega una pocion al arreglo de pociones del juego
-	 * 
-	 * @param p, pocion a agregar
-	 */
-	public void agregarPocion(Pocion p) {
-		boolean encontre = false;
-
-		for (int i = 0; i < pociones.length && !encontre; i++) {
-			if (pociones[i] == null) {
-				encontre = true;
-				pociones[i] = p;
-				gui.agregarPocion(p);
 			}
 		}
 	}
@@ -225,6 +220,7 @@ public class Juego implements Runnable {
 	}
 
 	private void iniciarNivel() {
+		gui.cambiarNivel(getNivel());
 		iniciarTanda(++tandaActual);
 		tandaActiva = true;
 	}
@@ -239,4 +235,43 @@ public class Juego implements Runnable {
 		}
 	}
 
+	
+	public int getCantPociones() {
+		return cantPociones;
+	}
+	
+	public void setCantPociones(int n) {
+		cantPociones = n;
+		if(cantPociones < 0)
+			cantPociones = 0;
+		if(cantPociones > 3)
+			cantPociones = 3;
+	}	
+	
+	public Pocion buscarPocion(int n) {
+		return (Pocion) pociones[n];
+	}
+	
+	/**
+	 * Agrega una pocion al arreglo de pociones del juego
+	 * 
+	 * @param p, pocion a agregar
+	 */
+	public int agregarPocion(Pocion p) {
+		boolean encontre = false;
+		int j = 0;
+		for (int i = 0; i < 3 && !encontre; i++) {
+			if (pociones[i] == null) {
+				encontre = true;
+				pociones[i] = p;
+				cantPociones++;
+				j = i;
+			}
+		}
+		return j;
+	}
+	
+	public void agregarPocion(Pocion p, int i) {
+		pociones[i] = p;
+	}
 }

@@ -40,7 +40,7 @@ public class JugadorVisitor extends Visitor {
 
 	@Override
 	public void visitarPocion(Pocion p) {
-		j.getJuego().getGUI().agregarPocion(p);
+		j.getJuego().getGUI().agregarPocionBoton(p);
 		j.getJuego().eliminarEntidad(p);
 	}
 
