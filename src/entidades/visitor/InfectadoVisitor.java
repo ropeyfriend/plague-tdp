@@ -21,10 +21,12 @@ public class InfectadoVisitor extends Visitor{
 
 	@Override
 	public void visitarInfectado(Infectado i) {
-		
+		// TODO Auto-generated method stub
 	}
 
-	@Override
+	/**
+	 * Metodo que se encarga de la interaccion entre un infectado y un jugador
+	 */
 	public void visitarJugador(Jugador j) {
 		j.recibirDanio(inf.getDanio()*2);
 		inf.setActivo(false);

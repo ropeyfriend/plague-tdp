@@ -9,6 +9,7 @@ import juego.Juego;
 /**Clase que modela al proyectil de un infectado*/
 
 public class ProyectilInfectado extends Proyectil{
+	
 	/**Crea un nuevo proyectil infectado*/
 	public ProyectilInfectado(Juego g ,int x, int y, int d, int r) {
 		super(g, 10, MovimientoVertical.ABAJO, r, y); //Va hacia abajo (1)

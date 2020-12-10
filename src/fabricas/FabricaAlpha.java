@@ -12,7 +12,7 @@ public class FabricaAlpha extends Fabrica{
 	public FabricaAlpha(Juego g) {
 		super(g);
 	}
-	@Override
+
 	public Infectado [] crearInfectado(int n, int vel, int rango) {
 		Infectado inf[] = new InfectadoAlpha[n];
 		for(int i = 0; i < n; i++) {

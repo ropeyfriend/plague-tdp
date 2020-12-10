@@ -32,19 +32,25 @@ public class JugadorVisitor extends Visitor {
 	public void visitarProyectil(Proyectil p) {
 	}
 
-	@Override
+	/**
+	 * Visitor que se encarga de la interaccion entre un Jugador y el efectoCuarentena
+	 */
 	public void visitarCuarentena(CuarentenaObligatoria p) {
 		j.getJuego().setCuarentena(p.getDuracion());
 		j.getJuego().eliminarEntidad(p);
 	}
 
-	@Override
+	/**
+	 * Visitor que se encarga de la interaccion entre el Jugador y una pocion
+	 */
 	public void visitarPocion(Pocion p) {
 		j.getJuego().getGUI().agregarPocionBoton(p);
 		j.getJuego().eliminarEntidad(p);
 	}
 
-	@Override
+	/**
+	 * Visitor que se encarga de la interaccion entre el Jugador y el superArmaSanitaria
+	 */
 	public void visitarSuperArma(SuperArmaSanitaria p) {
 		p.startEffect(j);
 		j.getJuego().eliminarEntidad(p);

@@ -189,6 +189,10 @@ public class GUI extends JFrame {
 		progressBar.setValue(vida);
 	}
 	
+	/**
+	 * Mensaje al jugador mencionando su victoria o derrota
+	 * @param gameover resultado del juego, si es true es que obtuvo la victoria, caso contrario false
+	 */
 	public void ganar(boolean gameover) {
 		if(!gameover) {
 			JOptionPane.showMessageDialog(this, "¡Felicitaciones, ganaste el juego!");
@@ -209,6 +213,10 @@ public class GUI extends JFrame {
 		}
 	}
 
+	/**
+	 * Setea enabled al boton para poder activar una pocion dentro del juego
+	 * @param p pocion a agregar
+	 */
 	public void agregarPocionBoton(Pocion p) {
 		int i = juego.agregarPocion(p);
 		if(i == 0) {

@@ -8,10 +8,17 @@ import entidades.premios.Premio;
 import entidades.premios.SuperArmaSanitaria;
 import entidades.proyectiles.Proyectil;
 
+/**Clase que modela al visitor de un del efectoCuarentena*/
+
 public class CuarentenaVisitor extends Visitor{
 	
+	/** atributo efectoCuarentena */
 	protected CuarentenaObligatoria c;
 	
+	/**
+	 * Constructor del visitor efectoCuarentena
+	 * @param cuarentena
+	 */
 	public CuarentenaVisitor(CuarentenaObligatoria cuarentena) {
 		c = cuarentena;
 	}

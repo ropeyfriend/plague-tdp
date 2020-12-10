@@ -8,24 +8,23 @@ import juego.Juego;
 /** Clase que modela a un proyectil */
 
 public abstract class Proyectil extends Entidad {
-	/* Representa la velocidad del proyectil */
+	/** Representa la velocidad del proyectil */
 	protected int velocidad;
-	/* Representa la direccion a la cual se mueve el proyectil */
+	/** Representa la direccion a la cual se mueve el proyectil */
 	protected int direccion;
 	/** Indica si el proyectil esta activo o no */
 	protected boolean activo;
 	/** Indica la cantidad de danio que genera el proyectil */
 	protected int danio;
-	
+	/** Indica la distancia que recorre el proyectil hasta desaparecer */
 	protected int rango;
-	
+	/** Indica la coordenada y inicial de cada proyectil */
 	protected int y_inicial;
 	/**Representa el movimiento del proyectil*/
 	protected MovimientoVertical mv;
 	
 	/**
 	 * Crea un nuevo proyectil
-	 * 
 	 * @param v, velocidad del proyectil
 	 * @param d, direccion del proyectil
 	 */
@@ -44,6 +43,11 @@ public abstract class Proyectil extends Entidad {
 			eliminarProyectil();
 	}
 
+	/**
+	 * Verifica si la coordenada y pasada por parametro, esta dentrod el mapa
+	 * @param y
+	 * @return toret true si pertenece al mapa y false caso contrario
+	 */
 	private boolean fueraDelMapa(int y) {
 		boolean toret = false;
 		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight()) {
@@ -52,6 +56,11 @@ public abstract class Proyectil extends Entidad {
 		return toret;
 	}
 	
+	/**
+	 * Dada una coordenada y, devuelve true si esta fuera de rango
+	 * @param coordenada y
+	 * @return true si esta en rango, false caso contrario
+	 */
 	private boolean fueraDeRango(int y) {
 		boolean toret = false;
 		int dif = Math.abs(y_inicial - y);
@@ -60,10 +69,17 @@ public abstract class Proyectil extends Entidad {
 		return toret;
 	}
 	
+	/**
+	 * Elimina el proyectil del juego
+	 */
 	public void eliminarProyectil() {
 		game.eliminarEntidad(this);
 	}
 	
+	/**
+	 * Setea la direccion de movimiento con el valor entero pasado por parametro
+	 * @param i entero que representa la direccion
+	 */
 	public void setDireccion(int i) {
 		if (i == 1 || i == -1) {
 			this.mv.setDireccion(i);
@@ -71,7 +87,6 @@ public abstract class Proyectil extends Entidad {
 		}
 	}
 
-	// Getters
 	/**
 	 * Retorna la velocidad del proyectil
 	 * 
@@ -113,7 +128,6 @@ public abstract class Proyectil extends Entidad {
 		return entidadGrafica;
 	}
 
-	// Setters
 	/**
 	 * Modifica la velocidad del proyectil por la pasada por parametro
 	 * 
@@ -149,5 +163,4 @@ public abstract class Proyectil extends Entidad {
 	public void setEntidadGrafica(EntidadGrafica e) {
 		entidadGrafica = e;
 	}
-
 }
