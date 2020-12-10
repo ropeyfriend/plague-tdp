@@ -72,7 +72,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -84,6 +84,7 @@ public class Juego implements Runnable {
 					
 					if(!jugador.getActivo()) {						
 						gameover=true;
+						gui.ganar(gameover);
 					}
 					
 					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
@@ -91,8 +92,6 @@ public class Juego implements Runnable {
 							System.out.println("nivel 2 tanda 2 -> game over");
 							gameover=true;
 						} else {
-							System.out
-									.println("nivel " + (nivelActual+1) + " tanda " + tandaActual);
 							tandaActiva = false;
 							Timer t = new Timer();
 							TimerTask activarSigTanda = new TimerTask() {

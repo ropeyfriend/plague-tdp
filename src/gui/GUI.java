@@ -8,6 +8,7 @@ import javax.swing.JProgressBar;
 import java.awt.Insets;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -187,6 +188,15 @@ public class GUI extends JFrame {
 	// CUANDO ATACAN AL JUGADOR
 	public void modificarBarra(int vida) {
 		progressBar.setValue(vida);
+	}
+	
+	public void ganar(boolean gameover) {
+		if(!gameover) {
+			JOptionPane.showMessageDialog(null, "¡Felicitaciones, ganaste el juego!");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "GAMEOVER");
+		}
 	}
 
 	private class Adapter extends KeyAdapter {
