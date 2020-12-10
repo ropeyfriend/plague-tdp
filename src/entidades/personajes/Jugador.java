@@ -66,7 +66,6 @@ public class Jugador extends Personaje {
 			activo = false;
 			game.eliminarEntidad(this);
 		}
-		System.out.println("[JUGADOR] vida+daño: " + cargaViral);
 		game.eliminarEntidad(p);
 		game.getGUI().modificarBarra((int) cargaViral);
 	}
@@ -81,7 +80,6 @@ public class Jugador extends Personaje {
 		if(cargaViral < 0)
 			cargaViral = 0;
 		game.getGUI().modificarBarra((int)cargaViral);
-		System.out.println("[JUGADOR] vida-cura: " + cargaViral);
 	}
 	
 	/**
