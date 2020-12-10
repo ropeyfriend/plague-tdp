@@ -60,6 +60,8 @@ public class Jugador extends Personaje {
 	public void recibirDanio(Proyectil p) {
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral += p.getDanio();
+		
+		//morir
 		if(cargaViral >= 100) {
 			activo = false;
 			game.eliminarEntidad(this);

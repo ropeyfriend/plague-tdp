@@ -65,7 +65,7 @@ public class Juego implements Runnable {
 	public void run() {
 		while (!gameover) {
 			try {
-				Thread.sleep(2);
+				Thread.sleep(120);
 				entidadesClone = (LinkedList<Entidad>) entidades.clone();
 				for (Entidad e : entidadesClone) {
 					e.jugar();
@@ -74,6 +74,11 @@ public class Juego implements Runnable {
 					for (Entidad entidadQueColisiona : colisiones) {
 						e.accept(entidadQueColisiona.getVisitor());
 					}
+					
+					if(!jugador.getActivo()) {						
+						gameover=true;
+					}
+					
 					if (niveles[nivelActual].getTanda(tandaActual).getTandaFinalizada() && tandaActiva) {
 						if (niveles[nivelActual].getNivelFinalizado() && nivelActual == 1) {
 							System.out.println("nivel 2 tanda 2 -> game over");
