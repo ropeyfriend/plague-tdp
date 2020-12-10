@@ -217,8 +217,7 @@ public class GUI extends JFrame {
 	}
 
 	public void cambiarNivel() {
-		Nivel n = juego.getNivel();
-		labelNivel.setText("NIVEL: " + n.getNivel());
+		labelNivel.setText("NIVEL: " + juego.getNivel());
 	}
 
 	// CUANDO ATACAN AL JUGADOR
