@@ -141,7 +141,7 @@ public class Juego implements Runnable {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != null) {
 				entidades.add(array[i]);
-				mapa.agregarEntidad(array[i]);
+				agregarEntidad(array[i]);
 			}
 		}
 	}
