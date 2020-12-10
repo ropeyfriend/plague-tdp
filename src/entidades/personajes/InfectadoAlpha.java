@@ -53,13 +53,6 @@ public class InfectadoAlpha extends Infectado {
 		v.visitarInfectado(this);
 	}
 
-	public boolean fueraDelMapa(int y) {
-		boolean toret = false;
-		if (y < 0 || y + this.getEntidadGrafica().getLabel().getHeight() > game.getMapa().getHeight())
-			toret = true;
-		return toret;
-	}
-
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
 		int x = this.entidadGrafica.getX() + 20;

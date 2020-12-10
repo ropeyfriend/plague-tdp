@@ -18,6 +18,12 @@ public abstract class Premio extends Entidad {
 		mv = new MovimientoVertical(this, MovimientoVertical.ABAJO);
 		velocidad = 5;
 	}
+	
+	/**Activa el efecto del premio
+	 * @param j, jugador donde aplica el efecto
+	 * */
+	public abstract void startEffect(Jugador j);
+	
 
 	public void mover() {
 		this.mv.mover();

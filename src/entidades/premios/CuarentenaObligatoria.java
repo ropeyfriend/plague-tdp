@@ -1,11 +1,8 @@
 package entidades.premios;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import entidades.EntidadGrafica;
-import entidades.visitor.CuarentenaVisitor;
 import entidades.personajes.Jugador;
+import entidades.visitor.CuarentenaVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
 
@@ -26,10 +23,10 @@ public class CuarentenaObligatoria extends EfectoTemporal {
 		v.visitarCuarentena(this);	
 	}
 	
-	public void startEffect() {
-	}
 
+	@Override
 	public void startEffect(Jugador j) {
+		// TODO Auto-generated method stub
 		
 	}
 

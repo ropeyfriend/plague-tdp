@@ -56,7 +56,6 @@ public class Tanda {
 
 	}
 
-	// Getters
 	/**
 	 * Devuleve si la tanda tiene o no infectados
 	 * 
@@ -75,6 +74,10 @@ public class Tanda {
 		return cant;
 	}
 
+	/**Devuelve true si la tanda finalizo
+	 * 
+	 * @return true si todos los infectados de la tanda fueron eliminados
+	 * */
 	public boolean getTandaFinalizada() {
 		boolean toret = true;
 		for (int i = 0; i < array.length && toret; i++) {

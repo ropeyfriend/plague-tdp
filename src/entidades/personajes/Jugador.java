@@ -14,13 +14,15 @@ public class Jugador extends Personaje {
 	// Atributes
 	/* Arma del jugador para desinfectar a los infectados */
 	protected MovimientoHorizontal mh;
+	/**String que representa la ruta donde se guarda el dibujo del jugador moviendose*/
 	protected String ruta_dibujo_moviendose_i;
+	/**Indica si el efecto esta o no activado*/
 	protected boolean efectoSuperArmaSanitaria;
 
 	/**
 	 * Crea un nuevo jugador
 	 * 
-	 * @param p,   proyectil del jugador
+	 * @param p, proyectil del jugador
 	 * @param vel, velocidad del jugador
 	 */
 	public Jugador(int x, int y, Juego g) {
@@ -38,12 +40,15 @@ public class Jugador extends Personaje {
 		entidadGrafica = new EntidadGrafica(ruta_dibujo_ataque, x, y);
 		mh = new MovimientoHorizontal(this, MovimientoHorizontal.DERECHA);
 	}
-	
 
+	public void accept(Visitor v) {
+		v.visitarJugador(this);
+	}
 	
+	/**Dispara*/
 	public void disparar() {
 		entidadGrafica.updateImagen(ruta_dibujo_ataque);
-		int x = this.entidadGrafica.getX() + 13; //-18 para q este centrado
+		int x = this.entidadGrafica.getX() + 13; //13 para q este centrado
 		Proyectil p = new ProyectilJugador(game, x, game.getMapa().y_proyectiles_jugador, efectoSuperArmaSanitaria);
 		game.agregarEntidad(p);
 	}
@@ -55,6 +60,10 @@ public class Jugador extends Personaje {
 	public void recibirDanio(Proyectil p) {
 		entidadGrafica.updateImagen(ruta_dibujo_hit);
 		cargaViral += p.getDanio();
+		if(cargaViral >= 100) {
+			activo = false;
+			game.eliminarEntidad(this);
+		}
 		System.out.println("[JUGADOR] vida+daño: " + cargaViral);
 		game.eliminarEntidad(p);
 		game.getGUI().modificarBarra((int) cargaViral);
@@ -89,20 +98,13 @@ public class Jugador extends Personaje {
 		};
 		t.schedule(setFalse, 10000);
 	}
-
-	public void accept(Visitor v) {
-		v.visitarJugador(this);
-	}
-	public Juego getJuego() {
-		return game;
-	}
 	
 	/**
 	 * Cambia el dibujo dependiendo del entero recibido. Si es menor a 1, carga el
 	 * dibujo viendo hacia la izquierda Si es 0, carga el dibujo mirando al frente
 	 * Si es mayor a 0, carga el dibujo mirando hacia la derecha
 	 * 
-	 * @param i
+	 * @param i, entero que representa los distintos dibujos
 	 */
 	public void cambiarDibujo(int i) {
 		if (i == 0)
@@ -125,14 +127,17 @@ public class Jugador extends Personaje {
 			this.mh.mover();
 		}
 	}
+	
+	/**Retorna el juego del jugador
+	 * @return juego actual
+	 * */
+	public Juego getJuego() {
+		return game;
+	}
 
 	@Override
 	public void jugar() {
 		// TODO Auto-generated method stub
 	}
-
-
-	
-
 	
 }

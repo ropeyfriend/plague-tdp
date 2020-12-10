@@ -1,12 +1,8 @@
 package entidades;
 
-import java.awt.Color;
 import javax.swing.ImageIcon;
-
-/**Clase encargada de la parte grafica de la entidad*/
-
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
+
 
 /**Clase que modela la parte grafica de una entidad*/
 

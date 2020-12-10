@@ -2,7 +2,6 @@ package entidades.proyectiles;
 
 import entidades.EntidadGrafica;
 import entidades.movimiento.MovimientoVertical;
-import entidades.personajes.Infectado;
 import entidades.visitor.ProyectilJugadorVisitor;
 import entidades.visitor.Visitor;
 import juego.Juego;
@@ -27,7 +26,6 @@ public class ProyectilJugador extends Proyectil{
 			entidadGrafica.updateImagen(ruta_dibujo_moviendose);
 		}
 	}
-	
 	
 	public void accept(Visitor v) {
 		v.visitarProyectil(this);	
