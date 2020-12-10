@@ -9,15 +9,20 @@ import javax.swing.JLayeredPane;
 import entidades.Entidad;
 import juego.Juego;
 
+/**Clase que modela al mapa del juego*/
+
 public class Mapa extends JLayeredPane {
 	/**Fondo del mapa*/
 	protected JLabel fondo;
 	/**Ruta donde se ubica el fondo del mapa*/
 	protected String ruta_fondo = "src\\recursos\\Mapa\\mapa.png";
-	
-	public final int y_infectados = 0;
+	/**Coordenada y donde aparecen los infectados*/
+	public final int y_infectados = 65;
+	/**Coordenada y donde aparecen los proyectiles del jugador*/
 	public final int y_proyectiles_jugador = 400;
+	/**Largo del mapa*/
 	public final int largo_mapa = 514;
+	/**Ancho del mapa*/
 	public final int ancho_mapa = 786;
 	
 

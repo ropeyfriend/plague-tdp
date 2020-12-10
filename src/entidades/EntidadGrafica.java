@@ -3,7 +3,6 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-
 /**Clase que modela la parte grafica de una entidad*/
 
 public class EntidadGrafica {
@@ -20,7 +19,12 @@ public class EntidadGrafica {
 	/**Ruta del diubjo */ 
     protected String ruta;
 	
-	/**Crea una nueva entidad grafica*/
+	/**Crea una nueva entidad grafica
+	 * 
+	 * @param ruta, ruta de la imagen
+	 * @param x, coordenada donde se ubica la entidad
+	 * @param y, coordenada donde se ubica la entidad
+	 * */
     public EntidadGrafica(String ruta, int x, int y) {
     	this.x = x;
     	this.y = y;
@@ -32,6 +36,10 @@ public class EntidadGrafica {
     	largo = dibujo.getHeight();
 	}
     
+	/**Crea una nueva entidad grafica
+	 * 
+	 * @param ruta, ruta de la imagen
+	 * */
     public EntidadGrafica(String ruta) {
     	this.ruta = ruta;
     	ImageIcon original = new ImageIcon(ruta);
@@ -42,6 +50,7 @@ public class EntidadGrafica {
 	}
     
     /**Actualiza la imagen de la entidad por la que esta en la ruta pasada por parametro
+     * 
      * @param rutaDibujo, ruta del gif.
      * */
 	public void updateImagen(String ruta) {
@@ -53,6 +62,7 @@ public class EntidadGrafica {
        
 	//Getters
     /**Retorna la coordenada X donde se ubica la entidad
+     * 
      * @return coordenada X
      * */
 	public int getX() {
@@ -60,6 +70,7 @@ public class EntidadGrafica {
 	}
 	
 	/**Retorna la coordenada Y donde se ubica la entidad
+	 * 
      * @return coordenada Y
      * */
     public int getY() {
@@ -67,6 +78,7 @@ public class EntidadGrafica {
     }
     
 	/**Retorna el icono de la entidad
+	 * 
 	 * @return icono de la entidad
 	 * */
 	public JLabel getLabel() {
@@ -75,6 +87,7 @@ public class EntidadGrafica {
 	
 	/**
 	 * Devuelve el ancho del dibujo de la entidad
+	 * 
 	 * @return la anchura de la entidad
 	 */
 	public int getAncho() {
@@ -92,6 +105,7 @@ public class EntidadGrafica {
 	//Setters
 	/**
 	 * Inserta un nuevo valor de x
+	 * 
 	 * @param x el valor anterior de x
 	 */
 	public int setX(int x) {
@@ -103,6 +117,7 @@ public class EntidadGrafica {
 	
     /**
 	 * Inserta un nuevo valor de y
+	 * 
 	 * @param x el valor anterior de y
 	 */
 	public int setY(int y) {
@@ -115,7 +130,9 @@ public class EntidadGrafica {
 	
 	/**
 	 * Inserta un nuevo dibujo
+	 * 
 	 * @param dibujo el nuevo dibujo a insertar
+	 * 
 	 * @return retorna el dibujo anterior
 	 */
 	public JLabel setLabel(JLabel dibujo) {
@@ -126,7 +143,9 @@ public class EntidadGrafica {
 	
 	/**
 	 * Modifica el ancho del dibujo
+	 * 
 	 * @param ancho el nuevo ancho
+	 * 
 	 * @return retorna el valor de la anchura anterior
 	 */
 	public int setAncho(int ancho) {
@@ -137,7 +156,9 @@ public class EntidadGrafica {
 
 	/**
 	 * Modifica el largo del dibujo
+	 * 
 	 * @param largo el nuevo largo
+	 * 
 	 * @return retorna el valor del largo anterior
 	 */
 	public void setLargo(int largo) {
@@ -146,6 +167,7 @@ public class EntidadGrafica {
 	
 	/**
 	 * Devuelve la ruta de la imagen de la entidad
+	 * 
 	 * @return Devuelve la ruta
 	 */
 	public String getRuta() {
@@ -154,7 +176,9 @@ public class EntidadGrafica {
 	
 	/**
 	 * Modifica la ruta de la imagen de la entidad
+	 * 
 	 * @param ruta La nueva ruta de la imagen
+	 * 
 	 * @return La ruta anterior
 	 */
 	public String setRuta(String ruta) {

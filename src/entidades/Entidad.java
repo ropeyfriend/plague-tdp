@@ -3,8 +3,7 @@ package entidades;
 import entidades.visitor.*;
 import juego.Juego;
 
-/**Clase que modela una entidad del juego.
- * */
+/**Clase que modela una entidad del juego.*/
 
 public abstract class Entidad {
 	/**Representa el juego de la entidad*/
@@ -32,11 +31,12 @@ public abstract class Entidad {
 	 * */
     public abstract void accept(Visitor v);
     
-    
+    /**Define el comportamiento de la entidad*/
     public abstract void jugar();
 	
     //Getters
 	/**Retorna la entidad grafica del personaje
+	 * 
 	 * @return entidad grafica.
 	 * */
 	public EntidadGrafica getEntidadGrafica() {
@@ -44,6 +44,7 @@ public abstract class Entidad {
 	}
 	
 	/**Retorna true si la entidad esta activa
+	 * 
 	 * @return true si esta activa
 	 * */
 	public boolean getActivo() {
@@ -51,6 +52,7 @@ public abstract class Entidad {
 	}
 	
 	/**Retorna la velocidad del personaje
+	 * 
 	 * @return velocidad.
 	 * */
 	public int getVelocidad() {
@@ -58,17 +60,24 @@ public abstract class Entidad {
 	}
 	
 	/**Retorna el juego de la entidad
+	 * 
 	 * @return juego
 	 * */
 	public Juego getJuego() {
 		return game;
 	}
 	
+	/**Retorna el visitor de la entidad
+	 * 
+	 * @return visitor
+	 * */
 	public Visitor getVisitor() {
 		return visitor;
 	}
+	
 	//Setters
 	/**Modifica el valor de la velocidad por el pasado por parametro
+	 * 
 	 * @param v, velocidad a modificar
 	 * */
 	public void setVelocidad(int v) {
@@ -76,6 +85,7 @@ public abstract class Entidad {
 	}
 	
 	/**Modifica el valor de activo por el pasado por parametro
+	 * 
 	 * @param a, variable a modificar
 	 * */
 	public void setActivo(boolean a) {
@@ -83,6 +93,7 @@ public abstract class Entidad {
 	}
 	
 	/**Modifica el valor de la la entidad grafica por el pasado por parametro
+	 * 
 	 * @param e, entidad grafica a modificar.
 	 * */
 	public void setEntidadGrafica(EntidadGrafica e) {

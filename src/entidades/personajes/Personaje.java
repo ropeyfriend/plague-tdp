@@ -15,7 +15,7 @@ public abstract class Personaje extends Entidad{
 	 public abstract void recibirDanio(Proyectil p);
 	
 	/**
-	 * Retorna un proyectil 
+	 * dispara
 	 */
 	public abstract void disparar();
 		
