@@ -18,7 +18,7 @@ public class EntidadGrafica {
     /**Icono de la entidad*/
     protected JLabel dibujo;
     /**Ancho de la imagen*/
-	public int ancho;
+	protected int ancho;
 	/**Largo de la imagen*/
 	protected int largo;
 	/**Ruta del diubjo */ 
